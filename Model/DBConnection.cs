@@ -9,7 +9,15 @@ namespace Model
 {
     public class DBConnection
     {
-        private static string connectionString = "Server=localhost;Database=bdprueba;Uid=christian;Pwd=christian;";
+        /*
+         *
+$hostname="localhost";
+$database="id9562541_dbbuckapp";
+$username="id9562541_admin";
+$password="admin";
+
+         * */
+        private static string connectionString = "Server=localhost;Database=id9562541_dbbuckapp;Uid=id9562541_admin;Pwd=admin;";
         private static DBConnection instance;
         private static MySqlConnection con = null;
 

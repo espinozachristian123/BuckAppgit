@@ -19,6 +19,7 @@ namespace Controller
         
         public String validateUser(String username, String password)
         {
+
             String rol = String.Empty;
             User userValidate = new User(username,password);
             Boolean flag = model.loginUser(userValidate);
