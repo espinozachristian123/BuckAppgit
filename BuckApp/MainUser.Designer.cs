@@ -45,7 +45,10 @@
             this.columnLocation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnNumPart = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnNumPartMax = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnIdUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,7 +102,7 @@
             this.eventsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(673, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(868, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -147,13 +150,15 @@
             this.columnLocation,
             this.columnDate,
             this.columnNumPart,
-            this.columnType});
+            this.columnNumPartMax,
+            this.columnType,
+            this.columnIdUser});
             this.listViewEvent.FullRowSelect = true;
             this.listViewEvent.GridLines = true;
             this.listViewEvent.HideSelection = false;
-            this.listViewEvent.Location = new System.Drawing.Point(19, 73);
+            this.listViewEvent.Location = new System.Drawing.Point(19, 61);
             this.listViewEvent.Name = "listViewEvent";
-            this.listViewEvent.Size = new System.Drawing.Size(633, 196);
+            this.listViewEvent.Size = new System.Drawing.Size(825, 261);
             this.listViewEvent.TabIndex = 6;
             this.listViewEvent.UseCompatibleStateImageBehavior = false;
             this.listViewEvent.View = System.Windows.Forms.View.Details;
@@ -180,19 +185,40 @@
             // 
             // columnNumPart
             // 
-            this.columnNumPart.Text = "N º max  participantes";
+            this.columnNumPart.Text = "N º participantes";
             this.columnNumPart.Width = 120;
+            // 
+            // columnNumPartMax
+            // 
+            this.columnNumPartMax.Text = "N º max  participantes";
+            this.columnNumPartMax.Width = 120;
             // 
             // columnType
             // 
             this.columnType.Text = "Tipo";
             this.columnType.Width = 80;
             // 
+            // columnIdUser
+            // 
+            this.columnIdUser.Text = "Id_user";
+            this.columnIdUser.Width = 80;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(744, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Mis Actividades";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.listarActividadesDeUnaPersona);
+            // 
             // MainUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 346);
+            this.ClientSize = new System.Drawing.Size(868, 346);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.listViewEvent);
             this.Controls.Add(this.btSearch);
             this.Controls.Add(this.cbCategory);
@@ -228,7 +254,10 @@
         private System.Windows.Forms.ColumnHeader columnDescripcion;
         private System.Windows.Forms.ColumnHeader columnLocation;
         private System.Windows.Forms.ColumnHeader columnDate;
-        private System.Windows.Forms.ColumnHeader columnNumPart;
+        private System.Windows.Forms.ColumnHeader columnNumPartMax;
         private System.Windows.Forms.ColumnHeader columnType;
+        private System.Windows.Forms.ColumnHeader columnNumPart;
+        private System.Windows.Forms.ColumnHeader columnIdUser;
+        private System.Windows.Forms.Button button1;
     }
 }

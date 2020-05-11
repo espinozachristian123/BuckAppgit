@@ -57,16 +57,10 @@ namespace BuckApp
             tbPassword.Text = "";
         }
 
-        private void btChekin_Click(object sender, EventArgs e)
+        private void registerClick(object sender, EventArgs e)
         {
-            //this.Close();
-            
-            mostrarventana();
-        }
-        private void mostrarventana()
-        {
-            Registro nw = new Registro();
-            nw.Show();
+            Register register = new Register();
+            register.ShowDialog();
         }
     }
 }

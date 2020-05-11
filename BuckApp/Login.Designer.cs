@@ -87,7 +87,7 @@
             this.btChekin.TabIndex = 4;
             this.btChekin.Text = "Registrarse";
             this.btChekin.UseVisualStyleBackColor = true;
-            this.btChekin.Click += new System.EventHandler(this.btChekin_Click);
+            this.btChekin.Click += new System.EventHandler(this.registerClick);
             // 
             // tbUsername
             // 

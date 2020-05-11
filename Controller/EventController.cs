@@ -33,7 +33,13 @@ namespace Controller
 
         public List<Event> cargarDatosConFiltro(String location, String type)
         {
-            events = eventDao.cogerDatosConFiltro(location,type);
+            events = eventDao.cogerDatosConFiltroLugarTipo(location,type);
+            return events;
+        }
+
+        public List<Event> cargarDatosUnaPersona(int id_user)
+        {
+            events = eventDao.cogerActividadesDeUnaPersona(id_user);
             return events;
         }
     }

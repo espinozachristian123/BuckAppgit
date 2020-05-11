@@ -42,14 +42,16 @@ namespace BuckApp
             {
                 for(int i = 0; i < events.Count; i++)
                 {
-                    string[] listaEventos = new string[6];
+                    string[] listaEventos = new string[8];
                     //add items to ListView
                     listaEventos[0] = events[i].Name;
                     listaEventos[1] = events[i].Description;
                     listaEventos[2] = events[i].Location;
                     listaEventos[3] = events[i].Date.ToString();
-                    listaEventos[4] = events[i].NumMaxParticipantes.ToString();
-                    listaEventos[5] = events[i].Type;
+                    listaEventos[4] = events[i].NumParticipants.ToString();
+                    listaEventos[5] = events[i].NumMaxParticipantes.ToString();
+                    listaEventos[6] = events[i].Type;
+                    listaEventos[7] = events[i].Id_user.ToString();
                     itm = new ListViewItem(listaEventos);
                     listViewEvent.Items.Add(itm);
                 }
@@ -80,14 +82,16 @@ namespace BuckApp
             {
                 for (int i = 0; i < events.Count; i++)
                 {
-                    string[] listaEventos = new string[6];
+                    string[] listaEventos = new string[8];
                     //add items to ListView
                     listaEventos[0] = events[i].Name;
                     listaEventos[1] = events[i].Description;
                     listaEventos[2] = events[i].Location;
                     listaEventos[3] = events[i].Date.ToString();
-                    listaEventos[4] = events[i].NumMaxParticipantes.ToString();
-                    listaEventos[5] = events[i].Type;
+                    listaEventos[4] = events[i].NumParticipants.ToString();
+                    listaEventos[5] = events[i].NumMaxParticipantes.ToString();
+                    listaEventos[6] = events[i].Type;
+                    listaEventos[7] = events[i].Id_user.ToString();
                     itm = new ListViewItem(listaEventos);
                     listViewEvent.Items.Add(itm);
                 }
@@ -98,6 +102,34 @@ namespace BuckApp
         {
             Profile profile = new Profile(user);
             profile.ShowDialog();
+        }
+
+        private void listarActividadesDeUnaPersona(object sender, EventArgs e)
+        {
+            listViewEvent.Items.Clear();
+            events = eventController.cargarDatosUnaPersona(user.Id);
+            if (events == null)
+            {
+                MessageBox.Show("No se ha podido cargar la lista de eventos !!");
+            }
+            else
+            {
+                for (int i = 0; i < events.Count; i++)
+                {
+                    string[] listaEventos = new string[8];
+                    //add items to ListView
+                    listaEventos[0] = events[i].Name;
+                    listaEventos[1] = events[i].Description;
+                    listaEventos[2] = events[i].Location;
+                    listaEventos[3] = events[i].Date.ToString();
+                    listaEventos[4] = events[i].NumParticipants.ToString();
+                    listaEventos[5] = events[i].NumMaxParticipantes.ToString();
+                    listaEventos[6] = events[i].Type;
+                    listaEventos[7] = events[i].Id_user.ToString();
+                    itm = new ListViewItem(listaEventos);
+                    listViewEvent.Items.Add(itm);
+                }
+            }
         }
     }
 }

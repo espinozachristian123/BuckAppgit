@@ -42,9 +42,11 @@ namespace Model
                                 string description = reader.GetString(2);
                                 string location = reader.GetString(3);
                                 string date = reader.GetMySqlDateTime(4).ToString();
-                                int numMax = reader.GetInt16(5);
-                                string type = reader.GetString(6);
-                                events.Add(new Event(id, name, description, location, date, type, numMax));
+                                int numPart = reader.GetInt16(5);
+                                int numMax = reader.GetInt16(6);
+                                string type = reader.GetString(7);
+                                int id_user = reader.GetInt16(8);
+                                events.Add(new Event(id, name, description, location, date, numPart,numMax ,type,id_user));
                             }
                         }
                         else
@@ -68,7 +70,7 @@ namespace Model
 
         public List <String> cogerDatosComboBox()
         {
-            categories.Add("Deporte");
+            categories.Add("Deportivo");
             categories.Add("Ocio");
             categories.Add("Cultural");
             categories.Add("Musical");
@@ -76,9 +78,8 @@ namespace Model
             return categories;
         }
 
-        public List<Event> cogerDatosConFiltro(string locationEvent, string typeEvent)
+        public List<Event> cogerDatosConFiltroLugarTipo(string locationEvent, string typeEvent)
         {
-           
             List<Event> eventsWithFilter = new List<Event>();
             String QUERY_SELECT_EVENTS_WITH_FILTER = "Select * from events where location = @location and type = @type";
             try
@@ -102,9 +103,11 @@ namespace Model
                                 string description = reader.GetString(2);
                                 string location = reader.GetString(3);
                                 string date = reader.GetMySqlDateTime(4).ToString();
-                                int numMax = reader.GetInt16(5);
-                                string type = reader.GetString(6);
-                                eventsWithFilter.Add(new Event(id, name, description, location, date, type, numMax));
+                                int numPart = reader.GetInt16(5);
+                                int numMax = reader.GetInt16(6);
+                                string type = reader.GetString(7);
+                                int id_user = reader.GetInt16(8);
+                                eventsWithFilter.Add(new Event(id, name, description, location, date, numPart, numMax, type, id_user));
                             }
                         }
                         else
@@ -125,6 +128,55 @@ namespace Model
             }
             return eventsWithFilter;
         }
-        
+
+        public List<Event> cogerActividadesDeUnaPersona(int id_user)
+        {
+            List<Event> eventsOnePerson = new List<Event>();
+            String QUERY_SELECT_EVENTS__ONE_PERSON = "Select * from events where id_user = @id_user";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_SELECT_EVENTS__ONE_PERSON, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                int id = reader.GetInt16(0);
+                                string name = reader.GetString(1);
+                                string description = reader.GetString(2);
+                                string location = reader.GetString(3);
+                                string date = reader.GetMySqlDateTime(4).ToString();
+                                int numPart = reader.GetInt16(5);
+                                int numMax = reader.GetInt16(6);
+                                string type = reader.GetString(7);
+                                eventsOnePerson.Add(new Event(id, name, description, location, date, numPart, numMax, type, id_user));
+                            }
+                        }
+                        else
+                        {
+                            eventsOnePerson = null;
+                        }
+                        reader.Close();
+                    }
+                }
+            }
+            catch (MySqlException error)
+            {
+                eventsOnePerson = null;
+            }
+            catch (Exception e)
+            {
+                eventsOnePerson = null;
+            }
+            return eventsOnePerson;
+        }
+
     }
 }

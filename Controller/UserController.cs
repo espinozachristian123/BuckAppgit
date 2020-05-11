@@ -19,7 +19,6 @@ namespace Controller
         
         public String validateUser(String username, String password)
         {
-
             String rol = String.Empty;
             User userValidate = new User(username,password);
             Boolean flag = model.loginUser(userValidate);
@@ -43,11 +42,17 @@ namespace Controller
             return rol;
         }
 
+        public Boolean validateRegister(String username, String password, String email)
+        {
+            Boolean flag = model.register(username,password,email);
+            return flag;
+        }
+
+        public Boolean sameEmail(String email)
+        {
+            return model.takeUser(email);
+        }
+
         public User User { get => user; set => user = value; }
-
-
-
-
-
     }
 }

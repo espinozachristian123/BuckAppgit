@@ -5,7 +5,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Model
 {
@@ -46,8 +45,8 @@ namespace Model
                             while (reader.Read())
                             {
                                 id = reader.GetInt16(0);
-                                rol = reader.GetString(3);
-                                email = reader.GetString(4);
+                                email = reader.GetString(3);
+                                rol = reader.GetString(4);
                                 b = true;
                             }
                         }
@@ -70,33 +69,88 @@ namespace Model
 
             return b;
         }
-        public string registrase(string nombre, string password, string rol, string email)
+
+        public Boolean register(String username, String password, String emailRegister)
         {
-            string salida = "Se ha insertado nuevo registro";
-            MySqlConnection connection = null;
-            MySqlCommand mysqlCmd = null;
-            MySqlDataReader mysqlReader = null;
-
-
+            Boolean b = false;
+            String QUERY_ADD_USER = "Insert into users (username, password, email, rol) values (@username,  @password , @email, @rol)";
             try
             {
                 connection = dbConnect.getConnection();
-                connection.Open(); //Open connection.
-                mysqlCmd = new MySqlCommand("Insert into users(username,password,rol,email) values('" + nombre + "','" + password + "','" + rol + "','" + email + "')", connection); //It makes the query
-                mysqlCmd.ExecuteNonQuery();
-                MessageBox.Show("Se ha incertado nuevo usuario");
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_ADD_USER, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@username", username));
+                        cmd.Parameters.Add(new MySqlParameter("@password", password));
+                        cmd.Parameters.Add(new MySqlParameter("@email", emailRegister));
+                        cmd.Parameters.Add(new MySqlParameter("@rol", "user"));
+                        cmd.ExecuteNonQuery();
+                        b = true;
+                    }
+                }
+                else
+                {
+                    b = false;
+                }
+            }
+            catch (MySqlException error)
+            {
+                b = false;
             }
             catch (Exception e)
             {
-                salida = "No se ha podido insertar " + e.ToString();
+                b = false;
             }
-            return salida;
+            return b;
         }
+
+        public Boolean takeUser(String email)
+        {
+            Boolean b = false;
+            String QUERY_SELECT_USER = "Select * from users where email = @email";
+            try
+            {
+
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_SELECT_USER, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@email", email));
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {   
+                                b = true;
+                            }
+                        }
+                        else
+                        {
+                            b = false;
+                        }
+                        reader.Close();
+                    }
+                }
+            }
+            catch (MySqlException error)
+            {
+                b = false;
+            }
+            catch (Exception e)
+            {
+                b = false;
+            }
+            return b;
+        }
+
         public string Rol { get => rol; set => rol = value; }
         public string Email { get => email; set => email = value; }
         public int Id { get => id; set => id = value; }
     }
 }
-
-
-//String QUERY_SELECT_USER = "Select * from users WHERE username = @user AND password = @password";
