@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BuckAppgit.Properties
+namespace BuckApp.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace BuckAppgit.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BuckAppgit.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BuckApp.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

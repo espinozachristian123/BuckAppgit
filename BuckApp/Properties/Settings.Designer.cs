@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BuckAppgit.Properties
+namespace BuckApp.Properties
 {
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,13 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BuckAppgit
+namespace BuckApp
 {
-    public partial class Form1 : Form
+    public partial class Profile : Form
     {
-        public Form1()
+        User user;
+        public Profile(User user)
         {
             InitializeComponent();
+            this.user = user;
         }
     }
 }
