@@ -14,21 +14,12 @@ namespace BuckApp
     public partial class Register : Form
     {
         UserController usercontroller;
-        //Prueba
-
-            /// <summary>
-            /// holajadjs alejandro
-            /// </summary>
         public Register()
         {
             InitializeComponent();
             usercontroller = new UserController(); 
         }
-        /// <summary>
-        /// djfkajdfkasjdajkfhklasdcnjfhjsdnkhfjkadfhadlk
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         private void registerUser(object sender, EventArgs e)
         {
             String username = tbUsername.Text;
