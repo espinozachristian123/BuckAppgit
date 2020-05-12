@@ -14,6 +14,7 @@ namespace Model
         private static MySqlConnection con = null;
         //ESTO ES UNA PRUEBA
         //SEGUNDA PRUEBA
+         //hola
         private DBConnection()
         {
 
