@@ -20,7 +20,11 @@ namespace BuckApp
             InitializeComponent();
             usercontroller = new UserController(); 
         }
-
+        /// <summary>
+        /// djfkajdfkasjdajkfhklasdcnjfhjsdnkhfjkadfhadlk
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void registerUser(object sender, EventArgs e)
         {
             String username = tbUsername.Text;
