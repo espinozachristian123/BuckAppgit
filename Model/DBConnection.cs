@@ -12,7 +12,8 @@ namespace Model
         private static string connectionString = "Server=localhost;Database=dbproyecto;Uid=usrproyecto;Pwd=pswproyecto;";
         private static DBConnection instance;
         private static MySqlConnection con = null;
-
+        //ESTO ES UNA PRUEBA
+        //SEGUNDA PRUEBA
         private DBConnection()
         {
 
