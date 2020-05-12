@@ -20,7 +20,7 @@ namespace BuckApp
         List<Event> events;
         List<String> typeEvents;
         User user;
-
+        
         public MainUser(User user)
         {
             InitializeComponent();
@@ -130,6 +130,21 @@ namespace BuckApp
                     listViewEvent.Items.Add(itm);
                 }
             }
+        }
+
+        private void listViewEvent_MouseClick(object sender, MouseEventArgs e)
+        {
+            ListViewItem listItem = listViewEvent.SelectedItems[0];
+            String name = listItem.SubItems[0].Text;
+            String description = listItem.SubItems[1].Text;
+            String localidad = listItem.SubItems[2].Text;
+            String fecha = listItem.SubItems[3].Text;
+            int n_participantes = Convert.ToInt16(listItem.SubItems[4].Text);
+            int n_maxParticipantes = Convert.ToInt16(listItem.SubItems[5].Text);
+            String type = listItem.SubItems[6].Text;
+            int id_user = Convert.ToInt16(listItem.SubItems[7].Text);
+            InfoEvents infoEvents = new InfoEvents(name,description,localidad,fecha,n_participantes,n_maxParticipantes,type,id_user, user.Id);
+            infoEvents.ShowDialog();
         }
     }
 }

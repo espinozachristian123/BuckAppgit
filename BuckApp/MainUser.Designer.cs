@@ -162,6 +162,7 @@
             this.listViewEvent.TabIndex = 6;
             this.listViewEvent.UseCompatibleStateImageBehavior = false;
             this.listViewEvent.View = System.Windows.Forms.View.Details;
+            this.listViewEvent.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listViewEvent_MouseClick);
             // 
             // columnName
             // 

@@ -1,2 +1,0 @@
-# BuckAppgit
-Proyecto BuckApp

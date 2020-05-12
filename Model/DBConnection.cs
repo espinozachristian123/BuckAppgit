@@ -26,6 +26,7 @@ namespace Model
             return instance;
         }
 
+
         public MySqlConnection getConnection()
         {
             try

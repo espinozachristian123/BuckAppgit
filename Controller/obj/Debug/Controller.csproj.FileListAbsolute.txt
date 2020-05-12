@@ -1,0 +1,15 @@
+H:\DAM-2-Proyecto\BuckApp\Controller\bin\Debug\Controller.dll
+H:\DAM-2-Proyecto\BuckApp\Controller\bin\Debug\Controller.pdb
+H:\DAM-2-Proyecto\BuckApp\Controller\bin\Debug\Model.dll
+H:\DAM-2-Proyecto\BuckApp\Controller\bin\Debug\MySql.Data.dll
+H:\DAM-2-Proyecto\BuckApp\Controller\bin\Debug\Google.Protobuf.dll
+H:\DAM-2-Proyecto\BuckApp\Controller\bin\Debug\BouncyCastle.Crypto.dll
+H:\DAM-2-Proyecto\BuckApp\Controller\bin\Debug\Ubiety.Dns.Core.dll
+H:\DAM-2-Proyecto\BuckApp\Controller\bin\Debug\Renci.SshNet.dll
+H:\DAM-2-Proyecto\BuckApp\Controller\bin\Debug\Model.pdb
+H:\DAM-2-Proyecto\BuckApp\Controller\bin\Debug\MySql.Data.xml
+H:\DAM-2-Proyecto\BuckApp\Controller\obj\Debug\Controller.csprojAssemblyReference.cache
+H:\DAM-2-Proyecto\BuckApp\Controller\obj\Debug\Controller.csproj.CoreCompileInputs.cache
+H:\DAM-2-Proyecto\BuckApp\Controller\obj\Debug\Controller.csproj.CopyComplete
+H:\DAM-2-Proyecto\BuckApp\Controller\obj\Debug\Controller.dll
+H:\DAM-2-Proyecto\BuckApp\Controller\obj\Debug\Controller.pdb
