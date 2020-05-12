@@ -14,7 +14,8 @@ namespace BuckApp
     public partial class Register : Form
     {
         UserController usercontroller;
-        
+        //Prueba
+        //hola
         public Register()
         {
             InitializeComponent();
