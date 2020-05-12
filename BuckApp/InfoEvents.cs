@@ -49,15 +49,17 @@ namespace BuckApp
 
         private void ocultarCampos()
         {
-            if(id_user != userID)
+            if (id_user != userID)
             {
-                tbName.Enabled = false;
-                tbDescription.Enabled = false;
-                tbLocalidad.Enabled = false;
-                tbFecha.Enabled = false;
-                tbNInscritos.Enabled = false;
-                tbMaxParticipantes.Enabled = false;
-                tbTipo.Enabled = false;
+                tbName.ReadOnly = true;
+                tbDescription.ReadOnly = true;
+                tbLocalidad.ReadOnly = true;
+                tbFecha.ReadOnly = true;
+                tbNInscritos.ReadOnly = true;
+                tbMaxParticipantes.ReadOnly = true;
+                tbTipo.ReadOnly = true;
+                btModify.Enabled = false;
+                btDelete.Enabled = false;
             }
         }
     }
