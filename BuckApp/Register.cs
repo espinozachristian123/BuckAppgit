@@ -15,6 +15,7 @@ namespace BuckApp
     {
         UserController usercontroller;
         //Prueba
+        //hola 
         public Register()
         {
             InitializeComponent();
