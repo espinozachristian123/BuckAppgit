@@ -18,7 +18,7 @@ namespace Controller
             eventDao = new EventDAO();
             events = new List<Event>();
         }
-
+        //
         public List<Event> cargarDatos()
         {
             events = eventDao.cogerDatos();
