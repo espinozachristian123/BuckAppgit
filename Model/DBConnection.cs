@@ -15,7 +15,7 @@ namespace Model
 
         private DBConnection()
         {
-
+            //esto es dbconnection
         }
         public static DBConnection getInstance()
         {
