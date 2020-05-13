@@ -20,7 +20,7 @@ namespace Model
         {
             dbConnect = DBConnection.getInstance();
         }
-        //
+        //hola
         public List<Event> cogerDatos()
         {
             String QUERY_SELECT_EVENTS = "Select * from events";
