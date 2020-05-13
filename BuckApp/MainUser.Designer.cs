@@ -139,9 +139,8 @@
             // addEventToolStripMenuItem
             // 
             this.addEventToolStripMenuItem.Name = "addEventToolStripMenuItem";
-            this.addEventToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addEventToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.addEventToolStripMenuItem.Text = "Añadir evento";
-            this.addEventToolStripMenuItem.Click += new System.EventHandler(this.addEventToolStripMenuItem_Click);
             // 
             // listViewEvent
             // 

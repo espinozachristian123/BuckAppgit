@@ -143,14 +143,8 @@ namespace BuckApp
             int n_maxParticipantes = Convert.ToInt16(listItem.SubItems[5].Text);
             String type = listItem.SubItems[6].Text;
             int id_user = Convert.ToInt16(listItem.SubItems[7].Text);
-            combotipo infoEvents = new combotipo(name,description,localidad,fecha,n_participantes,n_maxParticipantes,type,id_user, user.Id);
+            InfoEvents infoEvents = new InfoEvents(name,description,localidad,fecha,n_participantes,n_maxParticipantes,type,id_user, user.Id);
             infoEvents.ShowDialog();
-        }
-
-        private void addEventToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            combotipo info = new combotipo(user);
-            info.Show();
         }
     }
 }

@@ -23,16 +23,3 @@ C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\Model\obj\Debug\Model
 C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\Model\obj\Debug\Model.csproj.CopyComplete
 C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\Model\obj\Debug\Model.dll
 C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\Model\obj\Debug\Model.pdb
-C:\Users\Christian\source\repos\BuckAppgit\Model\obj\Debug\Model.csprojAssemblyReference.cache
-C:\Users\Christian\source\repos\BuckAppgit\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
-C:\Users\Christian\source\repos\BuckAppgit\Model\obj\Debug\Model.dll
-C:\Users\Christian\source\repos\BuckAppgit\Model\obj\Debug\Model.pdb
-C:\Users\Christian\source\repos\BuckAppgit\Model\bin\Debug\Model.dll
-C:\Users\Christian\source\repos\BuckAppgit\Model\bin\Debug\Model.pdb
-C:\Users\Christian\source\repos\BuckAppgit\Model\bin\Debug\MySql.Data.dll
-C:\Users\Christian\source\repos\BuckAppgit\Model\bin\Debug\Google.Protobuf.dll
-C:\Users\Christian\source\repos\BuckAppgit\Model\bin\Debug\BouncyCastle.Crypto.dll
-C:\Users\Christian\source\repos\BuckAppgit\Model\bin\Debug\Ubiety.Dns.Core.dll
-C:\Users\Christian\source\repos\BuckAppgit\Model\bin\Debug\Renci.SshNet.dll
-C:\Users\Christian\source\repos\BuckAppgit\Model\bin\Debug\MySql.Data.xml
-C:\Users\Christian\source\repos\BuckAppgit\Model\obj\Debug\Model.csproj.CopyComplete
