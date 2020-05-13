@@ -13,8 +13,8 @@ namespace Model
         private DBConnection dbConnect;
         private MySqlConnection connection;
 
-        List <Event> events = new List<Event>();
-        List <String> categories = new List<string>();
+        List<Event> events = new List<Event>();
+        List<String> categories = new List<string>();
 
         public EventDAO()
         {
@@ -37,7 +37,7 @@ namespace Model
                         if (reader.HasRows)
                         {
                             while (reader.Read())
-                            { 
+                            {
                                 int id = reader.GetInt16(0);
                                 string name = reader.GetString(1);
                                 string description = reader.GetString(2);
@@ -47,7 +47,7 @@ namespace Model
                                 int numMax = reader.GetInt16(6);
                                 string type = reader.GetString(7);
                                 int id_user = reader.GetInt16(8);
-                                events.Add(new Event(id, name, description, location, date, numPart,numMax ,type,id_user));
+                                events.Add(new Event(id, name, description, location, date, numPart, numMax, type, id_user));
                             }
                         }
                         else
@@ -69,7 +69,7 @@ namespace Model
             return events;
         }
 
-        public List <String> cogerDatosComboBox()
+        public List<String> cogerDatosComboBox()
         {
             categories.Add("Deportivo");
             categories.Add("Ocio");
@@ -244,5 +244,18 @@ namespace Model
         }
 
 
+       public Event modifyEvent()
+       {
+            Event eventModify = null;
+            String QUERY_MODIFY_EVENT = "UPDATE `events` SET `name`= @name,`description`= @description,`location`= @location,`date`= @date,`num_participants_max`= @num_max,`type`= @type WHERE id = @id";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    return eventModify;
+       }
     }
 }
