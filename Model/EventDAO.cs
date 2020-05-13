@@ -181,6 +181,7 @@ namespace Model
 
         public Boolean modifyEvent(String name, String description, String location, String date, int num_max, String type, int id)
         {
+           
             Boolean b = false;
             String QUERY_MODIFY_EVENT = "UPDATE `events` SET `name`= @name,`description`= @description,`location`= @location,`date`= @date,`num_participants_max`= @num_max,`type`= @type WHERE id = @id";
             try
@@ -195,7 +196,7 @@ namespace Model
                         cmd.Parameters.Add(new MySqlParameter("@name", name));
                         cmd.Parameters.Add(new MySqlParameter("@description", description));
                         cmd.Parameters.Add(new MySqlParameter("@location", location));
-                        cmd.Parameters.Add(new MySqlParameter("@date", date));
+                        cmd.Parameters.Add(new MySqlParameter("@date", Convert.ToDateTime(date)));
                         cmd.Parameters.Add(new MySqlParameter("@num_max", num_max));
                         cmd.Parameters.Add(new MySqlParameter("@type", type));
                         cmd.Parameters.Add(new MySqlParameter("@id", id));
@@ -218,27 +219,19 @@ namespace Model
             }
             return b;
         }
-        public Boolean insertar_event(string name, string description, string location, string date, int num_participants, int num_participants_max, string type, int id_user)
+        public Boolean deleteEvent(int id)
         {
             Boolean b = false;
-            String QUERY_ADD_USER = "Insert into events (name, description, location, date, num_participants, num_participants_max, type, id_user) values (@name,  @description , @location, @date, @num_participants, @num_participants_max, @type, @id_user)";
+            String QUERY_DELETE_EVENT = "DELETE FROM `events` WHERE id = @id";
             try
             {
                 connection = dbConnect.getConnection();
-
                 if (connection != null)
                 {
                     connection.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(QUERY_ADD_USER, connection))
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_DELETE_EVENT, connection))
                     {
-                        cmd.Parameters.Add(new MySqlParameter("@name", name));
-                        cmd.Parameters.Add(new MySqlParameter("@description", description));
-                        cmd.Parameters.Add(new MySqlParameter("@location", location));
-                        cmd.Parameters.Add(new MySqlParameter("@date", Convert.ToDateTime(date)));
-                        cmd.Parameters.Add(new MySqlParameter("@num_participants", num_participants));
-                        cmd.Parameters.Add(new MySqlParameter("@num_participants_max", num_participants_max));
-                        cmd.Parameters.Add(new MySqlParameter("@type", type));
-                        cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
+                        cmd.Parameters.Add(new MySqlParameter("@id", id));
                         cmd.ExecuteNonQuery();
                         b = true;
                     }
@@ -258,8 +251,5 @@ namespace Model
             }
             return b;
         }
-
-
-
     }
 }
