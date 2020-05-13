@@ -158,5 +158,11 @@ namespace BuckApp
             listViewEvent.Items.Clear();
             cargarEventosListView();
         }
+
+        private void addEventToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SubirEventos subir = new SubirEventos(user);
+            subir.Show();
+        }
     }
 }
