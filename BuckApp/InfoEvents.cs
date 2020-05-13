@@ -102,7 +102,7 @@ namespace BuckApp
             tbMaxParticipantes.Text = Convert.ToString(n_maxParticipantes);
             tbTipo.Text = type;
         }
-
+        //infoevents
         private void ocultarCampos()
         {
             if (id_user != userID)
