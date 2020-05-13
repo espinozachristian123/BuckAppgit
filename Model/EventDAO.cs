@@ -178,7 +178,7 @@ namespace Model
             }
             return eventsOnePerson;
         }
-        public string insertar(string name, string description,string localidad,string date, int Inscritos, int MaxParticipantes, string Tipo,int userID)
+        public string insertar(string name, string description, string localidad, string date, int Inscritos, int MaxParticipantes, string Tipo, int userID)
         {
             string salida = "Se ha insertado nuevo registro";
             MySqlConnection connection = null;
@@ -244,18 +244,24 @@ namespace Model
         }
 
 
-       public Event modifyEvent()
-       {
-            Event eventModify = null;
-            String QUERY_MODIFY_EVENT = "UPDATE `events` SET `name`= @name,`description`= @description,`location`= @location,`date`= @date,`num_participants_max`= @num_max,`type`= @type WHERE id = @id";
-            try
-            {
-                connection = dbConnect.getConnection();
+        //public Event modifyEvent()
+        //{
+        //    Event eventModify = null;
+        //    String QUERY_MODIFY_EVENT = "UPDATE `events` SET `name`= @name,`description`= @description,`location`= @location,`date`= @date,`num_participants_max`= @num_max,`type`= @type WHERE id = @id";
+        //    try
+        //    {
+        //        connection = dbConnect.getConnection();
 
-                if (connection != null)
-                {
-                    connection.Open();
-                    return eventModify;
-       }
+        //        if (connection != null)
+        //        {
+        //            connection.Open();
+        //            return eventModify;
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //    }
+        //}
     }
 }

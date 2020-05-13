@@ -1,6 +1,6 @@
 ﻿namespace BuckApp
 {
-    partial class InfoEvents
+    partial class combotipo
     {
         /// <summary>
         /// Required designer variable.
@@ -45,6 +45,8 @@
             this.tbTipo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tbMaxParticipantes = new System.Windows.Forms.TextBox();
+            this.datepicker = new System.Windows.Forms.DateTimePicker();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -109,6 +111,7 @@
             this.btRegisterEvent.TabIndex = 6;
             this.btRegisterEvent.Text = "Register Event";
             this.btRegisterEvent.UseVisualStyleBackColor = true;
+            this.btRegisterEvent.Click += new System.EventHandler(this.btRegisterEvent_Click);
             // 
             // btModify
             // 
@@ -187,11 +190,28 @@
             this.tbMaxParticipantes.Size = new System.Drawing.Size(119, 20);
             this.tbMaxParticipantes.TabIndex = 16;
             // 
-            // InfoEvents
+            // datepicker
+            // 
+            this.datepicker.Location = new System.Drawing.Point(314, 131);
+            this.datepicker.Name = "datepicker";
+            this.datepicker.Size = new System.Drawing.Size(200, 20);
+            this.datepicker.TabIndex = 17;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(314, 217);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(200, 21);
+            this.comboBox1.TabIndex = 18;
+            // 
+            // combotipo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 301);
+            this.ClientSize = new System.Drawing.Size(785, 409);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.datepicker);
             this.Controls.Add(this.tbMaxParticipantes);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbTipo);
@@ -209,7 +229,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "InfoEvents";
+            this.Name = "combotipo";
             this.Text = "InfoEvents";
             this.Load += new System.EventHandler(this.InfoEvents_Load);
             this.ResumeLayout(false);
@@ -236,5 +256,7 @@
         private System.Windows.Forms.TextBox tbTipo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbMaxParticipantes;
+        private System.Windows.Forms.DateTimePicker datepicker;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
