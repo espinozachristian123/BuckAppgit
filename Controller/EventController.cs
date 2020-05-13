@@ -47,5 +47,12 @@ namespace Controller
         {
             return eventDao.modifyEvent(name,description,location,date,num_max,type,id);
         }
+
+        public Boolean deleteEvent(int id)
+        {
+            Boolean flag = eventDao.deleteEvent(id);
+            return flag;
+
+        }
     }
 }

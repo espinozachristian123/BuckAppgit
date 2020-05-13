@@ -15,7 +15,9 @@ namespace BuckApp
     {
         String name, description, localidad, fecha, type;
         int  id_event, n_participantes, n_maxParticipantes, id_user, userID;
-        
+
+  
+
         EventController eventController;
         
         public InfoEvents(int id_event,String name, String description, String localidad, String fecha, 
@@ -87,6 +89,23 @@ namespace BuckApp
                 else
                 {
                     MessageBox.Show("EL evento no se ha podido modificar !!");
+                }
+            }
+        }
+
+        private void deleteEventClick(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Estas seguro que quieres borrar el evento?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (result == DialogResult.Yes)
+            {
+                Boolean b = eventController.deleteEvent(id_event);
+                if (b == true)
+                {
+                    MessageBox.Show("Evento borrado correctamente !!");
+                }
+                else
+                {
+                    MessageBox.Show("EL evento no se ha podido borrar !!");
                 }
             }
         }
