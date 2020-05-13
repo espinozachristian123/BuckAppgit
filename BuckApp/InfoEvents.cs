@@ -13,12 +13,13 @@ namespace BuckApp
     public partial class InfoEvents : Form
     {
         String name, description, localidad, fecha, type;
-        int n_participantes, n_maxParticipantes, id_user, userID;
+        int  id_event, n_participantes, n_maxParticipantes, id_user, userID;
 
-        public InfoEvents(String name, String description, String localidad, String fecha, 
+        public InfoEvents(int id_event,String name, String description, String localidad, String fecha, 
             int n_participantes, int n_maxParticipantes, String type, int id_user, int userID)
         {
             InitializeComponent();
+            this.id_event = id_event;
             this.name = name;
             this.description = description;
             this.localidad = localidad;
