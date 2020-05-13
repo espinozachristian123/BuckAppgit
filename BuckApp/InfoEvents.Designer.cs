@@ -45,6 +45,8 @@
             this.tbTipo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tbMaxParticipantes = new System.Windows.Forms.TextBox();
+            this.datepicker = new System.Windows.Forms.DateTimePicker();
+            this.Combotipo = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -109,6 +111,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Register Event";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Registrar_event);
             // 
             // button2
             // 
@@ -186,11 +189,34 @@
             this.tbMaxParticipantes.Size = new System.Drawing.Size(119, 20);
             this.tbMaxParticipantes.TabIndex = 16;
             // 
+            // datepicker
+            // 
+            this.datepicker.AccessibleDescription = "";
+            this.datepicker.AccessibleName = "";
+            this.datepicker.Location = new System.Drawing.Point(329, 126);
+            this.datepicker.Name = "datepicker";
+            this.datepicker.Size = new System.Drawing.Size(200, 20);
+            this.datepicker.TabIndex = 17;
+            // 
+            // Combotipo
+            // 
+            this.Combotipo.AutoCompleteCustomSource.AddRange(new string[] {
+            "DEPORTE",
+            "TEATRO",
+            "CINE"});
+            this.Combotipo.FormattingEnabled = true;
+            this.Combotipo.Location = new System.Drawing.Point(329, 210);
+            this.Combotipo.Name = "Combotipo";
+            this.Combotipo.Size = new System.Drawing.Size(200, 21);
+            this.Combotipo.TabIndex = 18;
+            // 
             // InfoEvents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 301);
+            this.ClientSize = new System.Drawing.Size(704, 470);
+            this.Controls.Add(this.Combotipo);
+            this.Controls.Add(this.datepicker);
             this.Controls.Add(this.tbMaxParticipantes);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbTipo);
@@ -235,5 +261,7 @@
         private System.Windows.Forms.TextBox tbTipo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbMaxParticipantes;
+        private System.Windows.Forms.DateTimePicker datepicker;
+        private System.Windows.Forms.ComboBox Combotipo;
     }
 }

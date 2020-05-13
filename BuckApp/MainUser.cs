@@ -146,5 +146,11 @@ namespace BuckApp
             InfoEvents infoEvents = new InfoEvents(name,description,localidad,fecha,n_participantes,n_maxParticipantes,type,id_user, user.Id);
             infoEvents.ShowDialog();
         }
+
+        private void addEventToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InfoEvents info = new InfoEvents(user);
+            info.Show();
+        }
     }
 }
