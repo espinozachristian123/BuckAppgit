@@ -42,5 +42,10 @@ namespace Controller
             events = eventDao.cogerActividadesDeUnaPersona(id_user);
             return events;
         }
+
+        public Boolean modifyEvent(String name, String description, String location, String date, int num_max, String type, int id)
+        {
+            return eventDao.modifyEvent(name,description,location,date,num_max,type,id);
+        }
     }
 }

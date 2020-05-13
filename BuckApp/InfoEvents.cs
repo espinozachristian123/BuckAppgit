@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,9 @@ namespace BuckApp
     {
         String name, description, localidad, fecha, type;
         int  id_event, n_participantes, n_maxParticipantes, id_user, userID;
-
+        
+        EventController eventController;
+        
         public InfoEvents(int id_event,String name, String description, String localidad, String fecha, 
             int n_participantes, int n_maxParticipantes, String type, int id_user, int userID)
         {
@@ -29,6 +32,7 @@ namespace BuckApp
             this.type = type;
             this.id_user = id_user;
             this.userID = userID;
+            eventController = new EventController();
         }
 
         private void InfoEvents_Load(object sender, EventArgs e)
@@ -36,7 +40,7 @@ namespace BuckApp
             ponerDatosTextBox();
             ocultarCampos();
         }
-        
+
         private void ponerDatosTextBox()
         {
             tbName.Text = name;
@@ -61,6 +65,29 @@ namespace BuckApp
                 tbTipo.ReadOnly = true;
                 btModify.Enabled = false;
                 btDelete.Enabled = false;
+            }
+        }
+
+        private void modifyEvent(object sender, EventArgs e)
+        {
+            String newName = tbName.Text;
+            String newDescr = tbDescription.Text;
+            String newLocation = tbLocalidad.Text;
+            String newDate = tbFecha.Text;
+            int newNum_max = Convert.ToInt16(tbMaxParticipantes.Text);
+            String newType = tbTipo.Text;
+            var result = MessageBox.Show("Estas seguro que quieres modificar el evento?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if(result == DialogResult.Yes)
+            {
+                Boolean b = eventController.modifyEvent(newName, newDescr, newLocation, newDate, newNum_max, newType, id_event);
+                if (b == true)
+                {
+                    MessageBox.Show("Evento modificado correctamente !!");
+                }
+                else
+                {
+                    MessageBox.Show("EL evento no se ha podido modificar !!");
+                }
             }
         }
     }

@@ -149,6 +149,14 @@ namespace BuckApp
             int id_event = Convert.ToInt16(listItem.SubItems[8].Text);
             InfoEvents infoEvents = new InfoEvents(id_event,name, description,localidad,fecha,n_participantes,n_maxParticipantes,type,id_user, user.Id);
             infoEvents.ShowDialog();
+            actualizarListView();
+        }
+
+        private void actualizarListView()
+        {
+            events = new List<Event>();
+            listViewEvent.Items.Clear();
+            cargarEventosListView();
         }
     }
 }
