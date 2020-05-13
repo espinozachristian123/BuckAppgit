@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Model
 {
@@ -20,9 +19,10 @@ namespace Model
         {
             dbConnect = DBConnection.getInstance();
         }
-        //hola
+
         public List<Event> cogerDatos()
         {
+            events = new List<Event>();
             String QUERY_SELECT_EVENTS = "Select * from events";
             try
             {
@@ -178,34 +178,11 @@ namespace Model
             }
             return eventsOnePerson;
         }
-        public string insertar(string name, string description, string localidad, string date, int Inscritos, int MaxParticipantes, string Tipo, int userID)
-        {
-            string salida = "Se ha insertado nuevo registro";
-            MySqlConnection connection = null;
-            MySqlCommand mysqlCmd = null;
-            MySqlDataReader mysqlReader = null;
 
-
-            try
-            {
-                connection = dbConnect.getConnection();
-                connection.Open(); //Open connection.
-                mysqlCmd = new MySqlCommand("Insert into events(name,name,description,location,date,num_participants,num_participants_max,type,id_user) values('" + name + "','" + description + "','" + localidad + "','" + date + "','" + Inscritos + "','" + MaxParticipantes + "','" + Tipo + "','" + userID + "')", connection); //It makes the query
-                mysqlCmd.ExecuteNonQuery();
-                MessageBox.Show("Se ha incertado nuevo evento");
-            }
-            catch (Exception e)
-            {
-                salida = "No se ha podido insertar " + e.ToString();
-                MessageBox.Show(salida);
-            }
-            return salida;
-        }
-
-        public Boolean insertar_event(string name, string description, string location, string date, int num_participants, int num_participants_max, string type, int id_user)
+        public Boolean modifyEvent(String name, String description, String location, String date, int num_max, String type, int id)
         {
             Boolean b = false;
-            String QUERY_ADD_USER = "Insert into events (name, description, location, date, num_participants, num_participants_max, type, id_user) values (@name,  @description , @location, @date, @num_participants, @num_participants_max, @type, @id_user)";
+            String QUERY_MODIFY_EVENT = "UPDATE `events` SET `name`= @name,`description`= @description,`location`= @location,`date`= @date,`num_participants_max`= @num_max,`type`= @type WHERE id = @id";
             try
             {
                 connection = dbConnect.getConnection();
@@ -213,16 +190,15 @@ namespace Model
                 if (connection != null)
                 {
                     connection.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(QUERY_ADD_USER, connection))
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_MODIFY_EVENT, connection))
                     {
                         cmd.Parameters.Add(new MySqlParameter("@name", name));
                         cmd.Parameters.Add(new MySqlParameter("@description", description));
                         cmd.Parameters.Add(new MySqlParameter("@location", location));
                         cmd.Parameters.Add(new MySqlParameter("@date", date));
-                        cmd.Parameters.Add(new MySqlParameter("@num_participants", num_participants));
-                        cmd.Parameters.Add(new MySqlParameter("@num_participants_max", num_participants_max));
+                        cmd.Parameters.Add(new MySqlParameter("@num_max", num_max));
                         cmd.Parameters.Add(new MySqlParameter("@type", type));
-                        cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
+                        cmd.Parameters.Add(new MySqlParameter("@id", id));
                         cmd.ExecuteNonQuery();
                         b = true;
                     }
@@ -238,30 +214,9 @@ namespace Model
             }
             catch (Exception e)
             {
-                b = false;
+                b = true;
             }
             return b;
         }
-
-
-        //public Event modifyEvent()
-        //{
-        //    Event eventModify = null;
-        //    String QUERY_MODIFY_EVENT = "UPDATE `events` SET `name`= @name,`description`= @description,`location`= @location,`date`= @date,`num_participants_max`= @num_max,`type`= @type WHERE id = @id";
-        //    try
-        //    {
-        //        connection = dbConnect.getConnection();
-
-        //        if (connection != null)
-        //        {
-        //            connection.Open();
-        //            return eventModify;
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-
-        //    }
-        //}
     }
 }
