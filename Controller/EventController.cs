@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Controller
 {
@@ -53,6 +54,21 @@ namespace Controller
             Boolean flag = eventDao.deleteEvent(id);
             return flag;
 
+        }
+        public void validarnumeros(KeyPressEventArgs pe)
+        {
+            if (char.IsDigit(pe.KeyChar))
+            {
+                pe.Handled = false;
+            }
+            else if (char.IsControl(pe.KeyChar))
+            {
+                pe.Handled = true;
+            }
+            else
+            {
+                pe.Handled = true;
+            }
         }
     }
 }
