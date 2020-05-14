@@ -43,10 +43,10 @@
             // lbTitulo
             // 
             this.lbTitulo.AutoSize = true;
-            this.lbTitulo.Font = new System.Drawing.Font("Adobe Caslon Pro", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitulo.Location = new System.Drawing.Point(105, 28);
             this.lbTitulo.Name = "lbTitulo";
-            this.lbTitulo.Size = new System.Drawing.Size(106, 46);
+            this.lbTitulo.Size = new System.Drawing.Size(124, 31);
             this.lbTitulo.TabIndex = 0;
             this.lbTitulo.Text = "Register";
             // 

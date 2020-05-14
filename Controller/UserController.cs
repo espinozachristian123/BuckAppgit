@@ -52,6 +52,10 @@ namespace Controller
         {
             return model.modifyUser(newName, newPass, newEmail,id_user);
         }
+        public bool modifynames(string newName,int id_user)
+        {
+            return model.modifyname(newName,id_user);
+        }
 
         public Boolean sameEmail(String email)
         {
@@ -59,5 +63,20 @@ namespace Controller
         }
 
         public User User { get => user; set => user = value; }
+
+        public bool sameName(string newName)
+        {
+            return model.UserEquals(newName);
+        }
+
+        public bool modifycorreo(string newEmail, int id)
+        {
+            return model.modifyemail(newEmail, id);
+        }
+
+        public bool modifypass(string newPass, int id)
+        {
+            return model.modifypassword(newPass, id);
+        }
     }
 }
