@@ -68,7 +68,7 @@ namespace Model
             }
             return events;
         }
-
+        
         public List<String> cogerDatosComboBox()
         {
             categories.Add("Deportivo");
@@ -220,6 +220,42 @@ namespace Model
             return b;
         }
 
+        public Boolean registerEvent(string fecha, int id_event, int id_user)
+        {
+            Boolean b = false;
+            String QUERY_REGISTER_USEREVENTS = "Insert into userevents (date, id_events, id_user) values (@date,  @id_events , @id_user)";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_REGISTER_USEREVENTS, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@date", Convert.ToDateTime(fecha)));
+                        cmd.Parameters.Add(new MySqlParameter("@id_events", id_event));
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
+                        cmd.ExecuteNonQuery();
+                        b = true;
+                    }
+                }
+                else
+                {
+                    b = false;
+                }
+            }
+            catch (MySqlException error)
+            {
+                b = false;
+            }
+            catch (Exception e)
+            {
+                b = false;
+            }
+            return b;
+        }
+
         public Boolean modifyEvent(String name, String description, String location, DateTime date, int num_max, String type, int id)
         {
            
@@ -240,6 +276,42 @@ namespace Model
                         cmd.Parameters.Add(new MySqlParameter("@date", Convert.ToDateTime(date)));
                         cmd.Parameters.Add(new MySqlParameter("@num_max", num_max));
                         cmd.Parameters.Add(new MySqlParameter("@type", type));
+                        cmd.Parameters.Add(new MySqlParameter("@id", id));
+                        cmd.ExecuteNonQuery();
+                        b = true;
+                    }
+                }
+                else
+                {
+                    b = false;
+                }
+            }
+            catch (MySqlException error)
+            {
+                b = false;
+            }
+            catch (Exception e)
+            {
+                b = true;
+            }
+            return b;
+        }
+
+        public Boolean updateNumParticipants(int num_participants,  int id)
+        {
+
+            Boolean b = false;
+            String QUERY_UPDATE_NUM_PART = "UPDATE `events` SET `num_participants`= @num_participants WHERE id = @id";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_UPDATE_NUM_PART, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@num_participants", num_participants));
                         cmd.Parameters.Add(new MySqlParameter("@id", id));
                         cmd.ExecuteNonQuery();
                         b = true;
