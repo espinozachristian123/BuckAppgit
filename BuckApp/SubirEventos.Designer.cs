@@ -132,6 +132,7 @@
             this.txtMaxParticipantes.Name = "txtMaxParticipantes";
             this.txtMaxParticipantes.Size = new System.Drawing.Size(211, 20);
             this.txtMaxParticipantes.TabIndex = 10;
+            this.txtMaxParticipantes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaxParticipantes_KeyPress);
             // 
             // comboBox1
             // 
