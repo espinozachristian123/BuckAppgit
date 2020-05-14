@@ -42,7 +42,7 @@ namespace Model
                                 string name = reader.GetString(1);
                                 string description = reader.GetString(2);
                                 string location = reader.GetString(3);
-                                string date = reader.GetMySqlDateTime(4).ToString();
+                                string date = reader.GetDateTime(4).ToString();
                                 int numPart = reader.GetInt16(5);
                                 int numMax = reader.GetInt16(6);
                                 string type = reader.GetString(7);
@@ -220,7 +220,7 @@ namespace Model
             return b;
         }
 
-        public Boolean modifyEvent(String name, String description, String location, String date, int num_max, String type, int id)
+        public Boolean modifyEvent(String name, String description, String location, DateTime date, int num_max, String type, int id)
         {
            
             Boolean b = false;
@@ -237,7 +237,7 @@ namespace Model
                         cmd.Parameters.Add(new MySqlParameter("@name", name));
                         cmd.Parameters.Add(new MySqlParameter("@description", description));
                         cmd.Parameters.Add(new MySqlParameter("@location", location));
-                        cmd.Parameters.Add(new MySqlParameter("@date", date));
+                        cmd.Parameters.Add(new MySqlParameter("@date", Convert.ToDateTime(date)));
                         cmd.Parameters.Add(new MySqlParameter("@num_max", num_max));
                         cmd.Parameters.Add(new MySqlParameter("@type", type));
                         cmd.Parameters.Add(new MySqlParameter("@id", id));
