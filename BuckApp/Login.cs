@@ -19,13 +19,14 @@ namespace BuckApp
         {
             InitializeComponent();
             userController = new UserController();
+            
         }
 
         private void validate(object sender, EventArgs e)
         {
             String username = tbUsername.Text;
             String password = tbPassword.Text;
-
+            
             if (username.Equals("") || password.Equals(""))
             {
                 MessageBox.Show("Username or password are empty!!");
@@ -44,10 +45,16 @@ namespace BuckApp
                 } else if (rol.Equals("user"))
                 {
                     MainUser user = new MainUser(userController.User);
+                    this.Hide();
                     user.ShowDialog();
+                    if(user.Exit == true)
+                    {
+                        this.Show();
+                    }
+                    
                 }
-
                 cleanFields();
+                
             }
         }
 
@@ -55,12 +62,14 @@ namespace BuckApp
         {
             tbUsername.Text = "";
             tbPassword.Text = "";
+            
         }
 
         private void registerClick(object sender, EventArgs e)
         {
             Register register = new Register();
             register.ShowDialog();
+
         }
     }
 }
