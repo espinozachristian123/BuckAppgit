@@ -48,7 +48,7 @@ namespace BuckApp
             tbName.Text = name;
             tbDescription.Text = description;
             tbLocalidad.Text = localidad;
-            tbFecha.Text = fecha;
+            dtpFecha.Value = Convert.ToDateTime(fecha);
             tbNInscritos.Text = Convert.ToString(n_participantes);
             tbMaxParticipantes.Text = Convert.ToString(n_maxParticipantes);
             tbTipo.Text = type;
@@ -61,7 +61,7 @@ namespace BuckApp
                 tbName.ReadOnly = true;
                 tbDescription.ReadOnly = true;
                 tbLocalidad.ReadOnly = true;
-                tbFecha.ReadOnly = true;
+                dtpFecha.Enabled = false;
                 tbNInscritos.ReadOnly = true;
                 tbMaxParticipantes.ReadOnly = true;
                 tbTipo.ReadOnly = true;
@@ -75,7 +75,7 @@ namespace BuckApp
             String newName = tbName.Text;
             String newDescr = tbDescription.Text;
             String newLocation = tbLocalidad.Text;
-            String newDate = tbFecha.Text;
+            DateTime newDate = dtpFecha.Value;
             int newNum_max = Convert.ToInt16(tbMaxParticipantes.Text);
             String newType = tbTipo.Text;
             var result = MessageBox.Show("Estas seguro que quieres modificar el evento?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
