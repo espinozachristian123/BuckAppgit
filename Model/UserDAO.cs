@@ -70,6 +70,43 @@ namespace Model
             return b;
         }
 
+        public bool modifyUser(string newName, string newPass, string newEmail, int id_user)
+        {
+            Boolean b = false;
+            String QUERY_MODIFY_EVENT = "UPDATE `users` SET `username`= @newName,`password`= @newPass,`email`= @newEmail where id = @id_user";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_MODIFY_EVENT, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@newName", newName));
+                        cmd.Parameters.Add(new MySqlParameter("@newPass", newPass));
+                        cmd.Parameters.Add(new MySqlParameter("@newEmail", newEmail));
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
+                        cmd.ExecuteNonQuery();
+                        b = true;
+                    }
+                }
+                else
+                {
+                    b = false;
+                }
+            }
+            catch (MySqlException error)
+            {
+                b = false;
+            }
+            catch (Exception e)
+            {
+                b = true;
+            }
+            return b;
+        }
+
         public Boolean register(String username, String password, String emailRegister)
         {
             Boolean b = false;
