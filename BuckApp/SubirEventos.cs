@@ -55,7 +55,7 @@ namespace BuckApp
                 {
                     MessageBox.Show("Los Campos no pueden estar vacios!");
                 }
-                if (nummax > 100)
+                else if (nummax > 100)
                 {
                     MessageBox.Show("Numero de participantes maximos superado");
                     txtMaxParticipantes.Text = "";
