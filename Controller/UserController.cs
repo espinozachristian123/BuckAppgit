@@ -48,6 +48,11 @@ namespace Controller
             return flag;
         }
 
+        public bool modifiuser(string newName, string newPass, string newEmail, int id_user)
+        {
+            return model.modifyUser(newName, newPass, newEmail,id_user);
+        }
+
         public Boolean sameEmail(String email)
         {
             return model.takeUser(email);

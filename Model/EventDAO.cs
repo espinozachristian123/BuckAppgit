@@ -179,6 +179,47 @@ namespace Model
             return eventsOnePerson;
         }
 
+        public Boolean addEvent(string name, string description, string location, string date, int num_participants, int num_participants_max, string type, int id_user)
+        {
+            Boolean b = false;
+            String QUERY_ADD_USER = "Insert into events (name, description, location, date, num_participants, num_participants_max, type, id_user) values (@name,  @description , @location, @date, @num_participants, @num_participants_max, @type, @id_user)";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_ADD_USER, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@name", name));
+                        cmd.Parameters.Add(new MySqlParameter("@description", description));
+                        cmd.Parameters.Add(new MySqlParameter("@location", location));
+                        cmd.Parameters.Add(new MySqlParameter("@date", Convert.ToDateTime(date)));
+                        cmd.Parameters.Add(new MySqlParameter("@num_participants", num_participants));
+                        cmd.Parameters.Add(new MySqlParameter("@num_participants_max", num_participants_max));
+                        cmd.Parameters.Add(new MySqlParameter("@type", type));
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
+                        cmd.ExecuteNonQuery();
+                        b = true;
+                    }
+                }
+                else
+                {
+                    b = false;
+                }
+            }
+            catch (MySqlException error)
+            {
+                b = false;
+            }
+            catch (Exception e)
+            {
+                b = false;
+            }
+            return b;
+        }
+
         public Boolean modifyEvent(String name, String description, String location, String date, int num_max, String type, int id)
         {
            
@@ -196,7 +237,7 @@ namespace Model
                         cmd.Parameters.Add(new MySqlParameter("@name", name));
                         cmd.Parameters.Add(new MySqlParameter("@description", description));
                         cmd.Parameters.Add(new MySqlParameter("@location", location));
-                        cmd.Parameters.Add(new MySqlParameter("@date", Convert.ToDateTime(date)));
+                        cmd.Parameters.Add(new MySqlParameter("@date", date));
                         cmd.Parameters.Add(new MySqlParameter("@num_max", num_max));
                         cmd.Parameters.Add(new MySqlParameter("@type", type));
                         cmd.Parameters.Add(new MySqlParameter("@id", id));
@@ -219,6 +260,7 @@ namespace Model
             }
             return b;
         }
+
         public Boolean deleteEvent(int id)
         {
             Boolean b = false;
@@ -251,6 +293,6 @@ namespace Model
             }
             return b;
         }
-
     }
+
 }

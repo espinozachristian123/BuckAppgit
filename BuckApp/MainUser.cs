@@ -20,11 +20,15 @@ namespace BuckApp
         List<Event> events;
         List<String> typeEvents;
         User user;
-        
+        Boolean exit;
+
+      
+
         public MainUser(User user)
         {
             InitializeComponent();
             this.user = user;
+            
             eventController = new EventController();
             events = new List<Event>();
             cargarEventosListView();
@@ -158,5 +162,26 @@ namespace BuckApp
             listViewEvent.Items.Clear();
             cargarEventosListView();
         }
+
+        private void addEventToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SubirEventos subir = new SubirEventos(user);
+            subir.ShowDialog();
+            actualizarListView();
+        }
+
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var answer = MessageBox.Show("Estas seguro de cerrar sesion?? ","Cerrar sesion",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (answer == DialogResult.Yes)
+            {
+                this.Close();
+                exit = true;
+            }
+            else {
+                exit = false;
+            }
+        }
+        public bool Exit { get => exit; set => exit = value; }
     }
 }
