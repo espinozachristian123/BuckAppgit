@@ -15,17 +15,15 @@ namespace BuckApp
     public partial class SubirEventos : Form
     {
         int userID;
-        EventDAO model_even;
         List<String> typeEvents;
         private EventController eventController;
         User user;
-        int comienzo=1, nummax=0;
+        int comienzo=1;
 
         public SubirEventos(User user)
         {
             InitializeComponent();
             eventController = new EventController();
-            model_even = new EventDAO();
             cargarComboBox();
             this.user = user;
         }
@@ -38,17 +36,17 @@ namespace BuckApp
                 comboBox1.Items.Add(typeEvents[i]);
             }
         }
-
+        
         private void txtMaxParticipantes_KeyPress(object sender, KeyPressEventArgs e)
         {
             eventController.validarnumeros(e);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void saveEvent_Click(object sender, EventArgs e)
         {
             try
             {
-                nummax = Convert.ToInt32(txtMaxParticipantes.Text);
+                int nummax = Convert.ToInt32(txtMaxParticipantes.Text);
                 DateTime fecha = dateTimePicker1.Value;
                 userID = this.user.Id;
                 if (txtName.Text.Length == 0 || txtDescription.Text.Length == 0 || txtLocation.Text.Length == 0 || txtMaxParticipantes.Text.Length == 0)
@@ -62,18 +60,23 @@ namespace BuckApp
                 }
                 else
                 {
-                    model_even.insertar_event(txtName.Text, txtDescription.Text, txtLocation.Text, fecha.ToString(), comienzo, nummax, comboBox1.Text, userID);
-                    this.Close();
+                    eventController.addEvent(txtName.Text, txtDescription.Text, txtLocation.Text, fecha.ToString(), comienzo, nummax, comboBox1.Text, userID);
+                    MessageBox.Show("El evento se ha añadido correctamente!");
+                    cleanFields();
                 }
             }
-            catch(FormatException)
+            catch (FormatException)
             {
                 MessageBox.Show("Campos vacios o Formato no correcto");
             }
-
-
-
         }
-       
+
+        public void cleanFields()
+        {
+            txtName.Text = String.Empty;
+            txtDescription.Text = String.Empty;
+            txtLocation.Text = String.Empty;
+            txtMaxParticipantes.Text = String.Empty;
+        }
     }
 }

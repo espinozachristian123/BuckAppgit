@@ -162,7 +162,8 @@ namespace BuckApp
         private void addEventToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SubirEventos subir = new SubirEventos(user);
-            subir.Show();
+            subir.ShowDialog();
+            actualizarListView();
         }
     }
 }

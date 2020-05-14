@@ -44,6 +44,11 @@ namespace Controller
             return events;
         }
 
+        public Boolean addEvent(string name, string description, string location, string date, int num_participants, int num_participants_max, string type, int id_user)
+        {
+            return eventDao.addEvent(name,description,location,date,num_participants,num_participants_max,type,id_user);
+        }
+
         public Boolean modifyEvent(String name, String description, String location, String date, int num_max, String type, int id)
         {
             return eventDao.modifyEvent(name,description,location,date,num_max,type,id);

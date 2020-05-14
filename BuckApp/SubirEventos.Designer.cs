@@ -47,10 +47,10 @@
             // Titol
             // 
             this.Titol.AutoSize = true;
-            this.Titol.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Titol.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titol.Location = new System.Drawing.Point(125, 36);
             this.Titol.Name = "Titol";
-            this.Titol.Size = new System.Drawing.Size(246, 21);
+            this.Titol.Size = new System.Drawing.Size(273, 24);
             this.Titol.TabIndex = 0;
             this.Titol.Text = "We are going to add events!";
             // 
@@ -151,7 +151,7 @@
             this.button1.TabIndex = 12;
             this.button1.Text = "SAVE EVENT";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.saveEvent_Click);
             // 
             // label5
             // 
