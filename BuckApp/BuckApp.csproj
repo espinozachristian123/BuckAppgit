@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AskMood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AskMood.Designer.cs">
+      <DependentUpon>AskMood.cs</DependentUpon>
+    </Compile>
     <Compile Include="InfoEvents.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     <Compile Include="SubirEventos.Designer.cs">
       <DependentUpon>SubirEventos.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AskMood.resx">
+      <DependentUpon>AskMood.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InfoEvents.resx">
       <DependentUpon>InfoEvents.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +112,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="MainUser.resx">
       <DependentUpon>MainUser.cs</DependentUpon>
@@ -138,6 +148,18 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TRISTE.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icontexto_emoticons_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icontexto_emoticons_12 %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
