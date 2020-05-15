@@ -40,11 +40,11 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbDescription = new System.Windows.Forms.TextBox();
             this.tbLocalidad = new System.Windows.Forms.TextBox();
-            this.tbFecha = new System.Windows.Forms.TextBox();
             this.tbNInscritos = new System.Windows.Forms.TextBox();
-            this.tbTipo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tbMaxParticipantes = new System.Windows.Forms.TextBox();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.cbTipo = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -103,16 +103,17 @@
             // 
             // btRegisterEvent
             // 
-            this.btRegisterEvent.Location = new System.Drawing.Point(38, 258);
+            this.btRegisterEvent.Location = new System.Drawing.Point(52, 258);
             this.btRegisterEvent.Name = "btRegisterEvent";
             this.btRegisterEvent.Size = new System.Drawing.Size(86, 23);
             this.btRegisterEvent.TabIndex = 6;
             this.btRegisterEvent.Text = "Register Event";
             this.btRegisterEvent.UseVisualStyleBackColor = true;
+            this.btRegisterEvent.Click += new System.EventHandler(this.registerEvent);
             // 
             // btModify
             // 
-            this.btModify.Location = new System.Drawing.Point(132, 258);
+            this.btModify.Location = new System.Drawing.Point(178, 258);
             this.btModify.Name = "btModify";
             this.btModify.Size = new System.Drawing.Size(75, 23);
             this.btModify.TabIndex = 7;
@@ -122,7 +123,7 @@
             // 
             // btDelete
             // 
-            this.btDelete.Location = new System.Drawing.Point(215, 258);
+            this.btDelete.Location = new System.Drawing.Point(284, 258);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(75, 23);
             this.btDelete.TabIndex = 8;
@@ -134,7 +135,7 @@
             // 
             this.tbName.Location = new System.Drawing.Point(159, 32);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(119, 20);
+            this.tbName.Size = new System.Drawing.Size(200, 20);
             this.tbName.TabIndex = 9;
             // 
             // tbDescription
@@ -142,36 +143,22 @@
             this.tbDescription.Location = new System.Drawing.Point(159, 60);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(119, 34);
+            this.tbDescription.Size = new System.Drawing.Size(200, 34);
             this.tbDescription.TabIndex = 10;
             // 
             // tbLocalidad
             // 
             this.tbLocalidad.Location = new System.Drawing.Point(159, 104);
             this.tbLocalidad.Name = "tbLocalidad";
-            this.tbLocalidad.Size = new System.Drawing.Size(119, 20);
+            this.tbLocalidad.Size = new System.Drawing.Size(200, 20);
             this.tbLocalidad.TabIndex = 11;
-            // 
-            // tbFecha
-            // 
-            this.tbFecha.Location = new System.Drawing.Point(159, 130);
-            this.tbFecha.Name = "tbFecha";
-            this.tbFecha.Size = new System.Drawing.Size(119, 20);
-            this.tbFecha.TabIndex = 12;
             // 
             // tbNInscritos
             // 
             this.tbNInscritos.Location = new System.Drawing.Point(159, 158);
             this.tbNInscritos.Name = "tbNInscritos";
-            this.tbNInscritos.Size = new System.Drawing.Size(119, 20);
+            this.tbNInscritos.Size = new System.Drawing.Size(200, 20);
             this.tbNInscritos.TabIndex = 13;
-            // 
-            // tbTipo
-            // 
-            this.tbTipo.Location = new System.Drawing.Point(159, 218);
-            this.tbTipo.Name = "tbTipo";
-            this.tbTipo.Size = new System.Drawing.Size(119, 20);
-            this.tbTipo.TabIndex = 14;
             // 
             // label7
             // 
@@ -186,19 +173,36 @@
             // 
             this.tbMaxParticipantes.Location = new System.Drawing.Point(159, 188);
             this.tbMaxParticipantes.Name = "tbMaxParticipantes";
-            this.tbMaxParticipantes.Size = new System.Drawing.Size(119, 20);
+            this.tbMaxParticipantes.Size = new System.Drawing.Size(200, 20);
             this.tbMaxParticipantes.TabIndex = 16;
+            // 
+            // dtpFecha
+            // 
+            this.dtpFecha.CustomFormat = "MMMMdd, yyyy  |  hh:mm:ss";
+            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFecha.Location = new System.Drawing.Point(159, 131);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(200, 20);
+            this.dtpFecha.TabIndex = 17;
+            // 
+            // cbTipo
+            // 
+            this.cbTipo.FormattingEnabled = true;
+            this.cbTipo.Location = new System.Drawing.Point(159, 216);
+            this.cbTipo.Name = "cbTipo";
+            this.cbTipo.Size = new System.Drawing.Size(200, 21);
+            this.cbTipo.TabIndex = 18;
             // 
             // InfoEvents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 301);
+            this.ClientSize = new System.Drawing.Size(411, 301);
+            this.Controls.Add(this.cbTipo);
+            this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.tbMaxParticipantes);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.tbTipo);
             this.Controls.Add(this.tbNInscritos);
-            this.Controls.Add(this.tbFecha);
             this.Controls.Add(this.tbLocalidad);
             this.Controls.Add(this.tbDescription);
             this.Controls.Add(this.tbName);
@@ -233,10 +237,10 @@
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbDescription;
         private System.Windows.Forms.TextBox tbLocalidad;
-        private System.Windows.Forms.TextBox tbFecha;
         private System.Windows.Forms.TextBox tbNInscritos;
-        private System.Windows.Forms.TextBox tbTipo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbMaxParticipantes;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.ComboBox cbTipo;
     }
 }

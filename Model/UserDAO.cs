@@ -70,6 +70,111 @@ namespace Model
             return b;
         }
 
+        public bool modifypassword(string password, int id)
+        {
+            Boolean b = false;
+            String QUERY_MODIFY_EVENT = "UPDATE `users` SET `password`= @password where id = @id";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_MODIFY_EVENT, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@password", password));
+                        cmd.Parameters.Add(new MySqlParameter("@id", id));
+                        cmd.ExecuteNonQuery();
+                        b = true;
+                    }
+                }
+                else
+                {
+                    b = false;
+                }
+            }
+            catch (MySqlException error)
+            {
+                b = false;
+            }
+            catch (Exception e)
+            {
+                b = true;
+            }
+            return b;
+        }
+
+        public bool modifyemail(string email, int id)
+        {
+            Boolean b = false;
+            String QUERY_MODIFY_EVENT = "UPDATE `users` SET `email`= @email where id = @id";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_MODIFY_EVENT, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@email", email));
+                        cmd.Parameters.Add(new MySqlParameter("@id", id));
+                        cmd.ExecuteNonQuery();
+                        b = true;
+                    }
+                }
+                else
+                {
+                    b = false;
+                }
+            }
+            catch (MySqlException error)
+            {
+                b = false;
+            }
+            catch (Exception e)
+            {
+                b = true;
+            }
+            return b;
+        }
+
+        public bool modifyname(string newName, int id_user)
+        {
+            Boolean b = false;
+            String QUERY_MODIFY_EVENT = "UPDATE `users` SET `username`= @newName where id = @id_user";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_MODIFY_EVENT, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@newName", newName));
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
+                        cmd.ExecuteNonQuery();
+                        b = true;
+                    }
+                }
+                else
+                {
+                    b = false;
+                }
+            }
+            catch (MySqlException error)
+            {
+                b = false;
+            }
+            catch (Exception e)
+            {
+                b = true;
+            }
+            return b;
+        }
+
         public bool modifyUser(string newName, string newPass, string newEmail, int id_user)
         {
             Boolean b = false;
@@ -164,6 +269,47 @@ namespace Model
                         {
                             while (reader.Read())
                             {   
+                                b = true;
+                            }
+                        }
+                        else
+                        {
+                            b = false;
+                        }
+                        reader.Close();
+                    }
+                }
+            }
+            catch (MySqlException error)
+            {
+                b = false;
+            }
+            catch (Exception e)
+            {
+                b = false;
+            }
+            return b;
+        }
+        public Boolean UserEquals(String username)
+        {
+            Boolean b = false;
+            String QUERY_SELECT_USER = "Select * from users where username = @username";
+            try
+            {
+
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_SELECT_USER, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@username", username));
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
                                 b = true;
                             }
                         }

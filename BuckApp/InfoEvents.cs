@@ -16,8 +16,8 @@ namespace BuckApp
         String name, description, localidad, fecha, type;
         int  id_event, n_participantes, n_maxParticipantes, id_user, userID;
 
-  
-
+        List<String> typeEvents;
+        
         EventController eventController;
         
         public InfoEvents(int id_event,String name, String description, String localidad, String fecha, 
@@ -35,6 +35,7 @@ namespace BuckApp
             this.id_user = id_user;
             this.userID = userID;
             eventController = new EventController();
+            cargarComboBox();
         }
 
         private void InfoEvents_Load(object sender, EventArgs e)
@@ -48,10 +49,10 @@ namespace BuckApp
             tbName.Text = name;
             tbDescription.Text = description;
             tbLocalidad.Text = localidad;
-            tbFecha.Text = fecha;
+            dtpFecha.Value = Convert.ToDateTime(fecha);
             tbNInscritos.Text = Convert.ToString(n_participantes);
             tbMaxParticipantes.Text = Convert.ToString(n_maxParticipantes);
-            tbTipo.Text = type;
+            cbTipo.Text = type;
         }
 
         private void ocultarCampos()
@@ -61,13 +62,42 @@ namespace BuckApp
                 tbName.ReadOnly = true;
                 tbDescription.ReadOnly = true;
                 tbLocalidad.ReadOnly = true;
-                tbFecha.ReadOnly = true;
+                dtpFecha.Enabled = false;
                 tbNInscritos.ReadOnly = true;
                 tbMaxParticipantes.ReadOnly = true;
-                tbTipo.ReadOnly = true;
+                cbTipo.Enabled = false;
                 btModify.Enabled = false;
                 btDelete.Enabled = false;
             }
+        }
+
+        private void cargarComboBox()
+        {
+            typeEvents = eventController.cargarDatosComboBox();
+            for (int i = 0; i < typeEvents.Count; i++)
+            {
+                cbTipo.Items.Add(typeEvents[i]);
+            }
+        }
+
+        private void registerEvent(object sender, EventArgs e)
+        {
+            Boolean b = eventController.registerEvent(fecha, id_event, id_user);
+            if(b == true)
+            {
+                n_participantes++;
+                Boolean c = eventController.updateNumMax(n_participantes, id_event);
+                if(c == true)
+                {
+                    MessageBox.Show("Usuario registrado en el evento!");
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("El usuario no ha podido registrarse en la actividad!");
+            }
+            
         }
 
         private void modifyEvent(object sender, EventArgs e)
@@ -75,9 +105,9 @@ namespace BuckApp
             String newName = tbName.Text;
             String newDescr = tbDescription.Text;
             String newLocation = tbLocalidad.Text;
-            String newDate = tbFecha.Text;
+            DateTime newDate = dtpFecha.Value;
             int newNum_max = Convert.ToInt16(tbMaxParticipantes.Text);
-            String newType = tbTipo.Text;
+            String newType = cbTipo.SelectedItem.ToString();
             var result = MessageBox.Show("Estas seguro que quieres modificar el evento?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if(result == DialogResult.Yes)
             {

@@ -16,6 +16,7 @@ namespace BuckApp
     {
         User user;
         UserController usercontrol;
+
         public Profile(User user)
         {
             InitializeComponent();
@@ -29,27 +30,79 @@ namespace BuckApp
         {
             txtName.Text = user.Username;
             txtPassword.Text = user.Password;
+            txtconfirm.Text = user.Password;
             txtEmail.Text = user.Email;
             txtRol.Text = user.Rol;
         }
+        Boolean b;
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
             String newName = txtName.Text;
             String newPass = txtPassword.Text;
+            String confirm = txtconfirm.Text;
             String newEmail = txtEmail.Text;
-           
+
             var result = MessageBox.Show("Estas seguro que quieres modificar el Usuario?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (result == DialogResult.Yes)
             {
-                Boolean b = usercontrol.modifiuser(newName, newPass, newEmail,user.Id);
-                if (b == true)
+                if (txtName.Equals(String.Empty) || txtPassword.Equals(String.Empty) || txtconfirm.Equals(String.Empty) || txtEmail.Equals(String.Empty))
                 {
-                    MessageBox.Show("Usuario modificado correctamente !!");
+                    MessageBox.Show("No pueden haber campos vacios !!");
+                }
+                else if (newName.Equals(user.Username) && newPass.Equals(user.Password) && newEmail.Equals(user.Email))
+                {
+                    MessageBox.Show("No se ha modificado el ningun campo");
+                }
+                else if (!newName.Equals(user.Username) || !newPass.Equals(user.Password) || !newEmail.Equals(user.Email))
+                {
+                    controlname();
+                    controlcorreo();
+                    if (newPass.Equals(confirm))
+                    {
+                        usercontrol.modifypass(newPass, user.Id);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Password confirm no coincide");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("El Usuario no se ha podido modificar !!");
+            }
+
+
+        }
+        private void controlcorreo()
+        {
+           String newEmail = txtEmail.Text;
+            if (!newEmail.Equals(user.Email))
+            {
+                if (usercontrol.sameEmail(newEmail) == true)
+                {
+                    MessageBox.Show("Error, correo registrado anteriormente !!");
                 }
                 else
                 {
-                    MessageBox.Show("El Usuario no se ha podido modificar !!");
+                    usercontrol.modifycorreo(newEmail, user.Id);
+                }
+            }
+        }
+
+        private void controlname()
+        {
+            String newName = txtName.Text;
+            if (!newName.Equals(user.Username))
+            {
+                if (usercontrol.sameName(newName) == true)
+                {
+                    MessageBox.Show("Error, usuario registrado anteriormente !!");
+                }
+                else
+                {
+                    usercontrol.modifynames(newName,user.Id);
                 }
             }
         }

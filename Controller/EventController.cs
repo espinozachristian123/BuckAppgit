@@ -49,7 +49,12 @@ namespace Controller
             return eventDao.addEvent(name,description,location,date,num_participants,num_participants_max,type,id_user);
         }
 
-        public Boolean modifyEvent(String name, String description, String location, String date, int num_max, String type, int id)
+        public Boolean registerEvent(string fecha, int id_event, int id_user)
+        {
+            return eventDao.registerEvent(fecha, id_event, id_user);
+        }
+
+        public Boolean modifyEvent(String name, String description, String location, DateTime date, int num_max, String type, int id)
         {
             return eventDao.modifyEvent(name,description,location,date,num_max,type,id);
         }
@@ -59,6 +64,11 @@ namespace Controller
             Boolean flag = eventDao.deleteEvent(id);
             return flag;
 
+        }
+
+        public Boolean updateNumMax(int num_participants, int id)
+        {
+            return eventDao.updateNumParticipants(num_participants, id);
         }
         public void validarnumeros(KeyPressEventArgs pe)
         {
@@ -75,5 +85,6 @@ namespace Controller
                 pe.Handled = true;
             }
         }
+        
     }
 }

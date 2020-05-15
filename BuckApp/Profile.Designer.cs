@@ -37,6 +37,8 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtRol = new System.Windows.Forms.TextBox();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtconfirm = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -60,7 +62,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(70, 134);
+            this.label3.Location = new System.Drawing.Point(91, 185);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 2;
@@ -69,7 +71,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(70, 168);
+            this.label4.Location = new System.Drawing.Point(100, 221);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(23, 13);
             this.label4.TabIndex = 3;
@@ -91,14 +93,14 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(152, 131);
+            this.txtEmail.Location = new System.Drawing.Point(152, 182);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
             this.txtEmail.TabIndex = 6;
             // 
             // txtRol
             // 
-            this.txtRol.Location = new System.Drawing.Point(152, 165);
+            this.txtRol.Location = new System.Drawing.Point(152, 218);
             this.txtRol.Name = "txtRol";
             this.txtRol.ReadOnly = true;
             this.txtRol.Size = new System.Drawing.Size(100, 20);
@@ -107,7 +109,7 @@
             // btnModificar
             // 
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(103, 202);
+            this.btnModificar.Location = new System.Drawing.Point(103, 255);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(119, 37);
             this.btnModificar.TabIndex = 8;
@@ -115,11 +117,29 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 145);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(116, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Confirm New Password";
+            // 
+            // txtconfirm
+            // 
+            this.txtconfirm.Location = new System.Drawing.Point(152, 142);
+            this.txtconfirm.Name = "txtconfirm";
+            this.txtconfirm.Size = new System.Drawing.Size(100, 20);
+            this.txtconfirm.TabIndex = 10;
+            // 
             // Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(333, 251);
+            this.ClientSize = new System.Drawing.Size(333, 405);
+            this.Controls.Add(this.txtconfirm);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.txtRol);
             this.Controls.Add(this.txtEmail);
@@ -147,5 +167,7 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtRol;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtconfirm;
     }
 }
