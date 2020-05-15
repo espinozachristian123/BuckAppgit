@@ -70,6 +70,12 @@ namespace Controller
         {
             return eventDao.updateNumParticipants(num_participants, id);
         }
+
+        public Boolean checkRegister(int id_event, int id_user)
+        {
+            return eventDao.checkRegister(id_event,id_user);
+        }
+
         public void validarnumeros(KeyPressEventArgs pe)
         {
             if (char.IsDigit(pe.KeyChar))

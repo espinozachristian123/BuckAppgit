@@ -82,20 +82,34 @@ namespace BuckApp
 
         private void registerEvent(object sender, EventArgs e)
         {
-            Boolean b = eventController.registerEvent(fecha, id_event, id_user);
-            if(b == true)
+            Boolean a = eventController.checkRegister(id_event, id_user);
+            if(a == false)
             {
-                n_participantes++;
-                Boolean c = eventController.updateNumMax(n_participantes, id_event);
-                if(c == true)
+                if (n_participantes < n_maxParticipantes)
                 {
-                    MessageBox.Show("Usuario registrado en el evento!");
+                    Boolean b = eventController.registerEvent(fecha, id_event, id_user);
+                    if (b == true)
+                    {
+                        n_participantes++;
+                        Boolean c = eventController.updateNumMax(n_participantes, id_event);
+                        if (c == true)
+                        {
+                            MessageBox.Show("Usuario registrado en el evento!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Actividad completa!");
+                        }
+                    }
                 }
-                
+                else
+                {
+                    MessageBox.Show("El usuario no ha podido registrarse. Actividad completa!");
+                }
             }
             else
             {
-                MessageBox.Show("El usuario no ha podido registrarse en la actividad!");
+                MessageBox.Show("El usuario ya esta registrado en este evento!");
             }
             
         }
