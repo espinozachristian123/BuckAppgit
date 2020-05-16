@@ -256,6 +256,52 @@ namespace Model
             return b;
         }
 
+        public Boolean checkRegister(int id_event,int id_user)
+        {
+            Boolean b = false;
+            String QUERY_CHECK_REGISTER = "Select * FROM `userevents` where id_events = @id_event and id_user = @id_user";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_CHECK_REGISTER, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@id_event", id_event));
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                b = true;
+                            }
+                        }
+                        else
+                        {
+                            b = false;
+                        }
+                        reader.Close();
+                    }
+                }
+                else
+                {
+                    b = false;
+                }
+            }
+            catch (MySqlException error)
+            {
+                b = false;
+            }
+            catch (Exception e)
+            {
+                b = false;
+            }
+            return b;
+        }
+
         public Boolean modifyEvent(String name, String description, String location, DateTime date, int num_max, String type, int id)
         {
            
@@ -301,7 +347,7 @@ namespace Model
         {
 
             Boolean b = false;
-            String QUERY_UPDATE_NUM_PART = "UPDATE `events` SET `num_participants`= @num_participants WHERE id = @id";
+            String QUERY_UPDATE_NUM_PART = "UPDATE `events` SET `num_participants`= @num_participants WHERE id = @id and num_participants < num_participants_max";
             try
             {
                 connection = dbConnect.getConnection();
