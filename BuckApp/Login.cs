@@ -35,16 +35,6 @@ namespace BuckApp
             else
             {
                 String rol = userController.validateUser(username, password);
-                /*if(user == null)
-                {
-
-                }
-                else
-                {
-                    AnswerMood mood = new AnswerMood(user);
-                    mood.ShowDialog();
-                    cleanFields();
-                }*/
                 if (rol.Equals(String.Empty))
                 {
                     MessageBox.Show("Users or password are incorrect");
