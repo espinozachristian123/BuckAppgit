@@ -22,13 +22,10 @@ namespace BuckApp
         User user;
         Boolean exit;
 
-      
-
         public MainUser(User user)
         {
             InitializeComponent();
             this.user = user;
-            
             eventController = new EventController();
             events = new List<Event>();
             cargarEventosListView();

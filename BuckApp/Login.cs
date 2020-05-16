@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +15,12 @@ namespace BuckApp
     public partial class Login : Form
     {
         private UserController userController;
+        User user;
 
         public Login()
         {
             InitializeComponent();
             userController = new UserController();
-            
         }
 
         private void validate(object sender, EventArgs e)
@@ -34,27 +35,39 @@ namespace BuckApp
             else
             {
                 String rol = userController.validateUser(username, password);
+                /*if(user == null)
+                {
+
+                }
+                else
+                {
+                    AnswerMood mood = new AnswerMood(user);
+                    mood.ShowDialog();
+                    cleanFields();
+                }*/
                 if (rol.Equals(String.Empty))
                 {
                     MessageBox.Show("Users or password are incorrect");
 
-                } else if (rol.Equals("admin"))
+                }
+                else if (rol.Equals("admin"))
                 {
                     MessageBox.Show("ADMIN!! ");
 
-                } else if (rol.Equals("user"))
+                }
+                else if (rol.Equals("user"))
                 {
-                    MainUser user = new MainUser(userController.User);
+                    AnswerMood mood = new AnswerMood(userController.User);
+                    mood.ShowDialog();
+                    /*MainUser user = new MainUser(userController.User);
                     this.Hide();
                     user.ShowDialog();
-                    if(user.Exit == true)
+                    if (user.Exit == true)
                     {
                         this.Show();
-                    }
-                    
+                    }*/
                 }
                 cleanFields();
-                
             }
         }
 

@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnswerMood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnswerMood.Designer.cs">
+      <DependentUpon>AnswerMood.cs</DependentUpon>
+    </Compile>
     <Compile Include="InfoEvents.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     <Compile Include="SubirEventos.Designer.cs">
       <DependentUpon>SubirEventos.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AnswerMood.resx">
+      <DependentUpon>AnswerMood.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InfoEvents.resx">
       <DependentUpon>InfoEvents.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +112,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="MainUser.resx">
       <DependentUpon>MainUser.cs</DependentUpon>
@@ -141,6 +151,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="red.ico" />
+    <None Include="Resources\happy_2.png" />
+    <None Include="Resources\happy.png" />
+    <None Include="Resources\surprised.png" />
+    <None Include="Resources\sad1.png" />
+    <None Include="Resources\sad_2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
