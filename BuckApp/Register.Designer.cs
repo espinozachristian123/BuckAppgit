@@ -44,92 +44,110 @@
             // lbTitulo
             // 
             this.lbTitulo.AutoSize = true;
-            this.lbTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitulo.Location = new System.Drawing.Point(105, 28);
+            this.lbTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitulo.ForeColor = System.Drawing.Color.Maroon;
+            this.lbTitulo.Location = new System.Drawing.Point(131, 21);
             this.lbTitulo.Name = "lbTitulo";
-            this.lbTitulo.Size = new System.Drawing.Size(124, 31);
+            this.lbTitulo.Size = new System.Drawing.Size(142, 37);
             this.lbTitulo.TabIndex = 0;
             this.lbTitulo.Text = "Register";
             // 
             // lbUsername
             // 
             this.lbUsername.AutoSize = true;
-            this.lbUsername.Location = new System.Drawing.Point(53, 91);
+            this.lbUsername.Font = new System.Drawing.Font("OpenSymbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUsername.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lbUsername.Location = new System.Drawing.Point(88, 91);
             this.lbUsername.Name = "lbUsername";
-            this.lbUsername.Size = new System.Drawing.Size(55, 13);
+            this.lbUsername.Size = new System.Drawing.Size(91, 20);
             this.lbUsername.TabIndex = 1;
             this.lbUsername.Text = "Username";
             // 
             // lbPassword
             // 
             this.lbPassword.AutoSize = true;
-            this.lbPassword.Location = new System.Drawing.Point(53, 123);
+            this.lbPassword.Font = new System.Drawing.Font("OpenSymbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPassword.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lbPassword.Location = new System.Drawing.Point(93, 125);
             this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Size = new System.Drawing.Size(53, 13);
+            this.lbPassword.Size = new System.Drawing.Size(86, 20);
             this.lbPassword.TabIndex = 2;
             this.lbPassword.Text = "Password";
             // 
             // lbConfirmPassword
             // 
             this.lbConfirmPassword.AutoSize = true;
-            this.lbConfirmPassword.Location = new System.Drawing.Point(53, 158);
+            this.lbConfirmPassword.Font = new System.Drawing.Font("OpenSymbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbConfirmPassword.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lbConfirmPassword.Location = new System.Drawing.Point(23, 160);
             this.lbConfirmPassword.Name = "lbConfirmPassword";
-            this.lbConfirmPassword.Size = new System.Drawing.Size(90, 13);
+            this.lbConfirmPassword.Size = new System.Drawing.Size(156, 20);
             this.lbConfirmPassword.TabIndex = 3;
             this.lbConfirmPassword.Text = "Confirm password";
             // 
             // lbEmail
             // 
             this.lbEmail.AutoSize = true;
-            this.lbEmail.Location = new System.Drawing.Point(53, 190);
+            this.lbEmail.Font = new System.Drawing.Font("OpenSymbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEmail.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lbEmail.Location = new System.Drawing.Point(97, 192);
             this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Size = new System.Drawing.Size(32, 13);
+            this.lbEmail.Size = new System.Drawing.Size(53, 20);
             this.lbEmail.TabIndex = 4;
             this.lbEmail.Text = "Email";
             // 
             // tbUsername
             // 
-            this.tbUsername.Location = new System.Drawing.Point(157, 89);
+            this.tbUsername.Location = new System.Drawing.Point(237, 92);
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(100, 20);
+            this.tbUsername.Size = new System.Drawing.Size(130, 19);
             this.tbUsername.TabIndex = 5;
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(157, 123);
+            this.tbPassword.Location = new System.Drawing.Point(237, 126);
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(100, 20);
+            this.tbPassword.Size = new System.Drawing.Size(130, 19);
             this.tbPassword.TabIndex = 6;
             // 
             // tbConfirmPassword
             // 
-            this.tbConfirmPassword.Location = new System.Drawing.Point(157, 158);
+            this.tbConfirmPassword.Location = new System.Drawing.Point(237, 161);
             this.tbConfirmPassword.Name = "tbConfirmPassword";
-            this.tbConfirmPassword.Size = new System.Drawing.Size(100, 20);
+            this.tbConfirmPassword.Size = new System.Drawing.Size(130, 19);
             this.tbConfirmPassword.TabIndex = 7;
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(157, 190);
+            this.tbEmail.Location = new System.Drawing.Point(237, 193);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(100, 20);
+            this.tbEmail.Size = new System.Drawing.Size(130, 19);
             this.tbEmail.TabIndex = 8;
             // 
             // btEnter
             // 
-            this.btEnter.Location = new System.Drawing.Point(113, 228);
+            this.btEnter.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btEnter.FlatAppearance.BorderColor = System.Drawing.Color.Aqua;
+            this.btEnter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btEnter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.btEnter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btEnter.Font = new System.Drawing.Font("Lucida Calligraphy", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEnter.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btEnter.Location = new System.Drawing.Point(155, 258);
             this.btEnter.Name = "btEnter";
-            this.btEnter.Size = new System.Drawing.Size(82, 34);
+            this.btEnter.Size = new System.Drawing.Size(118, 40);
             this.btEnter.TabIndex = 9;
             this.btEnter.Text = "ENTER";
-            this.btEnter.UseVisualStyleBackColor = true;
+            this.btEnter.UseVisualStyleBackColor = false;
             this.btEnter.Click += new System.EventHandler(this.registerUser);
             // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(322, 276);
+            this.BackColor = System.Drawing.SystemColors.Info;
+            this.ClientSize = new System.Drawing.Size(412, 340);
             this.Controls.Add(this.btEnter);
             this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.tbConfirmPassword);
@@ -140,8 +158,11 @@
             this.Controls.Add(this.lbPassword);
             this.Controls.Add(this.lbUsername);
             this.Controls.Add(this.lbTitulo);
+            this.Font = new System.Drawing.Font("OpenSymbol", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Register";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoEvents));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -123,12 +124,18 @@
             // 
             // btDelete
             // 
+            this.btDelete.BackColor = System.Drawing.Color.Crimson;
+            this.btDelete.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btDelete.ForeColor = System.Drawing.Color.Yellow;
             this.btDelete.Location = new System.Drawing.Point(284, 258);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(75, 23);
             this.btDelete.TabIndex = 8;
             this.btDelete.Text = "Delete";
-            this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.UseVisualStyleBackColor = false;
             this.btDelete.Click += new System.EventHandler(this.deleteEventClick);
             // 
             // tbName
@@ -197,6 +204,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(411, 301);
             this.Controls.Add(this.cbTipo);
             this.Controls.Add(this.dtpFecha);
@@ -215,6 +223,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InfoEvents";
             this.Text = "InfoEvents";
             this.Load += new System.EventHandler(this.InfoEvents_Load);

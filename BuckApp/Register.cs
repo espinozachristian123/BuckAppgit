@@ -13,9 +13,11 @@ namespace BuckApp
 {
     public partial class Register : Form
     {
+        
         UserController usercontroller;
         public Register()
         {
+            this.MaximizeBox = false;
             InitializeComponent();
             usercontroller = new UserController(); 
         }
