@@ -18,7 +18,7 @@ namespace BuckApp
         List<String> typeEvents;
         private EventController eventController;
         User user;
-        int comienzo=1;
+        int comienzo=0;
 
         public SubirEventos(User user)
         {

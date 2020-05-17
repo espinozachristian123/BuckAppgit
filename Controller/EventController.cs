@@ -38,6 +38,18 @@ namespace Controller
             return events;
         }
 
+        public List<Event> cargarDatosConFiltroCiudad(String location)
+        {
+            events = eventDao.cogerDatosConFiltroCiudad(location);
+            return events;
+        }
+
+        public List<Event> cargarDatosConFiltroCategoria(String type)
+        {
+            events = eventDao.cogerDatosConFiltroCategoria(type);
+            return events;
+        }
+
         public List<Event> cargarDatosUnaPersona(int id_user)
         {
             events = eventDao.cogerActividadesDeUnaPersona(id_user);
