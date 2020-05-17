@@ -256,6 +256,41 @@ namespace Model
             return b;
         }
 
+        public Boolean deleteRegisterEvent(int id_event , int id_user)
+        {
+            Boolean b = false;
+            String QUERY_DELETE_REGISTER_USEREVENTS = "DELETE FROM `userevents` WHERE id_events = @id_event and id_user = @id_user";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_DELETE_REGISTER_USEREVENTS, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@id_event", id_event));
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
+                        cmd.ExecuteNonQuery();
+                        b = true;
+                    }
+                }
+                else
+                {
+                    b = false;
+                }
+            }
+            catch (MySqlException error)
+            {
+                b = false;
+            }
+            catch (Exception e)
+            {
+                b = false;
+            }
+            return b;
+        }
+
         public Boolean checkRegister(int id_event,int id_user)
         {
             Boolean b = false;

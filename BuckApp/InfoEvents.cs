@@ -35,16 +35,16 @@ namespace BuckApp
             this.id_user = id_user;
             this.userID = userID;
             eventController = new EventController();
-            cargarComboBox();
+            loadComboBox();
         }
 
         private void InfoEvents_Load(object sender, EventArgs e)
         {
-            ponerDatosTextBox();
-            ocultarCampos();
+            putDataTextBox();
+            hideFields();
         }
 
-        private void ponerDatosTextBox()
+        private void putDataTextBox()
         {
             tbName.Text = name;
             tbDescription.Text = description;
@@ -55,7 +55,7 @@ namespace BuckApp
             cbTipo.Text = type;
         }
 
-        private void ocultarCampos()
+        private void hideFields()
         {
             if (id_user != userID)
             {
@@ -71,7 +71,7 @@ namespace BuckApp
             }
         }
 
-        private void cargarComboBox()
+        private void loadComboBox()
         {
             typeEvents = eventController.cargarDatosComboBox();
             for (int i = 0; i < typeEvents.Count; i++)
@@ -109,7 +109,24 @@ namespace BuckApp
             }
             else
             {
-                MessageBox.Show("El usuario ya esta registrado en este evento!");
+                var result = MessageBox.Show("El usuario ya esta registrado en este evento! Quieres eliminarte del evento?", "Borrarte de la actividad", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    Boolean d = eventController.deleteRegisterEvent(id_event,id_user);
+                    if(d == true)
+                    {
+                        n_participantes--;
+                        Boolean f = eventController.updateNumMax(n_participantes,id_event);
+                        if (f == true)
+                        {
+                            MessageBox.Show("Usuario borrado del evento!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error!! El usuario no se ha podido borrar del evento");
+                    }
+                }
             }
             
         }

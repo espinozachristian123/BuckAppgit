@@ -47,15 +47,15 @@ namespace BuckApp
                 }
                 else if (rol.Equals("user"))
                 {
-                    AnswerMood mood = new AnswerMood(userController.User);
-                    mood.ShowDialog();
-                    /*MainUser user = new MainUser(userController.User);
+                    /*AnswerMood mood = new AnswerMood(userController.User);
+                    mood.ShowDialog();*/
+                    MainUser user = new MainUser(userController.User);
                     this.Hide();
                     user.ShowDialog();
                     if (user.Exit == true)
                     {
                         this.Show();
-                    }*/
+                    }
                 }
                 cleanFields();
             }
