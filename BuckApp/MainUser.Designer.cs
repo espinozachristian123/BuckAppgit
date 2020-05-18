@@ -49,7 +49,6 @@
             this.columnNumPart = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnNumPartMax = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnIdUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -114,7 +113,7 @@
             this.cerrarSesionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(868, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(794, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -151,7 +150,7 @@
             // addEventToolStripMenuItem
             // 
             this.addEventToolStripMenuItem.Name = "addEventToolStripMenuItem";
-            this.addEventToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addEventToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.addEventToolStripMenuItem.Text = "Añadir evento";
             this.addEventToolStripMenuItem.Click += new System.EventHandler(this.addEventToolStripMenuItem_Click);
             // 
@@ -171,14 +170,13 @@
             this.columnDate,
             this.columnNumPart,
             this.columnNumPartMax,
-            this.columnType,
-            this.columnIdUser});
+            this.columnType});
             this.listViewEvent.FullRowSelect = true;
             this.listViewEvent.GridLines = true;
             this.listViewEvent.HideSelection = false;
             this.listViewEvent.Location = new System.Drawing.Point(19, 73);
             this.listViewEvent.Name = "listViewEvent";
-            this.listViewEvent.Size = new System.Drawing.Size(825, 261);
+            this.listViewEvent.Size = new System.Drawing.Size(754, 261);
             this.listViewEvent.TabIndex = 6;
             this.listViewEvent.UseCompatibleStateImageBehavior = false;
             this.listViewEvent.View = System.Windows.Forms.View.Details;
@@ -196,7 +194,7 @@
             // 
             // columnLocation
             // 
-            this.columnLocation.Text = "Localidad";
+            this.columnLocation.Text = "Ciudad";
             this.columnLocation.Width = 80;
             // 
             // columnDate
@@ -219,11 +217,6 @@
             this.columnType.Text = "Tipo";
             this.columnType.Width = 80;
             // 
-            // columnIdUser
-            // 
-            this.columnIdUser.Text = "Id_user";
-            this.columnIdUser.Width = 80;
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Goldenrod;
@@ -233,7 +226,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Maroon;
-            this.button1.Location = new System.Drawing.Point(701, 28);
+            this.button1.Location = new System.Drawing.Point(630, 27);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(143, 36);
             this.button1.TabIndex = 7;
@@ -246,7 +239,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(868, 346);
+            this.ClientSize = new System.Drawing.Size(794, 346);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listViewEvent);
             this.Controls.Add(this.btSearch);
@@ -287,7 +280,6 @@
         private System.Windows.Forms.ColumnHeader columnNumPartMax;
         private System.Windows.Forms.ColumnHeader columnType;
         private System.Windows.Forms.ColumnHeader columnNumPart;
-        private System.Windows.Forms.ColumnHeader columnIdUser;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
     }

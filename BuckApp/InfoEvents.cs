@@ -82,12 +82,12 @@ namespace BuckApp
 
         private void registerEvent(object sender, EventArgs e)
         {
-            Boolean a = eventController.checkRegister(id_event, id_user);
+            Boolean a = eventController.checkRegister(id_event, userID);
             if(a == false)
             {
                 if (n_participantes < n_maxParticipantes)
                 {
-                    Boolean b = eventController.registerEvent(fecha, id_event, id_user);
+                    Boolean b = eventController.registerEvent(fecha, id_event, userID);
                     if (b == true)
                     {
                         n_participantes++;
@@ -112,7 +112,7 @@ namespace BuckApp
                 var result = MessageBox.Show("El usuario ya esta registrado en este evento! Quieres eliminarte del evento?", "Borrarte de la actividad", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    Boolean d = eventController.deleteRegisterEvent(id_event,id_user);
+                    Boolean d = eventController.deleteRegisterEvent(id_event, userID);
                     if(d == true)
                     {
                         n_participantes--;
@@ -139,7 +139,7 @@ namespace BuckApp
             DateTime newDate = dtpFecha.Value;
             int newNum_max = Convert.ToInt16(tbMaxParticipantes.Text);
             String newType = cbTipo.SelectedItem.ToString();
-            var result = MessageBox.Show("Estas seguro que quieres modificar el evento?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            var result = MessageBox.Show("Estas seguro que quieres modificar el evento?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if(result == DialogResult.Yes)
             {
                 Boolean b = eventController.modifyEvent(newName, newDescr, newLocation, newDate, newNum_max, newType, id_event);
@@ -156,7 +156,7 @@ namespace BuckApp
 
         private void deleteEventClick(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Estas seguro que quieres borrar el evento?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            var result = MessageBox.Show("Estas seguro que quieres borrar el evento?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 Boolean b = eventController.deleteEvent(id_event);

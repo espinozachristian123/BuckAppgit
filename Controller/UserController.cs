@@ -17,29 +17,20 @@ namespace Controller
             model = new UserDAO();
         }
         
-        public String validateUser(String username, String password)
+        public User validateUser(String username, String password)
         {
-            String rol = String.Empty;
             User userValidate = new User(username,password);
             Boolean flag = model.loginUser(userValidate);
             if (flag)
             {
-                if (model.Rol.Equals("admin"))
-                {
-                    rol = "admin";
-                }
-                else if (model.Rol.Equals("user"))
-                {
-                    rol = "user";
-                    user = new User(model.Id, username, password, model.Rol, model.Email);
-                }
+                user = new User(model.Id, username, password, model.Rol, model.Email);
             }
             else
             {
-                rol = "";
+                user = null;
             }
 
-            return rol;
+            return user;
         }
 
         public Boolean validateRegister(String username, String password, String email)

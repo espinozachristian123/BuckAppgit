@@ -27,35 +27,27 @@ namespace BuckApp
         {
             String username = tbUsername.Text;
             String password = tbPassword.Text;
-            
+
             if (username.Equals("") || password.Equals(""))
             {
-                MessageBox.Show("Username or password are empty!!");
+                MessageBox.Show("Ningun campo puede estar vacio!!");
             }
             else
             {
-                String rol = userController.validateUser(username, password);
-                if (rol.Equals(String.Empty))
+                user = userController.validateUser(username, password);
+                if (user != null)
                 {
-                    MessageBox.Show("Users or password are incorrect");
-
-                }
-                else if (rol.Equals("admin"))
-                {
-                    MessageBox.Show("ADMIN!! ");
-
-                }
-                else if (rol.Equals("user"))
-                {
-                    /*AnswerMood mood = new AnswerMood(userController.User);
-                    mood.ShowDialog();*/
-                    MainUser user = new MainUser(userController.User);
+                    MainUser mainUser = new MainUser(user);
                     this.Hide();
-                    user.ShowDialog();
-                    if (user.Exit == true)
+                    mainUser.ShowDialog();
+                    if (mainUser.Exit == true)
                     {
                         this.Show();
                     }
+                }
+                else
+                {
+                    MessageBox.Show("No existe un usuario con estas credenciales!");
                 }
                 cleanFields();
             }
@@ -65,7 +57,7 @@ namespace BuckApp
         {
             tbUsername.Text = "";
             tbPassword.Text = "";
-            
+
         }
 
         private void registerClick(object sender, EventArgs e)
