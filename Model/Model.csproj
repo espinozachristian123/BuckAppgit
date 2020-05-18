@@ -47,6 +47,8 @@
     <Compile Include="DBConnection.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="EventDAO.cs" />
+    <Compile Include="Mood.cs" />
+    <Compile Include="MoodDAO.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserDAO.cs" />

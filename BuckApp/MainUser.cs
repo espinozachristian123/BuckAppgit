@@ -22,13 +22,10 @@ namespace BuckApp
         User user;
         Boolean exit;
 
-      
-
         public MainUser(User user)
         {
             InitializeComponent();
             this.user = user;
-            
             eventController = new EventController();
             events = new List<Event>();
             cargarEventosListView();
@@ -44,64 +41,102 @@ namespace BuckApp
             }
             else
             {
-                for(int i = 0; i < events.Count; i++)
-                {
-                    string[] listaEventos = new string[9];
-                    //add items to ListView
-                    listaEventos[0] = events[i].Name;
-                    listaEventos[1] = events[i].Description;
-                    listaEventos[2] = events[i].Location;
-                    listaEventos[3] = events[i].Date.ToString();
-                    listaEventos[4] = events[i].NumParticipants.ToString();
-                    listaEventos[5] = events[i].NumMaxParticipantes.ToString();
-                    listaEventos[6] = events[i].Type;
-                    listaEventos[7] = events[i].Id_user.ToString();
-                    listaEventos[8] = events[i].Id.ToString();
-                    itm = new ListViewItem(listaEventos);
-                    listViewEvent.Items.Add(itm);
-                }
+                cargarListaListView();
             }
-            
         }
 
         private void cargarComboBox()
         {
             typeEvents = eventController.cargarDatosComboBox();
-            for(int i = 0; i < typeEvents.Count; i++)
+            for (int i = 0; i < typeEvents.Count; i++)
             {
                 cbCategory.Items.Add(typeEvents[i]);
             }
         }
 
+        private void cargarListaListView()
+        {
+            for (int i = 0; i < events.Count; i++)
+            {
+                string[] listaEventos = new string[9];
+                //add items to ListView
+                listaEventos[0] = events[i].Name;
+                listaEventos[1] = events[i].Description;
+                listaEventos[2] = events[i].Location;
+                listaEventos[3] = events[i].Date.ToString();
+                listaEventos[4] = events[i].NumParticipants.ToString();
+                listaEventos[5] = events[i].NumMaxParticipantes.ToString();
+                listaEventos[6] = events[i].Type;
+                listaEventos[7] = events[i].Id_user.ToString();
+                listaEventos[8] = events[i].Id.ToString();
+                itm = new ListViewItem(listaEventos);
+                listViewEvent.Items.Add(itm);
+            }
+
+        }
+
         private void cargarListViewConFiltro(object sender, EventArgs e)
         {
             listViewEvent.Items.Clear();
-            string location = tbCity.Text;
-            string type = cbCategory.SelectedItem.ToString();
-            events = eventController.cargarDatosConFiltro(location,type);
-            if (events == null)
+            try
             {
-                MessageBox.Show("No se ha podido cargar la lista de eventos !!");
-            }
-            else
-            {
-                for (int i = 0; i < events.Count; i++)
+                string location = tbCity.Text;
+                string type = cbCategory.SelectedItem.ToString();
+                if (location.Equals(String.Empty) && type.Equals(String.Empty))
                 {
-                    string[] listaEventos = new string[9];
-                    //add items to ListView
-                    listaEventos[0] = events[i].Name;
-                    listaEventos[1] = events[i].Description;
-                    listaEventos[2] = events[i].Location;
-                    listaEventos[3] = events[i].Date.ToString();
-                    listaEventos[4] = events[i].NumParticipants.ToString();
-                    listaEventos[5] = events[i].NumMaxParticipantes.ToString();
-                    listaEventos[6] = events[i].Type;
-                    listaEventos[7] = events[i].Id_user.ToString();
-                    listaEventos[8] = events[i].Id.ToString();
-                    itm = new ListViewItem(listaEventos);
-                    listViewEvent.Items.Add(itm);
+                    events = eventController.cargarDatos();
+                    if (events == null)
+                    {
+                        MessageBox.Show("No se ha podido cargar la lista de eventos !!");
+                    }
+                    else
+                    {
+                        cargarListaListView();
+                    }
+                }
+                else if (location.Equals(String.Empty))
+                {
+                    events = eventController.cargarDatosConFiltroCategoria(type);
+                    if (events == null)
+                    {
+                        MessageBox.Show("No se ha podido cargar la lista de eventos !!");
+                    }
+                    else
+                    {
+                        cargarListaListView();
+                    }
+                }
+                else if (type.Equals(String.Empty))
+                {
+
+                    events = eventController.cargarDatosConFiltroCiudad(location);
+                    if (events == null)
+                    {
+                        MessageBox.Show("No se ha podido cargar la lista de eventos !!");
+                    }
+                    else
+                    {
+                        cargarListaListView();
+                    }
+                }
+                else
+                {
+                    events = eventController.cargarDatosConFiltro(location, type);
+                    if (events == null)
+                    {
+                        MessageBox.Show("No se ha podido cargar la lista de eventos !!");
+                    }
+                    else
+                    {
+                        cargarListaListView();
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Tienes que seleccionar una categoria!!");
+            }
+            
         }
 
         private void consultProfileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -120,22 +155,7 @@ namespace BuckApp
             }
             else
             {
-                for (int i = 0; i < events.Count; i++)
-                {
-                    string[] listaEventos = new string[9];
-                    //add items to ListView
-                    listaEventos[0] = events[i].Name;
-                    listaEventos[1] = events[i].Description;
-                    listaEventos[2] = events[i].Location;
-                    listaEventos[3] = events[i].Date.ToString();
-                    listaEventos[4] = events[i].NumParticipants.ToString();
-                    listaEventos[5] = events[i].NumMaxParticipantes.ToString();
-                    listaEventos[6] = events[i].Type;
-                    listaEventos[7] = events[i].Id_user.ToString();
-                    listaEventos[8] = events[i].Id.ToString();
-                    itm = new ListViewItem(listaEventos);
-                    listViewEvent.Items.Add(itm);
-                }
+                cargarListaListView();
             }
         }
 
@@ -151,7 +171,7 @@ namespace BuckApp
             String type = listItem.SubItems[6].Text;
             int id_user = Convert.ToInt16(listItem.SubItems[7].Text);
             int id_event = Convert.ToInt16(listItem.SubItems[8].Text);
-            InfoEvents infoEvents = new InfoEvents(id_event,name, description,localidad,fecha,n_participantes,n_maxParticipantes,type,id_user, user.Id);
+            InfoEvents infoEvents = new InfoEvents(id_event, name, description, localidad, fecha, n_participantes, n_maxParticipantes, type, id_user, user.Id);
             infoEvents.ShowDialog();
             actualizarListView();
         }
@@ -172,13 +192,14 @@ namespace BuckApp
 
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var answer = MessageBox.Show("Estas seguro de cerrar sesion?? ","Cerrar sesion",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            var answer = MessageBox.Show("Estas seguro de cerrar sesion?? ", "Cerrar sesion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (answer == DialogResult.Yes)
             {
                 this.Close();
                 exit = true;
             }
-            else {
+            else
+            {
                 exit = false;
             }
         }

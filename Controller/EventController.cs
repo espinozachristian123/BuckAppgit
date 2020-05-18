@@ -38,6 +38,18 @@ namespace Controller
             return events;
         }
 
+        public List<Event> cargarDatosConFiltroCiudad(String location)
+        {
+            events = eventDao.cogerDatosConFiltroCiudad(location);
+            return events;
+        }
+
+        public List<Event> cargarDatosConFiltroCategoria(String type)
+        {
+            events = eventDao.cogerDatosConFiltroCategoria(type);
+            return events;
+        }
+
         public List<Event> cargarDatosUnaPersona(int id_user)
         {
             events = eventDao.cogerActividadesDeUnaPersona(id_user);
@@ -52,6 +64,11 @@ namespace Controller
         public Boolean registerEvent(string fecha, int id_event, int id_user)
         {
             return eventDao.registerEvent(fecha, id_event, id_user);
+        }
+
+        public Boolean deleteRegisterEvent(int id_event, int id_user)
+        {
+            return eventDao.deleteRegisterEvent(id_event, id_user);
         }
 
         public Boolean modifyEvent(String name, String description, String location, DateTime date, int num_max, String type, int id)
