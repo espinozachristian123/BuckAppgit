@@ -1,6 +1,6 @@
 ﻿namespace BuckApp
 {
-    partial class SubirEventos
+    partial class AddEvents
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubirEventos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEvents));
             this.Titol = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,59 +51,59 @@
             this.Titol.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titol.Location = new System.Drawing.Point(125, 36);
             this.Titol.Name = "Titol";
-            this.Titol.Size = new System.Drawing.Size(273, 24);
+            this.Titol.Size = new System.Drawing.Size(260, 24);
             this.Titol.TabIndex = 0;
-            this.Titol.Text = "We are going to add events!";
+            this.Titol.Text = "¡Vamos a agregar eventos!";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(148, 115);
+            this.lblName.Location = new System.Drawing.Point(68, 113);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(60, 20);
+            this.lblName.Size = new System.Drawing.Size(76, 20);
             this.lblName.TabIndex = 1;
-            this.lblName.Text = "Name:";
+            this.lblName.Text = "Nombre:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(103, 168);
+            this.label1.Location = new System.Drawing.Point(68, 170);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 20);
+            this.label1.Size = new System.Drawing.Size(108, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Description:";
+            this.label1.Text = "Descripcion:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(125, 230);
+            this.label2.Location = new System.Drawing.Point(68, 232);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 20);
+            this.label2.Size = new System.Drawing.Size(70, 20);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Location:";
+            this.label2.Text = "Ciudad:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(38, 358);
+            this.label3.Location = new System.Drawing.Point(68, 333);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(170, 20);
+            this.label3.Size = new System.Drawing.Size(180, 20);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Nº Max Participants:";
+            this.label3.Text = "Nº Max Participantes:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(156, 402);
+            this.label4.Location = new System.Drawing.Point(68, 380);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 20);
+            this.label4.Size = new System.Drawing.Size(92, 20);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Type:";
+            this.label4.Text = "Categoria:";
             // 
             // txtName
             // 
@@ -114,7 +114,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(274, 167);
+            this.txtDescription.Location = new System.Drawing.Point(274, 157);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(211, 47);
@@ -129,7 +129,7 @@
             // 
             // txtMaxParticipantes
             // 
-            this.txtMaxParticipantes.Location = new System.Drawing.Point(279, 358);
+            this.txtMaxParticipantes.Location = new System.Drawing.Point(274, 333);
             this.txtMaxParticipantes.Name = "txtMaxParticipantes";
             this.txtMaxParticipantes.Size = new System.Drawing.Size(211, 20);
             this.txtMaxParticipantes.TabIndex = 10;
@@ -138,7 +138,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(279, 402);
+            this.comboBox1.Location = new System.Drawing.Point(274, 379);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(211, 21);
             this.comboBox1.TabIndex = 11;
@@ -146,39 +146,39 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(180, 487);
+            this.button1.Location = new System.Drawing.Point(184, 446);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(143, 58);
             this.button1.TabIndex = 12;
-            this.button1.Text = "SAVE EVENT";
+            this.button1.Text = "Guardar evento";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.saveEvent_Click);
+            this.button1.Click += new System.EventHandler(this.saveEvent);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(125, 305);
+            this.label5.Location = new System.Drawing.Point(68, 284);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 20);
+            this.label5.Size = new System.Drawing.Size(64, 20);
             this.label5.TabIndex = 13;
-            this.label5.Text = "Date:";
+            this.label5.Text = "Fecha:";
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "MMMMdd, yyyy  |  hh:mm:ss";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(274, 305);
+            this.dateTimePicker1.Location = new System.Drawing.Point(274, 284);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(216, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(211, 20);
             this.dateTimePicker1.TabIndex = 14;
             // 
-            // SubirEventos
+            // AddEvents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(554, 569);
+            this.ClientSize = new System.Drawing.Size(554, 533);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
@@ -194,7 +194,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.Titol);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "SubirEventos";
+            this.Name = "AddEvents";
             this.Text = "SubirEventos";
             this.ResumeLayout(false);
             this.PerformLayout();

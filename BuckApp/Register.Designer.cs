@@ -49,49 +49,49 @@
             this.lbTitulo.ForeColor = System.Drawing.Color.Maroon;
             this.lbTitulo.Location = new System.Drawing.Point(131, 21);
             this.lbTitulo.Name = "lbTitulo";
-            this.lbTitulo.Size = new System.Drawing.Size(142, 37);
+            this.lbTitulo.Size = new System.Drawing.Size(143, 37);
             this.lbTitulo.TabIndex = 0;
-            this.lbTitulo.Text = "Register";
+            this.lbTitulo.Text = "Registro";
             // 
             // lbUsername
             // 
             this.lbUsername.AutoSize = true;
             this.lbUsername.Font = new System.Drawing.Font("OpenSymbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUsername.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lbUsername.Location = new System.Drawing.Point(88, 91);
+            this.lbUsername.Location = new System.Drawing.Point(41, 90);
             this.lbUsername.Name = "lbUsername";
-            this.lbUsername.Size = new System.Drawing.Size(91, 20);
+            this.lbUsername.Size = new System.Drawing.Size(168, 20);
             this.lbUsername.TabIndex = 1;
-            this.lbUsername.Text = "Username";
+            this.lbUsername.Text = "Nombre de usuario";
             // 
             // lbPassword
             // 
             this.lbPassword.AutoSize = true;
             this.lbPassword.Font = new System.Drawing.Font("OpenSymbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPassword.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lbPassword.Location = new System.Drawing.Point(93, 125);
+            this.lbPassword.Location = new System.Drawing.Point(41, 124);
             this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Size = new System.Drawing.Size(86, 20);
+            this.lbPassword.Size = new System.Drawing.Size(102, 20);
             this.lbPassword.TabIndex = 2;
-            this.lbPassword.Text = "Password";
+            this.lbPassword.Text = "Contraseña";
             // 
             // lbConfirmPassword
             // 
             this.lbConfirmPassword.AutoSize = true;
             this.lbConfirmPassword.Font = new System.Drawing.Font("OpenSymbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbConfirmPassword.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lbConfirmPassword.Location = new System.Drawing.Point(23, 160);
+            this.lbConfirmPassword.Location = new System.Drawing.Point(41, 159);
             this.lbConfirmPassword.Name = "lbConfirmPassword";
-            this.lbConfirmPassword.Size = new System.Drawing.Size(156, 20);
+            this.lbConfirmPassword.Size = new System.Drawing.Size(186, 20);
             this.lbConfirmPassword.TabIndex = 3;
-            this.lbConfirmPassword.Text = "Confirm password";
+            this.lbConfirmPassword.Text = "Confirmar contraseña";
             // 
             // lbEmail
             // 
             this.lbEmail.AutoSize = true;
             this.lbEmail.Font = new System.Drawing.Font("OpenSymbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbEmail.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lbEmail.Location = new System.Drawing.Point(97, 192);
+            this.lbEmail.Location = new System.Drawing.Point(41, 191);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(53, 20);
             this.lbEmail.TabIndex = 4;
@@ -108,6 +108,7 @@
             // 
             this.tbPassword.Location = new System.Drawing.Point(237, 126);
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(130, 19);
             this.tbPassword.TabIndex = 6;
             // 
@@ -132,13 +133,13 @@
             this.btEnter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btEnter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
             this.btEnter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btEnter.Font = new System.Drawing.Font("Lucida Calligraphy", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEnter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btEnter.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btEnter.Location = new System.Drawing.Point(155, 258);
+            this.btEnter.Location = new System.Drawing.Point(138, 253);
             this.btEnter.Name = "btEnter";
             this.btEnter.Size = new System.Drawing.Size(118, 40);
             this.btEnter.TabIndex = 9;
-            this.btEnter.Text = "ENTER";
+            this.btEnter.Text = "Enviar datos";
             this.btEnter.UseVisualStyleBackColor = false;
             this.btEnter.Click += new System.EventHandler(this.registerUser);
             // 
@@ -163,7 +164,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Register";
+            this.Text = "Registro de usuario";
             this.ResumeLayout(false);
             this.PerformLayout();
 

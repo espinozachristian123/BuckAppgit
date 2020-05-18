@@ -103,7 +103,7 @@
             this.btSearch.TabIndex = 4;
             this.btSearch.Text = "Buscar";
             this.btSearch.UseVisualStyleBackColor = false;
-            this.btSearch.Click += new System.EventHandler(this.cargarListViewConFiltro);
+            this.btSearch.Click += new System.EventHandler(this.loadListViewWithFilter);
             // 
             // menuStrip1
             // 
@@ -131,7 +131,7 @@
             this.consultProfileToolStripMenuItem.Name = "consultProfileToolStripMenuItem";
             this.consultProfileToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.consultProfileToolStripMenuItem.Text = "Consultar perfil";
-            this.consultProfileToolStripMenuItem.Click += new System.EventHandler(this.consultProfileToolStripMenuItem_Click);
+            this.consultProfileToolStripMenuItem.Click += new System.EventHandler(this.consultProfile);
             // 
             // consultGraphicToolStripMenuItem
             // 
@@ -152,14 +152,14 @@
             this.addEventToolStripMenuItem.Name = "addEventToolStripMenuItem";
             this.addEventToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.addEventToolStripMenuItem.Text = "Añadir evento";
-            this.addEventToolStripMenuItem.Click += new System.EventHandler(this.addEventToolStripMenuItem_Click);
+            this.addEventToolStripMenuItem.Click += new System.EventHandler(this.addEvent);
             // 
             // cerrarSesionToolStripMenuItem
             // 
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
             this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
-            this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem_Click);
+            this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.logOut);
             // 
             // listViewEvent
             // 
@@ -232,7 +232,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Mis Actividades";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.listarActividadesDeUnaPersona);
+            this.button1.Click += new System.EventHandler(this.listOnePersonActivities);
             // 
             // MainUser
             // 

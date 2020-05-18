@@ -73,7 +73,7 @@ namespace BuckApp
 
         private void loadComboBox()
         {
-            typeEvents = eventController.cargarDatosComboBox();
+            typeEvents = eventController.loadDataComboBox();
             for (int i = 0; i < typeEvents.Count; i++)
             {
                 cbTipo.Items.Add(typeEvents[i]);
@@ -163,6 +163,7 @@ namespace BuckApp
                 if (b == true)
                 {
                     MessageBox.Show("Evento borrado correctamente !!");
+                    //Close();
                 }
                 else
                 {

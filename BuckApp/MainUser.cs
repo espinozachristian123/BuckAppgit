@@ -28,54 +28,54 @@ namespace BuckApp
             this.user = user;
             eventController = new EventController();
             events = new List<Event>();
-            cargarEventosListView();
-            cargarComboBox();
+            loadEventsListView();
+            loadComboBox();
         }
 
-        private void cargarEventosListView()
+        private void loadEventsListView()
         {
-            events = eventController.cargarDatos();
+            events = eventController.loadDatas();
             if (events == null)
             {
                 MessageBox.Show("No se ha podido cargar la lista de eventos !!");
             }
             else
             {
-                cargarListaListView();
+                loadListListView();
             }
         }
 
-        private void cargarComboBox()
+        private void loadComboBox()
         {
-            typeEvents = eventController.cargarDatosComboBox();
+            typeEvents = eventController.loadDataComboBox();
             for (int i = 0; i < typeEvents.Count; i++)
             {
                 cbCategory.Items.Add(typeEvents[i]);
             }
         }
 
-        private void cargarListaListView()
+        private void loadListListView()
         {
             for (int i = 0; i < events.Count; i++)
             {
-                string[] listaEventos = new string[9];
+                string[] listEvents = new string[9];
                 //add items to ListView
-                listaEventos[0] = events[i].Name;
-                listaEventos[1] = events[i].Description;
-                listaEventos[2] = events[i].Location;
-                listaEventos[3] = events[i].Date.ToString();
-                listaEventos[4] = events[i].NumParticipants.ToString();
-                listaEventos[5] = events[i].NumMaxParticipantes.ToString();
-                listaEventos[6] = events[i].Type;
-                listaEventos[7] = events[i].Id_user.ToString();
-                listaEventos[8] = events[i].Id.ToString();
-                itm = new ListViewItem(listaEventos);
+                listEvents[0] = events[i].Name;
+                listEvents[1] = events[i].Description;
+                listEvents[2] = events[i].Location;
+                listEvents[3] = events[i].Date.ToString();
+                listEvents[4] = events[i].NumParticipants.ToString();
+                listEvents[5] = events[i].NumMaxParticipantes.ToString();
+                listEvents[6] = events[i].Type;
+                listEvents[7] = events[i].Id_user.ToString();
+                listEvents[8] = events[i].Id.ToString();
+                itm = new ListViewItem(listEvents);
                 listViewEvent.Items.Add(itm);
             }
 
         }
 
-        private void cargarListViewConFiltro(object sender, EventArgs e)
+        private void loadListViewWithFilter(object sender, EventArgs e)
         {
             listViewEvent.Items.Clear();
             try
@@ -84,51 +84,51 @@ namespace BuckApp
                 string type = cbCategory.SelectedItem.ToString();
                 if (location.Equals(String.Empty) && type.Equals(String.Empty))
                 {
-                    events = eventController.cargarDatos();
+                    events = eventController.loadDatas();
                     if (events == null)
                     {
                         MessageBox.Show("No se ha podido cargar la lista de eventos !!");
                     }
                     else
                     {
-                        cargarListaListView();
+                        loadListListView();
                     }
                 }
                 else if (location.Equals(String.Empty))
                 {
-                    events = eventController.cargarDatosConFiltroCategoria(type);
+                    events = eventController.loadDataWithFilterType(type);
                     if (events == null)
                     {
                         MessageBox.Show("No se ha podido cargar la lista de eventos !!");
                     }
                     else
                     {
-                        cargarListaListView();
+                        loadListListView();
                     }
                 }
                 else if (type.Equals(String.Empty))
                 {
 
-                    events = eventController.cargarDatosConFiltroCiudad(location);
+                    events = eventController.loadDataWithFilterLocation(location);
                     if (events == null)
                     {
                         MessageBox.Show("No se ha podido cargar la lista de eventos !!");
                     }
                     else
                     {
-                        cargarListaListView();
+                        loadListListView();
                     }
                 }
                 else
                 {
-                    events = eventController.cargarDatosConFiltro(location, type);
+                    events = eventController.loadDataWithFilter(location, type);
                     if (events == null)
                     {
                         MessageBox.Show("No se ha podido cargar la lista de eventos !!");
                     }
                     else
                     {
-                        cargarListaListView();
+                        loadListListView();
                     }
                 }
             }
@@ -139,23 +139,23 @@ namespace BuckApp
             
         }
 
-        private void consultProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void consultProfile(object sender, EventArgs e)
         {
             Profile profile = new Profile(user);
             profile.ShowDialog();
         }
 
-        private void listarActividadesDeUnaPersona(object sender, EventArgs e)
+        private void listOnePersonActivities(object sender, EventArgs e)
         {
             listViewEvent.Items.Clear();
-            events = eventController.cargarDatosUnaPersona(user.Id);
+            events = eventController.loadOnePersonActivities(user.Id);
             if (events == null)
             {
                 MessageBox.Show("No se ha podido cargar la lista de eventos !!");
             }
             else
             {
-                cargarListaListView();
+                loadListListView();
             }
         }
 
@@ -173,24 +173,24 @@ namespace BuckApp
             int id_event = Convert.ToInt16(listItem.SubItems[8].Text);
             InfoEvents infoEvents = new InfoEvents(id_event, name, description, localidad, fecha, n_participantes, n_maxParticipantes, type, id_user, user.Id);
             infoEvents.ShowDialog();
-            actualizarListView();
+            updateListView();
         }
 
-        private void actualizarListView()
+        private void updateListView()
         {
             events = new List<Event>();
             listViewEvent.Items.Clear();
-            cargarEventosListView();
+            loadEventsListView();
         }
 
-        private void addEventToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addEvent(object sender, EventArgs e)
         {
-            SubirEventos subir = new SubirEventos(user);
+            AddEvents subir = new AddEvents(user);
             subir.ShowDialog();
-            actualizarListView();
+            updateListView();
         }
 
-        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
+        private void logOut(object sender, EventArgs e)
         {
             var answer = MessageBox.Show("Estas seguro de cerrar sesion?? ", "Cerrar sesion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (answer == DialogResult.Yes)
