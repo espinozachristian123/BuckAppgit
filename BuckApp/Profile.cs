@@ -22,11 +22,11 @@ namespace BuckApp
             InitializeComponent();
             usercontrol = new UserController();
             this.user = user;
-            meterdatos();
+            loadData();
             
         }
 
-       private void meterdatos()
+       private void loadData()
         {
             txtName.Text = user.Username;
             txtPassword.Text = user.Password;
@@ -36,7 +36,7 @@ namespace BuckApp
         }
         Boolean b;
 
-        private void btnModificar_Click(object sender, EventArgs e)
+        private void modificarPerfil(object sender, EventArgs e)
         {
             String newName = txtName.Text;
             String newPass = txtPassword.Text;
@@ -56,11 +56,11 @@ namespace BuckApp
                 }
                 else if (!newName.Equals(user.Username) || !newPass.Equals(user.Password) || !newEmail.Equals(user.Email))
                 {
-                    controlname();
-                    controlcorreo();
+                    controlName();
+                    controlEmail();
                     if (newPass.Equals(confirm))
                     {
-                        usercontrol.modifypass(newPass, user.Id);
+                        usercontrol.modifyPass(newPass, user.Id);
                     }
                     else
                     {
@@ -75,7 +75,7 @@ namespace BuckApp
 
 
         }
-        private void controlcorreo()
+        private void controlEmail()
         {
            String newEmail = txtEmail.Text;
             if (!newEmail.Equals(user.Email))
@@ -86,12 +86,12 @@ namespace BuckApp
                 }
                 else
                 {
-                    usercontrol.modifycorreo(newEmail, user.Id);
+                    usercontrol.modifyEmail(newEmail, user.Id);
                 }
             }
         }
 
-        private void controlname()
+        private void controlName()
         {
             String newName = txtName.Text;
             if (!newName.Equals(user.Username))
@@ -102,7 +102,7 @@ namespace BuckApp
                 }
                 else
                 {
-                    usercontrol.modifynames(newName,user.Id);
+                    usercontrol.modifyNames(newName,user.Id);
                 }
             }
         }

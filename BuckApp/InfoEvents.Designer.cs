@@ -104,21 +104,21 @@
             // 
             // btRegisterEvent
             // 
-            this.btRegisterEvent.Location = new System.Drawing.Point(52, 258);
+            this.btRegisterEvent.Location = new System.Drawing.Point(52, 266);
             this.btRegisterEvent.Name = "btRegisterEvent";
-            this.btRegisterEvent.Size = new System.Drawing.Size(86, 23);
+            this.btRegisterEvent.Size = new System.Drawing.Size(79, 35);
             this.btRegisterEvent.TabIndex = 6;
-            this.btRegisterEvent.Text = "Register Event";
+            this.btRegisterEvent.Text = "Registrarse a evento";
             this.btRegisterEvent.UseVisualStyleBackColor = true;
             this.btRegisterEvent.Click += new System.EventHandler(this.registerEvent);
             // 
             // btModify
             // 
-            this.btModify.Location = new System.Drawing.Point(178, 258);
+            this.btModify.Location = new System.Drawing.Point(155, 266);
             this.btModify.Name = "btModify";
-            this.btModify.Size = new System.Drawing.Size(75, 23);
+            this.btModify.Size = new System.Drawing.Size(93, 35);
             this.btModify.TabIndex = 7;
-            this.btModify.Text = "Modify";
+            this.btModify.Text = "Modificar evento";
             this.btModify.UseVisualStyleBackColor = true;
             this.btModify.Click += new System.EventHandler(this.modifyEvent);
             // 
@@ -130,11 +130,11 @@
             this.btDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btDelete.ForeColor = System.Drawing.Color.Yellow;
-            this.btDelete.Location = new System.Drawing.Point(284, 258);
+            this.btDelete.Location = new System.Drawing.Point(272, 266);
             this.btDelete.Name = "btDelete";
-            this.btDelete.Size = new System.Drawing.Size(75, 23);
+            this.btDelete.Size = new System.Drawing.Size(87, 35);
             this.btDelete.TabIndex = 8;
-            this.btDelete.Text = "Delete";
+            this.btDelete.Text = "Borrar evento";
             this.btDelete.UseVisualStyleBackColor = false;
             this.btDelete.Click += new System.EventHandler(this.deleteEventClick);
             // 
@@ -205,7 +205,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(411, 301);
+            this.ClientSize = new System.Drawing.Size(411, 323);
             this.Controls.Add(this.cbTipo);
             this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.tbMaxParticipantes);

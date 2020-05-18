@@ -20,39 +20,39 @@ namespace Controller
             events = new List<Event>();
         }
 
-        public List<Event> cargarDatos()
+        public List<Event> loadDatas()
         {
-            events = eventDao.cogerDatos();
+            events = eventDao.loadData();
             return events;
         }
 
-        public List <String> cargarDatosComboBox()
+        public List <String> loadDataComboBox()
         {
-            datosComboBox = eventDao.cogerDatosComboBox();
+            datosComboBox = eventDao.loadDataComboBox();
             return datosComboBox;
         }
 
-        public List<Event> cargarDatosConFiltro(String location, String type)
+        public List<Event> loadDataWithFilter(String location, String type)
         {
-            events = eventDao.cogerDatosConFiltroLugarTipo(location,type);
+            events = eventDao.loadDataWithFilter(location,type);
             return events;
         }
 
-        public List<Event> cargarDatosConFiltroCiudad(String location)
+        public List<Event> loadDataWithFilterLocation(String location)
         {
-            events = eventDao.cogerDatosConFiltroCiudad(location);
+            events = eventDao.loadDataWithFilterLocation(location);
             return events;
         }
 
-        public List<Event> cargarDatosConFiltroCategoria(String type)
+        public List<Event> loadDataWithFilterType(String type)
         {
-            events = eventDao.cogerDatosConFiltroCategoria(type);
+            events = eventDao.loadDataWithFilterType(type);
             return events;
         }
 
-        public List<Event> cargarDatosUnaPersona(int id_user)
+        public List<Event> loadOnePersonActivities(int id_user)
         {
-            events = eventDao.cogerActividadesDeUnaPersona(id_user);
+            events = eventDao.loadOnePersonActivities(id_user);
             return events;
         }
 
@@ -93,7 +93,7 @@ namespace Controller
             return eventDao.checkRegister(id_event,id_user);
         }
 
-        public void validarnumeros(KeyPressEventArgs pe)
+        public void validateNumbers(KeyPressEventArgs pe)
         {
             if (char.IsDigit(pe.KeyChar))
             {

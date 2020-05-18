@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace BuckApp
 {
-    public partial class SubirEventos : Form
+    public partial class AddEvents : Form
     {
         int userID;
         List<String> typeEvents;
@@ -20,17 +20,17 @@ namespace BuckApp
         User user;
         int comienzo=0;
 
-        public SubirEventos(User user)
+        public AddEvents(User user)
         {
             InitializeComponent();
             eventController = new EventController();
-            cargarComboBox();
+            loadComboBox();
             this.user = user;
         }
 
-        private void cargarComboBox()
+        private void loadComboBox()
         {
-            typeEvents = eventController.cargarDatosComboBox();
+            typeEvents = eventController.loadDataComboBox();
             for (int i = 0; i < typeEvents.Count; i++)
             {
                 comboBox1.Items.Add(typeEvents[i]);
@@ -39,10 +39,10 @@ namespace BuckApp
         
         private void txtMaxParticipantes_KeyPress(object sender, KeyPressEventArgs e)
         {
-            eventController.validarnumeros(e);
+            eventController.validateNumbers(e);
         }
 
-        private void saveEvent_Click(object sender, EventArgs e)
+        private void saveEvent(object sender, EventArgs e)
         {
             try
             {

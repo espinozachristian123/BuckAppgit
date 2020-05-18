@@ -70,7 +70,7 @@ namespace Model
             return b;
         }
 
-        public bool modifypassword(string password, int id)
+        public bool modifyPassword(string password, int id)
         {
             Boolean b = false;
             String QUERY_MODIFY_EVENT = "UPDATE `users` SET `password`= @password where id = @id";
@@ -105,7 +105,7 @@ namespace Model
             return b;
         }
 
-        public bool modifyemail(string email, int id)
+        public bool modifyEmail(string email, int id)
         {
             Boolean b = false;
             String QUERY_MODIFY_EVENT = "UPDATE `users` SET `email`= @email where id = @id";
@@ -140,7 +140,7 @@ namespace Model
             return b;
         }
 
-        public bool modifyname(string newName, int id_user)
+        public bool modifyName(string newName, int id_user)
         {
             Boolean b = false;
             String QUERY_MODIFY_EVENT = "UPDATE `users` SET `username`= @newName where id = @id_user";

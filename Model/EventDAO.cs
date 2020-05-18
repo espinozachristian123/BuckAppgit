@@ -20,10 +20,10 @@ namespace Model
             dbConnect = DBConnection.getInstance();
         }
 
-        public List<Event> cogerDatos()
+        public List<Event> loadData()
         {
             events = new List<Event>();
-            String QUERY_SELECT_EVENTS = "Select * from events";
+            String QUERY_SELECT_EVENTS = "SELECT * FROM `events` WHERE date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();
@@ -69,7 +69,7 @@ namespace Model
             return events;
         }
         
-        public List<String> cogerDatosComboBox()
+        public List<String> loadDataComboBox()
         {
             categories.Add("");
             categories.Add("Deportivo");
@@ -80,10 +80,10 @@ namespace Model
             return categories;
         }
 
-        public List<Event> cogerDatosConFiltroLugarTipo(string locationEvent, string typeEvent)
+        public List<Event> loadDataWithFilter(string locationEvent, string typeEvent)
         {
             List<Event> eventsWithFilter = new List<Event>();
-            String QUERY_SELECT_EVENTS_WITH_FILTER = "Select * from events where location = @location and type = @type";
+            String QUERY_SELECT_EVENTS_WITH_FILTER = "Select * from events where location = @location and type = @type and date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();
@@ -131,10 +131,10 @@ namespace Model
             return eventsWithFilter;
         }
 
-        public List<Event> cogerDatosConFiltroCiudad(string locationEvent)
+        public List<Event> loadDataWithFilterLocation(string locationEvent)
         {
             List<Event> eventsWithFilterLocation = new List<Event>();
-            String QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION = "Select * from events where location = @location";
+            String QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION = "Select * from events where location = @location and date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();
@@ -181,10 +181,10 @@ namespace Model
             return eventsWithFilterLocation;
         }
         
-        public List<Event> cogerDatosConFiltroCategoria(string typeEvent)
+        public List<Event> loadDataWithFilterType(string typeEvent)
         {
             List<Event> eventsWithFilterType = new List<Event>();
-            String QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION = "Select * from events where type = @type";
+            String QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION = "Select * from events where type = @type and date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();
@@ -231,7 +231,7 @@ namespace Model
             return eventsWithFilterType;
         }
 
-        public List<Event> cogerActividadesDeUnaPersona(int id_user)
+        public List<Event> loadOnePersonActivities(int id_user)
         {
             List<Event> eventsOnePerson = new List<Event>();
             String QUERY_SELECT_EVENTS__ONE_PERSON = "Select * from events where id_user = @id_user";

@@ -17,29 +17,20 @@ namespace Controller
             model = new UserDAO();
         }
         
-        public String validateUser(String username, String password)
+        public User validateUser(String username, String password)
         {
-            String rol = String.Empty;
             User userValidate = new User(username,password);
             Boolean flag = model.loginUser(userValidate);
             if (flag)
             {
-                if (model.Rol.Equals("admin"))
-                {
-                    rol = "admin";
-                }
-                else if (model.Rol.Equals("user"))
-                {
-                    rol = "user";
-                    user = new User(model.Id, username, password, model.Rol, model.Email);
-                }
+                user = new User(model.Id, username, password, model.Rol, model.Email);
             }
             else
             {
-                rol = "";
+                user = null;
             }
 
-            return rol;
+            return user;
         }
 
         public Boolean validateRegister(String username, String password, String email)
@@ -48,13 +39,13 @@ namespace Controller
             return flag;
         }
 
-        public bool modifiuser(string newName, string newPass, string newEmail, int id_user)
+        public bool modifyUser(string newName, string newPass, string newEmail, int id_user)
         {
             return model.modifyUser(newName, newPass, newEmail,id_user);
         }
-        public bool modifynames(string newName,int id_user)
+        public bool modifyNames(string newName,int id_user)
         {
-            return model.modifyname(newName,id_user);
+            return model.modifyName(newName,id_user);
         }
 
         public Boolean sameEmail(String email)
@@ -69,14 +60,14 @@ namespace Controller
             return model.UserEquals(newName);
         }
 
-        public bool modifycorreo(string newEmail, int id)
+        public bool modifyEmail(string newEmail, int id)
         {
-            return model.modifyemail(newEmail, id);
+            return model.modifyEmail(newEmail, id);
         }
 
-        public bool modifypass(string newPass, int id)
+        public bool modifyPass(string newPass, int id)
         {
-            return model.modifypassword(newPass, id);
+            return model.modifyPassword(newPass, id);
         }
     }
 }
