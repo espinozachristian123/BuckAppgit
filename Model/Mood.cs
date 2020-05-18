@@ -11,8 +11,17 @@ namespace Model
         int id_user;
         int moods;
         String fecha;
+        private int mood;
+        private string date;
 
-        public Mood(int id_user, int mood, string fecha)
+        public Mood(int id_user, int mood, string date)
+        {
+            this.id_user = id_user;
+            this.mood = mood;
+            this.date = date;
+        }
+
+        public Mood(int id_user, int mood, string fecha, int id_user1)
         {
             this.id_user = id_user;
             this.moods = mood;

@@ -138,6 +138,7 @@
             this.consultGraphicToolStripMenuItem.Name = "consultGraphicToolStripMenuItem";
             this.consultGraphicToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.consultGraphicToolStripMenuItem.Text = "Consultar grafico de animo";
+            this.consultGraphicToolStripMenuItem.Click += new System.EventHandler(this.consultGraphicToolStripMenuItem_Click);
             // 
             // eventsToolStripMenuItem
             // 

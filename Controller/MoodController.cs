@@ -10,7 +10,7 @@ namespace Controller
     public class MoodController
     {
         private MoodDAO moodDao;
-
+        private List<Mood> moods;
         public MoodController()
         {
             moodDao = new MoodDAO();
@@ -20,5 +20,18 @@ namespace Controller
         {
             return moodDao.insertMood(id_user, mood, fecha);
         }
+
+        public List<Mood> loadDatamoods()
+        {
+            moods = moodDao.loadData();
+            return moods;
+        }
+
+        public List<Mood> loadOnePersonMood(int id_user)
+        {
+            moods = moodDao.loadOnePersonMood(id_user);
+            return moods;
+        }
+
     }
 }

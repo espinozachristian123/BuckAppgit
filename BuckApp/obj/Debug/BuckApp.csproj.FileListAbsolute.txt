@@ -79,7 +79,6 @@ C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.Profile.res
 C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.Properties.Resources.resources
 C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.MainUser.resources
 C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.Register.resources
-C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.SubirEventos.resources
 C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.csproj.GenerateResource.cache
 C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.csproj.CoreCompileInputs.cache
 C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.exe
@@ -100,3 +99,6 @@ C:\Users\Christian\source\repos\BuckAppgit\BuckApp\bin\Debug\MySql.Data.xml
 C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.csproj.CopyComplete
 C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.AnswerMood.resources
 C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.AddEvents.resources
+C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.AnswerMood.resources
+C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.GraficoMood.resources
+C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.AddEvents.resources

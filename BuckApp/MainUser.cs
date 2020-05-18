@@ -204,5 +204,11 @@ namespace BuckApp
             }
         }
         public bool Exit { get => exit; set => exit = value; }
+
+        private void consultGraphicToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GraficoMood gm = new GraficoMood(user);
+            gm.Show();
+        }
     }
 }
