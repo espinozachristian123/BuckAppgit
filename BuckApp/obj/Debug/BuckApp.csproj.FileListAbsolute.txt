@@ -100,3 +100,4 @@ C:\Users\Christian\source\repos\BuckAppgit\BuckApp\bin\Debug\MySql.Data.xml
 C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.csproj.CopyComplete
 C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.SubirEventos.resources
 C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.AnswerMood.resources
+C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.AnswerMood.resources
