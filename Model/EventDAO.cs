@@ -23,7 +23,7 @@ namespace Model
         public List<Event> loadData()
         {
             events = new List<Event>();
-            String QUERY_SELECT_EVENTS = "SELECT * FROM `events` WHERE date > NOW()";
+            String QUERY_SELECT_EVENTS = "SELECT * FROM `events` WHERE date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();
@@ -83,7 +83,7 @@ namespace Model
         public List<Event> loadDataWithFilter(string locationEvent, string typeEvent)
         {
             List<Event> eventsWithFilter = new List<Event>();
-            String QUERY_SELECT_EVENTS_WITH_FILTER = "Select * from events where location = @location and type = @type and date > NOW()";
+            String QUERY_SELECT_EVENTS_WITH_FILTER = "Select * from events where location = @location and type = @type and date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();
@@ -134,7 +134,7 @@ namespace Model
         public List<Event> loadDataWithFilterLocation(string locationEvent)
         {
             List<Event> eventsWithFilterLocation = new List<Event>();
-            String QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION = "Select * from events where location = @location and date > NOW()";
+            String QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION = "Select * from events where location = @location and date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();
@@ -184,7 +184,7 @@ namespace Model
         public List<Event> loadDataWithFilterType(string typeEvent)
         {
             List<Event> eventsWithFilterType = new List<Event>();
-            String QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION = "Select * from events where type = @type and date > NOW()";
+            String QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION = "Select * from events where type = @type and date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();
