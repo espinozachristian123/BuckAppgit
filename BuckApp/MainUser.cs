@@ -21,6 +21,10 @@ namespace BuckApp
         List<String> typeEvents;
         User user;
         Boolean exit;
+        int selected_option = 0;
+
+        string location;
+        string type;
 
         public MainUser(User user)
         {
@@ -80,8 +84,8 @@ namespace BuckApp
             listViewEvent.Items.Clear();
             try
             {
-                string location = tbCity.Text;
-                string type = cbCategory.SelectedItem.ToString();
+                location = tbCity.Text;
+                type = cbCategory.SelectedItem.ToString();
                 if (location.Equals(String.Empty) && type.Equals(String.Empty))
                 {
                     events = eventController.loadDatas();
@@ -96,40 +100,15 @@ namespace BuckApp
                 }
                 else if (location.Equals(String.Empty))
                 {
-                    events = eventController.loadDataWithFilterType(type);
-                    if (events == null)
-                    {
-                        MessageBox.Show("No se ha podido cargar la lista de eventos !!");
-                    }
-                    else
-                    {
-                        loadListListView();
-                    }
+                    loadDataWithFilterType(type);
                 }
                 else if (type.Equals(String.Empty))
                 {
-
-                    events = eventController.loadDataWithFilterLocation(location);
-                    if (events == null)
-                    {
-                        MessageBox.Show("No se ha podido cargar la lista de eventos !!");
-                    }
-                    else
-                    {
-                        loadListListView();
-                    }
+                    loadDataWithFilterLocation(location);
                 }
                 else
                 {
-                    events = eventController.loadDataWithFilter(location, type);
-                    if (events == null)
-                    {
-                        MessageBox.Show("No se ha podido cargar la lista de eventos !!");
-                    }
-                    else
-                    {
-                        loadListListView();
-                    }
+                    loadDataWithFilterLocationType(location,type);
                 }
             }
             catch(Exception ex)
@@ -139,26 +118,60 @@ namespace BuckApp
             
         }
 
+        private void loadDataWithFilterType(String type)
+        {
+            events = eventController.loadDataWithFilterType(type);
+            if (events == null)
+            {
+                MessageBox.Show("No se ha podido cargar la lista de eventos segun la categoria." +
+                    "Volviendo a la lista general de eventos!!");
+                loadEventsListView();
+            }
+            else
+            {
+                loadListListView();
+                selected_option = 4;
+            }
+        }
+
+        private void loadDataWithFilterLocation(String location)
+        {
+            events = eventController.loadDataWithFilterLocation(location);
+            if (events == null)
+            {
+                MessageBox.Show("No se ha podido cargar la lista de eventos segun la ciudad." +
+                    "Volviendo a la lista general de eventos!!");
+                loadEventsListView();
+            }
+            else
+            {
+                loadListListView();
+                selected_option = 3;
+            }
+        }
+
+        private void loadDataWithFilterLocationType(String location, String type)
+        {
+            events = eventController.loadDataWithFilter(location, type);
+            if (events == null)
+            {
+                MessageBox.Show("No se ha podido cargar la lista de eventos " +
+                    "Volviendo a la lista general de eventos!!");
+                loadEventsListView();
+            }
+            else
+            {
+                loadListListView();
+                selected_option = 5;
+            }
+        }
+
         private void consultProfile(object sender, EventArgs e)
         {
             Profile profile = new Profile(user);
             profile.ShowDialog();
         }
-
-        private void listOnePersonActivities(object sender, EventArgs e)
-        {
-            listViewEvent.Items.Clear();
-            events = eventController.loadOnePersonActivities(user.Id);
-            if (events == null)
-            {
-                MessageBox.Show("No se ha podido cargar la lista de eventos !!");
-            }
-            else
-            {
-                loadListListView();
-            }
-        }
-
+        
         private void listViewEvent_MouseClick(object sender, MouseEventArgs e)
         {
             ListViewItem listItem = listViewEvent.SelectedItems[0];
@@ -180,13 +193,34 @@ namespace BuckApp
         {
             events = new List<Event>();
             listViewEvent.Items.Clear();
-            loadEventsListView();
+            switch (selected_option)
+            {
+                case 0:
+                    loadEventsListView();
+                    break;
+                case 1:
+                    activitiesRegister();
+                    break;
+                case 2:
+                    listOnePersonActivities();
+                    break;
+                case 3:
+                    loadDataWithFilterLocation(location);
+                    break;
+                case 4:
+                    loadDataWithFilterType(type);
+                    break;
+                case 5:
+                    loadDataWithFilterLocationType(location, type);
+                    break;
+            }
         }
 
         private void addEvent(object sender, EventArgs e)
         {
             AddEvents subir = new AddEvents(user);
             subir.ShowDialog();
+            selected_option = 2;
             updateListView();
         }
 
@@ -203,12 +237,55 @@ namespace BuckApp
                 exit = false;
             }
         }
-        public bool Exit { get => exit; set => exit = value; }
-
+        
         private void consultGraphicToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GraficoMood gm = new GraficoMood(user);
             gm.Show();
         }
+
+        private void listOnePersonActivities_Click(object sender, EventArgs e)
+        {
+            listViewEvent.Items.Clear();
+            listOnePersonActivities();
+        }
+
+        private void listOnePersonActivities()
+        {
+            events = eventController.loadOnePersonActivities(user.Id);
+            if (events == null)
+            {
+                MessageBox.Show("No has creado ninguna actividad !!");
+                loadEventsListView(); ;
+            }
+            else
+            {
+                loadListListView();
+                selected_option = 2;
+            }
+        }
+
+        private void activitiesRegisterOnePerson_Click(object sender, EventArgs e)
+        {
+            listViewEvent.Items.Clear();
+            activitiesRegister();
+        }
+
+        private void activitiesRegister()
+        {
+            events = eventController.loadActivitiesRegisterOnePerson(user.Id);
+            if (events == null)
+            {
+                MessageBox.Show("No estas registrado en ninguna actividad !!");
+                loadEventsListView();
+            }
+            else
+            {
+                loadListListView();
+                selected_option = 1;
+            }
+        }
+
+        public bool Exit { get => exit; set => exit = value; }
     }
 }

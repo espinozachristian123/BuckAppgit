@@ -38,6 +38,8 @@
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultGraphicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.misActividadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.actividadesQueEstoyRegistradoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addEventToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,7 +51,6 @@
             this.columnNumPart = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnNumPartMax = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -121,7 +122,9 @@
             // 
             this.userToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.consultProfileToolStripMenuItem,
-            this.consultGraphicToolStripMenuItem});
+            this.consultGraphicToolStripMenuItem,
+            this.misActividadesToolStripMenuItem,
+            this.actividadesQueEstoyRegistradoToolStripMenuItem});
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
             this.userToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.userToolStripMenuItem.Text = "Usuario";
@@ -129,16 +132,30 @@
             // consultProfileToolStripMenuItem
             // 
             this.consultProfileToolStripMenuItem.Name = "consultProfileToolStripMenuItem";
-            this.consultProfileToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.consultProfileToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.consultProfileToolStripMenuItem.Text = "Consultar perfil";
             this.consultProfileToolStripMenuItem.Click += new System.EventHandler(this.consultProfile);
             // 
             // consultGraphicToolStripMenuItem
             // 
             this.consultGraphicToolStripMenuItem.Name = "consultGraphicToolStripMenuItem";
-            this.consultGraphicToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.consultGraphicToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.consultGraphicToolStripMenuItem.Text = "Consultar grafico de animo";
             this.consultGraphicToolStripMenuItem.Click += new System.EventHandler(this.consultGraphicToolStripMenuItem_Click);
+            // 
+            // misActividadesToolStripMenuItem
+            // 
+            this.misActividadesToolStripMenuItem.Name = "misActividadesToolStripMenuItem";
+            this.misActividadesToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.misActividadesToolStripMenuItem.Text = "Mis actividades";
+            this.misActividadesToolStripMenuItem.Click += new System.EventHandler(this.listOnePersonActivities_Click);
+            // 
+            // actividadesQueEstoyRegistradoToolStripMenuItem
+            // 
+            this.actividadesQueEstoyRegistradoToolStripMenuItem.Name = "actividadesQueEstoyRegistradoToolStripMenuItem";
+            this.actividadesQueEstoyRegistradoToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.actividadesQueEstoyRegistradoToolStripMenuItem.Text = "Actividades que estoy registrado";
+            this.actividadesQueEstoyRegistradoToolStripMenuItem.Click += new System.EventHandler(this.activitiesRegisterOnePerson_Click);
             // 
             // eventsToolStripMenuItem
             // 
@@ -218,30 +235,12 @@
             this.columnType.Text = "Tipo";
             this.columnType.Width = 80;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Goldenrod;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Maroon;
-            this.button1.Location = new System.Drawing.Point(630, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(143, 36);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Mis Actividades";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.listOnePersonActivities);
-            // 
             // MainUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(794, 346);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.listViewEvent);
             this.Controls.Add(this.btSearch);
             this.Controls.Add(this.cbCategory);
@@ -282,7 +281,8 @@
         private System.Windows.Forms.ColumnHeader columnNumPartMax;
         private System.Windows.Forms.ColumnHeader columnType;
         private System.Windows.Forms.ColumnHeader columnNumPart;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem misActividadesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem actividadesQueEstoyRegistradoToolStripMenuItem;
     }
 }

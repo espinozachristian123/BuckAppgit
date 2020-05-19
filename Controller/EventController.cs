@@ -93,6 +93,11 @@ namespace Controller
             return eventDao.checkRegister(id_event,id_user);
         }
 
+        public List<Event> loadActivitiesRegisterOnePerson(int id_user)
+        {
+            return eventDao.loadActivitiesRegisterOnePerson(id_user);
+        }
+
         public void validateNumbers(KeyPressEventArgs pe)
         {
             if (char.IsDigit(pe.KeyChar))
