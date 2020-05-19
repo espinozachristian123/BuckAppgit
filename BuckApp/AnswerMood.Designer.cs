@@ -175,6 +175,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AnswerMood";
             this.Text = "AnswerMood";
+            this.Load += new System.EventHandler(this.AnswerMood_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
