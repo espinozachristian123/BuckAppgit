@@ -31,19 +31,19 @@ namespace BuckApp
             Button b = (Button)sender;
             switch (b.Name)
             {
-                case "button1":
+                case "btVeryBad":
                     mood = 1;
                     break;
-                case "button2":
+                case "btBad":
                     mood = 2;
                     break;
-                case "button3":
+                case "btNormal":
                     mood = 3;
                     break;
-                case "button4":
+                case "btGood":
                     mood = 4;
                     break;
-                case "button5":
+                case "btVeryGood":
                     mood = 5;
                     break;
             }

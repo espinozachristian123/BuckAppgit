@@ -104,7 +104,7 @@ namespace Model
                                 string name = reader.GetString(1);
                                 string description = reader.GetString(2);
                                 string location = reader.GetString(3);
-                                string date = reader.GetMySqlDateTime(4).ToString();
+                                string date = reader.GetDateTime(4).ToString();
                                 int numPart = reader.GetInt16(5);
                                 int numMax = reader.GetInt16(6);
                                 string type = reader.GetString(7);
@@ -154,7 +154,7 @@ namespace Model
                                 string name = reader.GetString(1);
                                 string description = reader.GetString(2);
                                 string location = reader.GetString(3);
-                                string date = reader.GetMySqlDateTime(4).ToString();
+                                string date = reader.GetDateTime(4).ToString();
                                 int numPart = reader.GetInt16(5);
                                 int numMax = reader.GetInt16(6);
                                 string type = reader.GetString(7);
@@ -204,7 +204,7 @@ namespace Model
                                 string name = reader.GetString(1);
                                 string description = reader.GetString(2);
                                 string location = reader.GetString(3);
-                                string date = reader.GetMySqlDateTime(4).ToString();
+                                string date = reader.GetDateTime(4).ToString();
                                 int numPart = reader.GetInt16(5);
                                 int numMax = reader.GetInt16(6);
                                 string type = reader.GetString(7);
@@ -254,7 +254,7 @@ namespace Model
                                 string name = reader.GetString(1);
                                 string description = reader.GetString(2);
                                 string location = reader.GetString(3);
-                                string date = reader.GetMySqlDateTime(4).ToString();
+                                string date = reader.GetDateTime(4).ToString();
                                 int numPart = reader.GetInt16(5);
                                 int numMax = reader.GetInt16(6);
                                 string type = reader.GetString(7);
@@ -437,6 +437,56 @@ namespace Model
             }
             return b;
         }
+
+        public List <Event> loadActivitiesRegisterOnePerson(int id_user)
+        {
+            List<Event> listEventsRegisterOnePerson = new List<Event>(); ;
+            String QUERY_SELECT_EVENTS_REGISTER_ONE_PERSON = "SELECT * FROM events WHERE id IN (SELECT id_events FROM userevents WHERE id_user = @id_user)";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_SELECT_EVENTS_REGISTER_ONE_PERSON, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                int id = reader.GetInt16(0);
+                                string name = reader.GetString(1);
+                                string description = reader.GetString(2);
+                                string location = reader.GetString(3);
+                                string date = reader.GetDateTime(4).ToString();
+                                int numPart = reader.GetInt16(5);
+                                int numMax = reader.GetInt16(6);
+                                string type = reader.GetString(7);
+                                listEventsRegisterOnePerson.Add(new Event(id, name, description, location, date, numPart, numMax, type, id_user));
+                            }
+                        }
+                        else
+                        {
+                            listEventsRegisterOnePerson = null;
+                        }
+                        reader.Close();
+                    }
+                }
+            }
+            catch (MySqlException error)
+            {
+                listEventsRegisterOnePerson = null;
+            }
+            catch (Exception e)
+            {
+                listEventsRegisterOnePerson = null;
+            }
+            return listEventsRegisterOnePerson;
+        }
+    
 
         public Boolean modifyEvent(String name, String description, String location, DateTime date, int num_max, String type, int id)
         {

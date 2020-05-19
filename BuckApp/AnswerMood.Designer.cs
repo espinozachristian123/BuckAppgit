@@ -34,11 +34,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btVeryGood = new System.Windows.Forms.Button();
+            this.btGood = new System.Windows.Forms.Button();
+            this.btNormal = new System.Windows.Forms.Button();
+            this.btBad = new System.Windows.Forms.Button();
+            this.btVeryBad = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -96,65 +96,65 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Muy bien";
             // 
-            // button5
+            // btVeryGood
             // 
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Image = global::BuckApp.Properties.Resources.happy_2;
-            this.button5.Location = new System.Drawing.Point(387, 77);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(83, 82);
-            this.button5.TabIndex = 10;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.Botones);
+            this.btVeryGood.FlatAppearance.BorderSize = 0;
+            this.btVeryGood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btVeryGood.Image = global::BuckApp.Properties.Resources.happy_2;
+            this.btVeryGood.Location = new System.Drawing.Point(387, 77);
+            this.btVeryGood.Name = "btVeryGood";
+            this.btVeryGood.Size = new System.Drawing.Size(83, 82);
+            this.btVeryGood.TabIndex = 10;
+            this.btVeryGood.UseVisualStyleBackColor = true;
+            this.btVeryGood.Click += new System.EventHandler(this.Botones);
             // 
-            // button4
+            // btGood
             // 
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Image = global::BuckApp.Properties.Resources.happy;
-            this.button4.Location = new System.Drawing.Point(298, 77);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(83, 82);
-            this.button4.TabIndex = 9;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.Botones);
+            this.btGood.FlatAppearance.BorderSize = 0;
+            this.btGood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btGood.Image = global::BuckApp.Properties.Resources.happy;
+            this.btGood.Location = new System.Drawing.Point(298, 77);
+            this.btGood.Name = "btGood";
+            this.btGood.Size = new System.Drawing.Size(83, 82);
+            this.btGood.TabIndex = 9;
+            this.btGood.UseVisualStyleBackColor = true;
+            this.btGood.Click += new System.EventHandler(this.Botones);
             // 
-            // button3
+            // btNormal
             // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = global::BuckApp.Properties.Resources.surprised;
-            this.button3.Location = new System.Drawing.Point(209, 77);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(83, 82);
-            this.button3.TabIndex = 8;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Botones);
+            this.btNormal.FlatAppearance.BorderSize = 0;
+            this.btNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btNormal.Image = global::BuckApp.Properties.Resources.surprised;
+            this.btNormal.Location = new System.Drawing.Point(209, 77);
+            this.btNormal.Name = "btNormal";
+            this.btNormal.Size = new System.Drawing.Size(83, 82);
+            this.btNormal.TabIndex = 8;
+            this.btNormal.UseVisualStyleBackColor = true;
+            this.btNormal.Click += new System.EventHandler(this.Botones);
             // 
-            // button2
+            // btBad
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::BuckApp.Properties.Resources.sad1;
-            this.button2.Location = new System.Drawing.Point(120, 77);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 82);
-            this.button2.TabIndex = 7;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Botones);
+            this.btBad.FlatAppearance.BorderSize = 0;
+            this.btBad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btBad.Image = global::BuckApp.Properties.Resources.sad1;
+            this.btBad.Location = new System.Drawing.Point(120, 77);
+            this.btBad.Name = "btBad";
+            this.btBad.Size = new System.Drawing.Size(83, 82);
+            this.btBad.TabIndex = 7;
+            this.btBad.UseVisualStyleBackColor = true;
+            this.btBad.Click += new System.EventHandler(this.Botones);
             // 
-            // button1
+            // btVeryBad
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::BuckApp.Properties.Resources.sad_2;
-            this.button1.Location = new System.Drawing.Point(31, 77);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 82);
-            this.button1.TabIndex = 6;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Botones);
+            this.btVeryBad.FlatAppearance.BorderSize = 0;
+            this.btVeryBad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btVeryBad.Image = global::BuckApp.Properties.Resources.sad_2;
+            this.btVeryBad.Location = new System.Drawing.Point(31, 77);
+            this.btVeryBad.Name = "btVeryBad";
+            this.btVeryBad.Size = new System.Drawing.Size(83, 82);
+            this.btVeryBad.TabIndex = 6;
+            this.btVeryBad.UseVisualStyleBackColor = true;
+            this.btVeryBad.Click += new System.EventHandler(this.Botones);
             // 
             // AnswerMood
             // 
@@ -162,11 +162,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(496, 229);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btVeryGood);
+            this.Controls.Add(this.btGood);
+            this.Controls.Add(this.btNormal);
+            this.Controls.Add(this.btBad);
+            this.Controls.Add(this.btVeryBad);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -188,10 +188,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btVeryBad;
+        private System.Windows.Forms.Button btBad;
+        private System.Windows.Forms.Button btNormal;
+        private System.Windows.Forms.Button btGood;
+        private System.Windows.Forms.Button btVeryGood;
     }
 }

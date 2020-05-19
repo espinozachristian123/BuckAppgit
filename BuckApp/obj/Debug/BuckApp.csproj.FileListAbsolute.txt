@@ -102,3 +102,4 @@ C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\Buc
 C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.AnswerMood.resources
 C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.GraficoMood.resources
 C:\Users\Christian\source\repos\BuckAppgit\BuckApp\obj\Debug\BuckApp.AddEvents.resources
+C:\Users\Alex\source\repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.GraficoMood.resources
