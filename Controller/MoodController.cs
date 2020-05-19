@@ -16,6 +16,11 @@ namespace Controller
             moodDao = new MoodDAO();
         }
 
+        public List<String> valueMoods()
+        {
+            return moodDao.loadDataComboBox();
+        }
+
         public Boolean validateInsert(int id_user, int mood, String fecha)
         {
             Mood newMood = new Mood(id_user, mood, fecha); 

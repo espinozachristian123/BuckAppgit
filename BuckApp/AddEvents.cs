@@ -15,16 +15,20 @@ namespace BuckApp
     public partial class AddEvents : Form
     {
         int userID;
-        List<String> typeEvents;
+        List<String> typeEvents, valueMoods;
         private EventController eventController;
+        private MoodController moodController;
         User user;
-        int comienzo=0;
+        String newName, newDescription, newCity, newDirection, newDate,newTime, newDuration, newCategory, newMood;
+        int nPart,newMaxPart, valueMood;
 
         public AddEvents(User user)
         {
             InitializeComponent();
             eventController = new EventController();
+            moodController = new MoodController();
             loadComboBox();
+            loadMoodComboBox();
             this.user = user;
         }
 
@@ -33,7 +37,16 @@ namespace BuckApp
             typeEvents = eventController.loadDataComboBox();
             for (int i = 0; i < typeEvents.Count; i++)
             {
-                comboBox1.Items.Add(typeEvents[i]);
+                CbType.Items.Add(typeEvents[i]);
+            }
+        }
+
+        private void loadMoodComboBox()
+        {
+            valueMoods = moodController.valueMoods();
+            for (int i = 0; i < valueMoods.Count; i++)
+            {
+                cbMood.Items.Add(valueMoods[i]);
             }
         }
         
@@ -42,25 +55,67 @@ namespace BuckApp
             eventController.validateNumbers(e);
         }
 
+        private void loadData()
+        {
+            newName = txtName.Text;
+            newDescription = txtDescription.Text;
+            newCity = txtLocation.Text;
+            newDirection = txtDirection.Text;
+            newDate = dtpDate.Value.ToShortDateString();
+            newTime = dtpTime.Value.ToShortTimeString();
+            newDuration = dtpDate.Value.ToShortTimeString();
+            nPart = 0;
+            newMaxPart = Convert.ToInt32(txtMaxParticipants.Text);
+            newCategory = CbType.SelectedItem.ToString();
+            newMood = cbMood.SelectedItem.ToString();
+            putValuesMood();
+        }
+
+        private void putValuesMood()
+        {
+            switch (newMood)
+            {
+                case "1.-Para personas que estan muy triste":
+                    valueMood = 1;
+                    break;
+
+                case "2.-Para personas que estan triste":
+                    valueMood = 2;
+                    break;
+
+                case "3.-Para personas que estan normal":
+                    valueMood = 3;
+                    break;
+
+                case "4.-Para personas que estan bien":
+                    valueMood = 4;
+                    break;
+
+                case "5.-Para personas que estan muy bien":
+                    valueMood = 5;
+                    break;
+            }
+        }
+
         private void saveEvent(object sender, EventArgs e)
         {
             try
             {
-                int nummax = Convert.ToInt32(txtMaxParticipantes.Text);
-                DateTime fecha = dateTimePicker1.Value;
+                loadData();
+                String dateFinal = newDate + " " + newTime;
                 userID = this.user.Id;
-                if (txtName.Text.Length == 0 || txtDescription.Text.Length == 0 || txtLocation.Text.Length == 0 || txtMaxParticipantes.Text.Length == 0)
+                if (txtName.Text.Length == 0 || txtDescription.Text.Length == 0 || txtLocation.Text.Length == 0 || txtMaxParticipants.Text.Length == 0)
                 {
                     MessageBox.Show("Los Campos no pueden estar vacios!");
                 }
-                else if (nummax > 100)
+                else if (newMaxPart > 100)
                 {
                     MessageBox.Show("Numero de participantes maximos superado");
-                    txtMaxParticipantes.Text = "";
+                    txtMaxParticipants.Text = "";
                 }
                 else
                 {
-                    eventController.addEvent(txtName.Text, txtDescription.Text, txtLocation.Text, fecha.ToString(), comienzo, nummax, comboBox1.Text, userID);
+                    eventController.addEvent(newName, newDescription, newCity, newDirection, dateFinal, newDuration, nPart, newMaxPart, newCategory, valueMood, userID);
                     MessageBox.Show("El evento se ha añadido correctamente!");
                     cleanFields();
                 }
@@ -76,7 +131,7 @@ namespace BuckApp
             txtName.Text = String.Empty;
             txtDescription.Text = String.Empty;
             txtLocation.Text = String.Empty;
-            txtMaxParticipantes.Text = String.Empty;
+            txtMaxParticipants.Text = String.Empty;
         }
     }
 }

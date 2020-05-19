@@ -13,9 +13,21 @@ namespace Model
         private DBConnection dbConnect;
         private MySqlConnection connection;
         List<Mood> moods = new List<Mood>();
+
         public MoodDAO()
         {
             dbConnect = DBConnection.getInstance();
+        }
+
+        public List <String> loadDataComboBox()
+        {
+            List<String> valueMoods = new List<String>();
+            valueMoods.Add("1.-Para personas que estan muy triste");
+            valueMoods.Add("2.-Para personas que estan triste");
+            valueMoods.Add("3.-Para personas que estan normal");
+            valueMoods.Add("4.-Para personas que estan bien");
+            valueMoods.Add("5.-Para personas que estan muy bien");
+            return valueMoods;
         }
 
         public Boolean insertMood(Mood newMood)
@@ -96,6 +108,7 @@ namespace Model
             }
             return moods;
         }
+
         public List<Mood> loadOnePersonMood(int id_user)
         {
             List<Mood> moodsOnePerson = new List<Mood>();

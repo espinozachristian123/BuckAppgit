@@ -13,25 +13,29 @@ namespace BuckApp
 {
     public partial class InfoEvents : Form
     {
-        String name, description, localidad, fecha, type;
-        int  id_event, n_participantes, n_maxParticipantes, id_user, userID;
+        String name, description, city, date, type, duration,direction,time;
+        int  id_event, n_participants, n_maxParticipants, id_user, userID, mood;
 
         List<String> typeEvents;
         
         EventController eventController;
-        
-        public InfoEvents(int id_event,String name, String description, String localidad, String fecha, 
-            int n_participantes, int n_maxParticipantes, String type, int id_user, int userID)
+
+        public InfoEvents(int id_event, String name, String description, String city, String direction, String date,String time,
+            String duration, int n_participants, int n_maxParticipants, String type, int mood, int id_user, int userID)
         {
             InitializeComponent();
             this.id_event = id_event;
             this.name = name;
             this.description = description;
-            this.localidad = localidad;
-            this.fecha = fecha;
-            this.n_participantes = n_participantes;
-            this.n_maxParticipantes = n_maxParticipantes;
+            this.city = city;
+            this.direction = direction;
+            this.date = date;
+            this.time = time;
+            this.duration = duration;
+            this.n_participants = n_participants;
+            this.n_maxParticipants = n_maxParticipants;
             this.type = type;
+            this.mood = mood;
             this.id_user = id_user;
             this.userID = userID;
             eventController = new EventController();
@@ -48,11 +52,15 @@ namespace BuckApp
         {
             tbName.Text = name;
             tbDescription.Text = description;
-            tbLocalidad.Text = localidad;
-            dtpFecha.Value = Convert.ToDateTime(fecha);
-            tbNInscritos.Text = Convert.ToString(n_participantes);
-            tbMaxParticipantes.Text = Convert.ToString(n_maxParticipantes);
-            cbTipo.Text = type;
+            tbCity.Text = city;
+            tbDirection.Text = direction;
+            dtpDate.Value = Convert.ToDateTime(date);
+            tbTime.Text = time;
+            tbDuration.Text = duration;
+            tbNEnroll.Text = Convert.ToString(n_participants);
+            tbMaxParticipants.Text = Convert.ToString(n_maxParticipants);
+            cbType.Text = type;
+            tbMood.Text = Convert.ToString(mood);
         }
 
         private void hideFields()
@@ -61,11 +69,11 @@ namespace BuckApp
             {
                 tbName.ReadOnly = true;
                 tbDescription.ReadOnly = true;
-                tbLocalidad.ReadOnly = true;
-                dtpFecha.Enabled = false;
-                tbNInscritos.ReadOnly = true;
-                tbMaxParticipantes.ReadOnly = true;
-                cbTipo.Enabled = false;
+                tbCity.ReadOnly = true;
+                dtpDate.Enabled = false;
+                tbNEnroll.ReadOnly = true;
+                tbMaxParticipants.ReadOnly = true;
+                cbType.Enabled = false;
                 btModify.Enabled = false;
                 btDelete.Enabled = false;
             }
@@ -76,22 +84,24 @@ namespace BuckApp
             typeEvents = eventController.loadDataComboBox();
             for (int i = 0; i < typeEvents.Count; i++)
             {
-                cbTipo.Items.Add(typeEvents[i]);
+                cbType.Items.Add(typeEvents[i]);
             }
         }
 
         private void registerEvent(object sender, EventArgs e)
         {
             Boolean a = eventController.checkRegister(id_event, userID);
+            DateTime dateFinal = Convert.ToDateTime(date + " " + time);
+            DateTime dateActual = Convert.ToDateTime(DateTime.Now.ToString());
             if(a == false)
             {
-                if (n_participantes < n_maxParticipantes)
+                if ((n_participants < n_maxParticipants) && (dateFinal >= dateActual))
                 {
-                    Boolean b = eventController.registerEvent(fecha, id_event, userID);
+                    Boolean b = eventController.registerEvent(dateFinal, id_event, userID);
                     if (b == true)
                     {
-                        n_participantes++;
-                        Boolean c = eventController.updateNumMax(n_participantes, id_event);
+                        n_participants++;
+                        Boolean c = eventController.updateNumMax(n_participants, id_event);
                         if (c == true)
                         {
                             MessageBox.Show("Usuario registrado en el evento!");
@@ -115,8 +125,8 @@ namespace BuckApp
                     Boolean d = eventController.deleteRegisterEvent(id_event, userID);
                     if(d == true)
                     {
-                        n_participantes--;
-                        Boolean f = eventController.updateNumMax(n_participantes,id_event);
+                        n_participants--;
+                        Boolean f = eventController.updateNumMax(n_participants,id_event);
                         if (f == true)
                         {
                             MessageBox.Show("Usuario borrado del evento!");
@@ -135,10 +145,10 @@ namespace BuckApp
         {
             String newName = tbName.Text;
             String newDescr = tbDescription.Text;
-            String newLocation = tbLocalidad.Text;
-            DateTime newDate = dtpFecha.Value;
-            int newNum_max = Convert.ToInt16(tbMaxParticipantes.Text);
-            String newType = cbTipo.SelectedItem.ToString();
+            String newLocation = tbCity.Text;
+            DateTime newDate = dtpDate.Value;
+            int newNum_max = Convert.ToInt16(tbMaxParticipants.Text);
+            String newType = cbType.SelectedItem.ToString();
             var result = MessageBox.Show("Estas seguro que quieres modificar el evento?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if(result == DialogResult.Yes)
             {

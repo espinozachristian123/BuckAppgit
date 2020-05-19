@@ -60,19 +60,25 @@ namespace BuckApp
 
         private void loadListListView()
         {
+            
             for (int i = 0; i < events.Count; i++)
             {
-                string[] listEvents = new string[9];
+                //DateTime date = Convert.ToDateTime(events[i].Date.ToString());
+                string[] listEvents = new string[13];
                 //add items to ListView
                 listEvents[0] = events[i].Name;
                 listEvents[1] = events[i].Description;
-                listEvents[2] = events[i].Location;
-                listEvents[3] = events[i].Date.ToString();
-                listEvents[4] = events[i].NumParticipants.ToString();
-                listEvents[5] = events[i].NumMaxParticipantes.ToString();
-                listEvents[6] = events[i].Type;
-                listEvents[7] = events[i].Id_user.ToString();
-                listEvents[8] = events[i].Id.ToString();
+                listEvents[2] = events[i].City;
+                listEvents[3] = events[i].Direction;
+                listEvents[4] = Convert.ToDateTime(events[i].Date.ToString()).ToShortDateString();
+                listEvents[5] = Convert.ToDateTime(events[i].Date.ToString()).ToShortTimeString();
+                listEvents[6] = events[i].Duration.ToString();
+                listEvents[7] = events[i].NumParticipants.ToString();
+                listEvents[8] = events[i].NumMaxParticipantes.ToString();
+                listEvents[9] = events[i].Type;
+                listEvents[10] = events[i].Mood.ToString();
+                listEvents[11] = events[i].Id_user.ToString();
+                listEvents[12] = events[i].Id.ToString();
                 itm = new ListViewItem(listEvents);
                 listViewEvent.Items.Add(itm);
             }
@@ -177,14 +183,18 @@ namespace BuckApp
             ListViewItem listItem = listViewEvent.SelectedItems[0];
             String name = listItem.SubItems[0].Text;
             String description = listItem.SubItems[1].Text;
-            String localidad = listItem.SubItems[2].Text;
-            String fecha = listItem.SubItems[3].Text;
-            int n_participantes = Convert.ToInt16(listItem.SubItems[4].Text);
-            int n_maxParticipantes = Convert.ToInt16(listItem.SubItems[5].Text);
-            String type = listItem.SubItems[6].Text;
-            int id_user = Convert.ToInt16(listItem.SubItems[7].Text);
-            int id_event = Convert.ToInt16(listItem.SubItems[8].Text);
-            InfoEvents infoEvents = new InfoEvents(id_event, name, description, localidad, fecha, n_participantes, n_maxParticipantes, type, id_user, user.Id);
+            String city = listItem.SubItems[2].Text;
+            String direction = listItem.SubItems[3].Text;
+            String date = listItem.SubItems[4].Text;
+            String time = listItem.SubItems[5].Text;
+            String duration = listItem.SubItems[6].Text;
+            int n_participants = Convert.ToInt32(listItem.SubItems[7].Text);
+            int n_maxParticipants = Convert.ToInt32(listItem.SubItems[8].Text);
+            String type = listItem.SubItems[9].Text;
+            int mood = Convert.ToInt32(listItem.SubItems[10].Text);
+            int id_user = Convert.ToInt32(listItem.SubItems[11].Text);
+            int id_event = Convert.ToInt32(listItem.SubItems[12].Text);
+            InfoEvents infoEvents = new InfoEvents(id_event, name, description, city, direction, date,time ,duration, n_participants, n_maxParticipants, type, mood, id_user, user.Id);
             infoEvents.ShowDialog();
             updateListView();
         }

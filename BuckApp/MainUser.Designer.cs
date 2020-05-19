@@ -47,10 +47,13 @@
             this.columnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnDescripcion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnLocation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnDirection = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnDuration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnNumPart = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnNumPartMax = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,7 +117,7 @@
             this.cerrarSesionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(794, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1026, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -185,7 +188,10 @@
             this.columnName,
             this.columnDescripcion,
             this.columnLocation,
+            this.columnDirection,
             this.columnDate,
+            this.columnTime,
+            this.columnDuration,
             this.columnNumPart,
             this.columnNumPartMax,
             this.columnType});
@@ -194,7 +200,7 @@
             this.listViewEvent.HideSelection = false;
             this.listViewEvent.Location = new System.Drawing.Point(19, 73);
             this.listViewEvent.Name = "listViewEvent";
-            this.listViewEvent.Size = new System.Drawing.Size(754, 261);
+            this.listViewEvent.Size = new System.Drawing.Size(984, 261);
             this.listViewEvent.TabIndex = 6;
             this.listViewEvent.UseCompatibleStateImageBehavior = false;
             this.listViewEvent.View = System.Windows.Forms.View.Details;
@@ -215,10 +221,20 @@
             this.columnLocation.Text = "Ciudad";
             this.columnLocation.Width = 80;
             // 
+            // columnDirection
+            // 
+            this.columnDirection.Text = "Direccion";
+            this.columnDirection.Width = 150;
+            // 
             // columnDate
             // 
             this.columnDate.Text = "Fecha";
             this.columnDate.Width = 80;
+            // 
+            // columnDuration
+            // 
+            this.columnDuration.Text = "Duracion";
+            this.columnDuration.Width = 80;
             // 
             // columnNumPart
             // 
@@ -232,15 +248,20 @@
             // 
             // columnType
             // 
-            this.columnType.Text = "Tipo";
+            this.columnType.Text = "Categoria";
             this.columnType.Width = 80;
+            // 
+            // columnTime
+            // 
+            this.columnTime.Text = "Hora";
+            this.columnTime.Width = 80;
             // 
             // MainUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(794, 346);
+            this.ClientSize = new System.Drawing.Size(1026, 346);
             this.Controls.Add(this.listViewEvent);
             this.Controls.Add(this.btSearch);
             this.Controls.Add(this.cbCategory);
@@ -284,5 +305,8 @@
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem misActividadesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem actividadesQueEstoyRegistradoToolStripMenuItem;
+        private System.Windows.Forms.ColumnHeader columnDirection;
+        private System.Windows.Forms.ColumnHeader columnDuration;
+        private System.Windows.Forms.ColumnHeader columnTime;
     }
 }

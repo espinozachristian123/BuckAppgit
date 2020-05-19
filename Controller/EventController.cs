@@ -56,13 +56,13 @@ namespace Controller
             return events;
         }
 
-        public Boolean addEvent(string name, string description, string location, string date, int num_participants, int num_participants_max, string type, int id_user)
+        public Boolean addEvent(string name, string description, string city, string direction, string date, string duration, int num_participants, int num_participants_max, string type, int mood, int id_user)
         {
-            Event newEvent = new Event(name, description, location, date, num_participants, num_participants_max, type, id_user);
+            Event newEvent = new Event(name, description, city, direction, date, duration, num_participants, num_participants_max, type, mood, id_user);
             return eventDao.addEvent(newEvent);
         }
 
-        public Boolean registerEvent(string fecha, int id_event, int id_user)
+        public Boolean registerEvent(DateTime fecha, int id_event, int id_user)
         {
             return eventDao.registerEvent(fecha, id_event, id_user);
         }

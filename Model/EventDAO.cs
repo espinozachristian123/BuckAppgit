@@ -38,16 +38,19 @@ namespace Model
                         {
                             while (reader.Read())
                             {
-                                int id = reader.GetInt16(0);
+                                int id = reader.GetInt32(0);
                                 string name = reader.GetString(1);
                                 string description = reader.GetString(2);
                                 string location = reader.GetString(3);
-                                string date = reader.GetDateTime(4).ToString();
-                                int numPart = reader.GetInt16(5);
-                                int numMax = reader.GetInt16(6);
-                                string type = reader.GetString(7);
-                                int id_user = reader.GetInt16(8);
-                                events.Add(new Event(id, name, description, location, date, numPart, numMax, type, id_user));
+                                string direction = reader.GetString(4);
+                                string date = reader.GetDateTime(5).ToString();
+                                string duration = reader.GetTimeSpan(6).ToString();
+                                int numPart = reader.GetInt32(7);
+                                int numMax = reader.GetInt32(8);
+                                string type = reader.GetString(9);
+                                int mood = reader.GetInt32(10);
+                                int id_user = reader.GetInt32(11);
+                                events.Add(new Event(id, name, description, location,direction, date,duration, numPart, numMax, type, mood, id_user));
                             }
                         }
                         else
@@ -100,16 +103,19 @@ namespace Model
                         {
                             while (reader.Read())
                             {
-                                int id = reader.GetInt16(0);
+                                int id = reader.GetInt32(0);
                                 string name = reader.GetString(1);
                                 string description = reader.GetString(2);
                                 string location = reader.GetString(3);
-                                string date = reader.GetDateTime(4).ToString();
-                                int numPart = reader.GetInt16(5);
-                                int numMax = reader.GetInt16(6);
-                                string type = reader.GetString(7);
-                                int id_user = reader.GetInt16(8);
-                                eventsWithFilter.Add(new Event(id, name, description, location, date, numPart, numMax, type, id_user));
+                                string direction = reader.GetString(4);
+                                string date = reader.GetDateTime(5).ToString();
+                                string duration = reader.GetTimeSpan(6).ToString();
+                                int numPart = reader.GetInt32(7);
+                                int numMax = reader.GetInt32(8);
+                                string type = reader.GetString(9);
+                                int mood = reader.GetInt32(10);
+                                int id_user = reader.GetInt32(11);
+                                eventsWithFilter.Add(new Event(id, name, description, location, direction, date, duration, numPart, numMax, type, mood, id_user));
                             }
                         }
                         else
@@ -150,16 +156,19 @@ namespace Model
                         {
                             while (reader.Read())
                             {
-                                int id = reader.GetInt16(0);
+                                int id = reader.GetInt32(0);
                                 string name = reader.GetString(1);
                                 string description = reader.GetString(2);
                                 string location = reader.GetString(3);
-                                string date = reader.GetDateTime(4).ToString();
-                                int numPart = reader.GetInt16(5);
-                                int numMax = reader.GetInt16(6);
-                                string type = reader.GetString(7);
-                                int id_user = reader.GetInt16(8);
-                                eventsWithFilterLocation.Add(new Event(id, name, description, location, date, numPart, numMax, type, id_user));
+                                string direction = reader.GetString(4);
+                                string date = reader.GetDateTime(5).ToString();
+                                string duration = reader.GetTimeSpan(6).ToString();
+                                int numPart = reader.GetInt32(7);
+                                int numMax = reader.GetInt32(8);
+                                string type = reader.GetString(9);
+                                int mood = reader.GetInt32(10);
+                                int id_user = reader.GetInt32(11);
+                                eventsWithFilterLocation.Add(new Event(id, name, description, location, direction, date, duration, numPart, numMax, type, mood, id_user));
                             }
                         }
                         else
@@ -200,16 +209,19 @@ namespace Model
                         {
                             while (reader.Read())
                             {
-                                int id = reader.GetInt16(0);
+                                int id = reader.GetInt32(0);
                                 string name = reader.GetString(1);
                                 string description = reader.GetString(2);
                                 string location = reader.GetString(3);
-                                string date = reader.GetDateTime(4).ToString();
-                                int numPart = reader.GetInt16(5);
-                                int numMax = reader.GetInt16(6);
-                                string type = reader.GetString(7);
-                                int id_user = reader.GetInt16(8);
-                                eventsWithFilterType.Add(new Event(id, name, description, location, date, numPart, numMax, type, id_user));
+                                string direction = reader.GetString(4);
+                                string date = reader.GetDateTime(5).ToString();
+                                string duration = reader.GetTimeSpan(6).ToString();
+                                int numPart = reader.GetInt32(7);
+                                int numMax = reader.GetInt32(8);
+                                string type = reader.GetString(9);
+                                int mood = reader.GetInt32(10);
+                                int id_user = reader.GetInt32(11);
+                                eventsWithFilterType.Add(new Event(id, name, description, location, direction, date, duration, numPart, numMax, type, mood, id_user));
                             }
                         }
                         else
@@ -231,7 +243,7 @@ namespace Model
             return eventsWithFilterType;
         }
 
-        public List<Event> loadOnePersonActivities(int id_user)
+        public List<Event> loadOnePersonActivities(int iD_user)
         {
             List<Event> eventsOnePerson = new List<Event>();
             String QUERY_SELECT_EVENTS__ONE_PERSON = "Select * from events where id_user = @id_user";
@@ -244,21 +256,25 @@ namespace Model
                     connection.Open();
                     using (MySqlCommand cmd = new MySqlCommand(QUERY_SELECT_EVENTS__ONE_PERSON, connection))
                     {
-                        cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", iD_user));
                         MySqlDataReader reader = cmd.ExecuteReader();
                         if (reader.HasRows)
                         {
                             while (reader.Read())
                             {
-                                int id = reader.GetInt16(0);
+                                int id = reader.GetInt32(0);
                                 string name = reader.GetString(1);
                                 string description = reader.GetString(2);
                                 string location = reader.GetString(3);
-                                string date = reader.GetDateTime(4).ToString();
-                                int numPart = reader.GetInt16(5);
-                                int numMax = reader.GetInt16(6);
-                                string type = reader.GetString(7);
-                                eventsOnePerson.Add(new Event(id, name, description, location, date, numPart, numMax, type, id_user));
+                                string direction = reader.GetString(4);
+                                string date = reader.GetDateTime(5).ToString();
+                                string duration = reader.GetTimeSpan(6).ToString();
+                                int numPart = reader.GetInt32(7);
+                                int numMax = reader.GetInt32(8);
+                                string type = reader.GetString(9);
+                                int mood = reader.GetInt32(10);
+                                int id_user = reader.GetInt32(11);
+                                eventsOnePerson.Add(new Event(id, name, description, location, direction, date, duration, numPart, numMax, type, mood, id_user));
                             }
                         }
                         else
@@ -283,7 +299,8 @@ namespace Model
         public Boolean addEvent(Event newEvent)
         {
             Boolean b = false;
-            String QUERY_ADD_USER = "Insert into events (name, description, location, date, num_participants, num_participants_max, type, id_user) values (@name,  @description , @location, @date, @num_participants, @num_participants_max, @type, @id_user)";
+            String QUERY_ADD_USER = "Insert into events (name, description, city, direction, date, duration, num_participants, num_participants_max, name_category,mood ,id_user) " +
+                "values (@name,  @description , @city, @direction, @date, @duration, @num_participants, @num_participants_max, @type, @mood, @id_user)";
             try
             {
                 connection = dbConnect.getConnection();
@@ -295,11 +312,14 @@ namespace Model
                     {
                         cmd.Parameters.Add(new MySqlParameter("@name", newEvent.Name));
                         cmd.Parameters.Add(new MySqlParameter("@description", newEvent.Description));
-                        cmd.Parameters.Add(new MySqlParameter("@location", newEvent.Location));
+                        cmd.Parameters.Add(new MySqlParameter("@city", newEvent.City));
+                        cmd.Parameters.Add(new MySqlParameter("@direction", newEvent.Direction));
                         cmd.Parameters.Add(new MySqlParameter("@date", Convert.ToDateTime(newEvent.Date)));
+                        cmd.Parameters.Add(new MySqlParameter("@duration", newEvent.Duration));
                         cmd.Parameters.Add(new MySqlParameter("@num_participants", newEvent.NumParticipants));
                         cmd.Parameters.Add(new MySqlParameter("@num_participants_max", newEvent.NumMaxParticipantes));
                         cmd.Parameters.Add(new MySqlParameter("@type", newEvent.Type));
+                        cmd.Parameters.Add(new MySqlParameter("@mood", newEvent.Mood));
                         cmd.Parameters.Add(new MySqlParameter("@id_user", newEvent.Id_user));
                         cmd.ExecuteNonQuery();
                         b = true;
@@ -321,7 +341,7 @@ namespace Model
             return b;
         }
 
-        public Boolean registerEvent(string fecha, int id_event, int id_user)
+        public Boolean registerEvent(DateTime fecha, int id_event, int id_user)
         {
             Boolean b = false;
             String QUERY_REGISTER_USEREVENTS = "Insert into userevents (date, id_events, id_user) values (@date,  @id_events , @id_user)";
@@ -334,7 +354,7 @@ namespace Model
                     connection.Open();
                     using (MySqlCommand cmd = new MySqlCommand(QUERY_REGISTER_USEREVENTS, connection))
                     {
-                        cmd.Parameters.Add(new MySqlParameter("@date", Convert.ToDateTime(fecha)));
+                        cmd.Parameters.Add(new MySqlParameter("@date", fecha));
                         cmd.Parameters.Add(new MySqlParameter("@id_events", id_event));
                         cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
                         cmd.ExecuteNonQuery();
@@ -438,7 +458,7 @@ namespace Model
             return b;
         }
 
-        public List <Event> loadActivitiesRegisterOnePerson(int id_user)
+        public List <Event> loadActivitiesRegisterOnePerson(int iD_user)
         {
             List<Event> listEventsRegisterOnePerson = new List<Event>(); ;
             String QUERY_SELECT_EVENTS_REGISTER_ONE_PERSON = "SELECT * FROM events WHERE id IN (SELECT id_events FROM userevents WHERE id_user = @id_user)";
@@ -451,21 +471,25 @@ namespace Model
                     connection.Open();
                     using (MySqlCommand cmd = new MySqlCommand(QUERY_SELECT_EVENTS_REGISTER_ONE_PERSON, connection))
                     {
-                        cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", iD_user));
                         MySqlDataReader reader = cmd.ExecuteReader();
                         if (reader.HasRows)
                         {
                             while (reader.Read())
                             {
-                                int id = reader.GetInt16(0);
+                                int id = reader.GetInt32(0);
                                 string name = reader.GetString(1);
                                 string description = reader.GetString(2);
                                 string location = reader.GetString(3);
-                                string date = reader.GetDateTime(4).ToString();
-                                int numPart = reader.GetInt16(5);
-                                int numMax = reader.GetInt16(6);
-                                string type = reader.GetString(7);
-                                listEventsRegisterOnePerson.Add(new Event(id, name, description, location, date, numPart, numMax, type, id_user));
+                                string direction = reader.GetString(4);
+                                string date = reader.GetDateTime(5).ToString();
+                                string duration = reader.GetTimeSpan(6).ToString();
+                                int numPart = reader.GetInt32(7);
+                                int numMax = reader.GetInt32(8);
+                                string type = reader.GetString(9);
+                                int mood = reader.GetInt32(10);
+                                int id_user = reader.GetInt32(11);
+                                listEventsRegisterOnePerson.Add(new Event(id, name, description, location, direction, date, duration, numPart, numMax, type, mood, id_user));
                             }
                         }
                         else

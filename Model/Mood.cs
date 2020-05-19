@@ -14,6 +14,11 @@ namespace Model
         private int mood;
         private string date;
 
+        public Mood()
+        {
+            
+        }
+
         public Mood(int id_user, int mood, string date)
         {
             this.id_user = id_user;

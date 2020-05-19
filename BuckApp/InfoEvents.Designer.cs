@@ -40,18 +40,27 @@
             this.btDelete = new System.Windows.Forms.Button();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbDescription = new System.Windows.Forms.TextBox();
-            this.tbLocalidad = new System.Windows.Forms.TextBox();
-            this.tbNInscritos = new System.Windows.Forms.TextBox();
+            this.tbCity = new System.Windows.Forms.TextBox();
+            this.tbNEnroll = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.tbMaxParticipantes = new System.Windows.Forms.TextBox();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.cbTipo = new System.Windows.Forms.ComboBox();
+            this.tbMaxParticipants = new System.Windows.Forms.TextBox();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
+            this.cbType = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbDirection = new System.Windows.Forms.TextBox();
+            this.tbTime = new System.Windows.Forms.TextBox();
+            this.tbDuration = new System.Windows.Forms.TextBox();
+            this.tbMood = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(49, 39);
+            this.label1.Location = new System.Drawing.Point(49, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 0;
@@ -60,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(49, 74);
+            this.label2.Location = new System.Drawing.Point(49, 107);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 1;
@@ -69,16 +78,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(49, 112);
+            this.label3.Location = new System.Drawing.Point(49, 145);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Localidad";
+            this.label3.Text = "Ciudad";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(49, 137);
+            this.label4.Location = new System.Drawing.Point(49, 212);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 3;
@@ -87,7 +96,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(49, 165);
+            this.label5.Location = new System.Drawing.Point(49, 317);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 4;
@@ -96,7 +105,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(49, 225);
+            this.label6.Location = new System.Drawing.Point(49, 377);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(28, 13);
             this.label6.TabIndex = 5;
@@ -104,7 +113,7 @@
             // 
             // btRegisterEvent
             // 
-            this.btRegisterEvent.Location = new System.Drawing.Point(52, 266);
+            this.btRegisterEvent.Location = new System.Drawing.Point(52, 457);
             this.btRegisterEvent.Name = "btRegisterEvent";
             this.btRegisterEvent.Size = new System.Drawing.Size(79, 35);
             this.btRegisterEvent.TabIndex = 6;
@@ -114,7 +123,7 @@
             // 
             // btModify
             // 
-            this.btModify.Location = new System.Drawing.Point(155, 266);
+            this.btModify.Location = new System.Drawing.Point(155, 457);
             this.btModify.Name = "btModify";
             this.btModify.Size = new System.Drawing.Size(93, 35);
             this.btModify.TabIndex = 7;
@@ -130,7 +139,7 @@
             this.btDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btDelete.ForeColor = System.Drawing.Color.Yellow;
-            this.btDelete.Location = new System.Drawing.Point(272, 266);
+            this.btDelete.Location = new System.Drawing.Point(272, 457);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(87, 35);
             this.btDelete.TabIndex = 8;
@@ -140,78 +149,161 @@
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(159, 32);
+            this.tbName.Location = new System.Drawing.Point(159, 65);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(200, 20);
             this.tbName.TabIndex = 9;
             // 
             // tbDescription
             // 
-            this.tbDescription.Location = new System.Drawing.Point(159, 60);
+            this.tbDescription.Location = new System.Drawing.Point(159, 93);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.Size = new System.Drawing.Size(200, 34);
             this.tbDescription.TabIndex = 10;
             // 
-            // tbLocalidad
+            // tbCity
             // 
-            this.tbLocalidad.Location = new System.Drawing.Point(159, 104);
-            this.tbLocalidad.Name = "tbLocalidad";
-            this.tbLocalidad.Size = new System.Drawing.Size(200, 20);
-            this.tbLocalidad.TabIndex = 11;
+            this.tbCity.Location = new System.Drawing.Point(159, 137);
+            this.tbCity.Name = "tbCity";
+            this.tbCity.Size = new System.Drawing.Size(200, 20);
+            this.tbCity.TabIndex = 11;
             // 
-            // tbNInscritos
+            // tbNEnroll
             // 
-            this.tbNInscritos.Location = new System.Drawing.Point(159, 158);
-            this.tbNInscritos.Name = "tbNInscritos";
-            this.tbNInscritos.Size = new System.Drawing.Size(200, 20);
-            this.tbNInscritos.TabIndex = 13;
+            this.tbNEnroll.Location = new System.Drawing.Point(159, 310);
+            this.tbNEnroll.Name = "tbNEnroll";
+            this.tbNEnroll.Size = new System.Drawing.Size(200, 20);
+            this.tbNEnroll.TabIndex = 13;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(49, 195);
+            this.label7.Location = new System.Drawing.Point(49, 347);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(104, 13);
             this.label7.TabIndex = 15;
             this.label7.Text = "Nº max participantes";
             // 
-            // tbMaxParticipantes
+            // tbMaxParticipants
             // 
-            this.tbMaxParticipantes.Location = new System.Drawing.Point(159, 188);
-            this.tbMaxParticipantes.Name = "tbMaxParticipantes";
-            this.tbMaxParticipantes.Size = new System.Drawing.Size(200, 20);
-            this.tbMaxParticipantes.TabIndex = 16;
+            this.tbMaxParticipants.Location = new System.Drawing.Point(159, 340);
+            this.tbMaxParticipants.Name = "tbMaxParticipants";
+            this.tbMaxParticipants.Size = new System.Drawing.Size(200, 20);
+            this.tbMaxParticipants.TabIndex = 16;
             // 
-            // dtpFecha
+            // dtpDate
             // 
-            this.dtpFecha.CustomFormat = "MMMMdd, yyyy  |  hh:mm:ss";
-            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFecha.Location = new System.Drawing.Point(159, 131);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(200, 20);
-            this.dtpFecha.TabIndex = 17;
+            this.dtpDate.CustomFormat = "MMMMdd, yyyy ";
+            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDate.Location = new System.Drawing.Point(159, 206);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(200, 20);
+            this.dtpDate.TabIndex = 17;
             // 
-            // cbTipo
+            // cbType
             // 
-            this.cbTipo.FormattingEnabled = true;
-            this.cbTipo.Location = new System.Drawing.Point(159, 216);
-            this.cbTipo.Name = "cbTipo";
-            this.cbTipo.Size = new System.Drawing.Size(200, 21);
-            this.cbTipo.TabIndex = 18;
+            this.cbType.FormattingEnabled = true;
+            this.cbType.Location = new System.Drawing.Point(159, 368);
+            this.cbType.Name = "cbType";
+            this.cbType.Size = new System.Drawing.Size(200, 21);
+            this.cbType.TabIndex = 18;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(49, 179);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 13);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Direccion";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(49, 246);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(30, 13);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Hora";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(49, 278);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(50, 13);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Duracion";
+            // 
+            // tbDirection
+            // 
+            this.tbDirection.Location = new System.Drawing.Point(159, 171);
+            this.tbDirection.Name = "tbDirection";
+            this.tbDirection.Size = new System.Drawing.Size(200, 20);
+            this.tbDirection.TabIndex = 22;
+            // 
+            // tbTime
+            // 
+            this.tbTime.Location = new System.Drawing.Point(159, 246);
+            this.tbTime.Name = "tbTime";
+            this.tbTime.Size = new System.Drawing.Size(200, 20);
+            this.tbTime.TabIndex = 23;
+            // 
+            // tbDuration
+            // 
+            this.tbDuration.Location = new System.Drawing.Point(159, 278);
+            this.tbDuration.Name = "tbDuration";
+            this.tbDuration.Size = new System.Drawing.Size(200, 20);
+            this.tbDuration.TabIndex = 24;
+            // 
+            // tbMood
+            // 
+            this.tbMood.Location = new System.Drawing.Point(159, 405);
+            this.tbMood.Name = "tbMood";
+            this.tbMood.Size = new System.Drawing.Size(200, 20);
+            this.tbMood.TabIndex = 25;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(52, 411);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(86, 13);
+            this.label11.TabIndex = 26;
+            this.label11.Text = "Estado de animo";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(142, 24);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(122, 20);
+            this.label12.TabIndex = 27;
+            this.label12.Text = " Datos actividad";
             // 
             // InfoEvents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(411, 323);
-            this.Controls.Add(this.cbTipo);
-            this.Controls.Add(this.dtpFecha);
-            this.Controls.Add(this.tbMaxParticipantes);
+            this.ClientSize = new System.Drawing.Size(411, 516);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.tbMood);
+            this.Controls.Add(this.tbDuration);
+            this.Controls.Add(this.tbTime);
+            this.Controls.Add(this.tbDirection);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.cbType);
+            this.Controls.Add(this.dtpDate);
+            this.Controls.Add(this.tbMaxParticipants);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.tbNInscritos);
-            this.Controls.Add(this.tbLocalidad);
+            this.Controls.Add(this.tbNEnroll);
+            this.Controls.Add(this.tbCity);
             this.Controls.Add(this.tbDescription);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.btDelete);
@@ -246,11 +338,20 @@
         private System.Windows.Forms.Button btDelete;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbDescription;
-        private System.Windows.Forms.TextBox tbLocalidad;
-        private System.Windows.Forms.TextBox tbNInscritos;
+        private System.Windows.Forms.TextBox tbCity;
+        private System.Windows.Forms.TextBox tbNEnroll;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tbMaxParticipantes;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
-        private System.Windows.Forms.ComboBox cbTipo;
+        private System.Windows.Forms.TextBox tbMaxParticipants;
+        private System.Windows.Forms.DateTimePicker dtpDate;
+        private System.Windows.Forms.ComboBox cbType;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbDirection;
+        private System.Windows.Forms.TextBox tbTime;
+        private System.Windows.Forms.TextBox tbDuration;
+        private System.Windows.Forms.TextBox tbMood;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }
