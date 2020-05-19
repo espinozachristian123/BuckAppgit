@@ -58,7 +58,8 @@ namespace Controller
 
         public Boolean addEvent(string name, string description, string location, string date, int num_participants, int num_participants_max, string type, int id_user)
         {
-            return eventDao.addEvent(name,description,location,date,num_participants,num_participants_max,type,id_user);
+            Event newEvent = new Event(name, description, location, date, num_participants, num_participants_max, type, id_user);
+            return eventDao.addEvent(newEvent);
         }
 
         public Boolean registerEvent(string fecha, int id_event, int id_user)

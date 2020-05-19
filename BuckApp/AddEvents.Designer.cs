@@ -195,6 +195,7 @@
             this.Controls.Add(this.Titol);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddEvents";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SubirEventos";
             this.ResumeLayout(false);
             this.PerformLayout();

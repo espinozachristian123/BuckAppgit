@@ -18,7 +18,8 @@ namespace Controller
 
         public Boolean validateInsert(int id_user, int mood, String fecha)
         {
-            return moodDao.insertMood(id_user, mood, fecha);
+            Mood newMood = new Mood(id_user, mood, fecha); 
+            return moodDao.insertMood(newMood);
         }
 
         public List<Mood> loadDatamoods()

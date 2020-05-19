@@ -18,7 +18,7 @@ namespace Model
             dbConnect = DBConnection.getInstance();
         }
 
-        public Boolean insertMood(int id_user,int mood, string fecha)
+        public Boolean insertMood(Mood newMood)
         {
             Boolean b = false;
             String QUERY_ADD_MOOD = "Insert into mood (id_user, mood, date) values (@id_user, @mood, @fecha)";
@@ -31,9 +31,9 @@ namespace Model
                     connection.Open();
                     using (MySqlCommand cmd = new MySqlCommand(QUERY_ADD_MOOD, connection))
                     {
-                        cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
-                        cmd.Parameters.Add(new MySqlParameter("@mood", mood));
-                        cmd.Parameters.Add(new MySqlParameter("@fecha", Convert.ToDateTime(fecha)));
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", newMood.Id_user));
+                        cmd.Parameters.Add(new MySqlParameter("@mood", newMood.Moods));
+                        cmd.Parameters.Add(new MySqlParameter("@fecha", Convert.ToDateTime(newMood.Fecha)));
                         cmd.ExecuteNonQuery();
                         b = true;
                     }

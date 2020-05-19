@@ -225,6 +225,7 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InfoEvents";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InfoEvents";
             this.Load += new System.EventHandler(this.InfoEvents_Load);
             this.ResumeLayout(false);

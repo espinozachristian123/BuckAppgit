@@ -280,7 +280,7 @@ namespace Model
             return eventsOnePerson;
         }
 
-        public Boolean addEvent(string name, string description, string location, string date, int num_participants, int num_participants_max, string type, int id_user)
+        public Boolean addEvent(Event newEvent)
         {
             Boolean b = false;
             String QUERY_ADD_USER = "Insert into events (name, description, location, date, num_participants, num_participants_max, type, id_user) values (@name,  @description , @location, @date, @num_participants, @num_participants_max, @type, @id_user)";
@@ -293,14 +293,14 @@ namespace Model
                     connection.Open();
                     using (MySqlCommand cmd = new MySqlCommand(QUERY_ADD_USER, connection))
                     {
-                        cmd.Parameters.Add(new MySqlParameter("@name", name));
-                        cmd.Parameters.Add(new MySqlParameter("@description", description));
-                        cmd.Parameters.Add(new MySqlParameter("@location", location));
-                        cmd.Parameters.Add(new MySqlParameter("@date", Convert.ToDateTime(date)));
-                        cmd.Parameters.Add(new MySqlParameter("@num_participants", num_participants));
-                        cmd.Parameters.Add(new MySqlParameter("@num_participants_max", num_participants_max));
-                        cmd.Parameters.Add(new MySqlParameter("@type", type));
-                        cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
+                        cmd.Parameters.Add(new MySqlParameter("@name", newEvent.Name));
+                        cmd.Parameters.Add(new MySqlParameter("@description", newEvent.Description));
+                        cmd.Parameters.Add(new MySqlParameter("@location", newEvent.Location));
+                        cmd.Parameters.Add(new MySqlParameter("@date", Convert.ToDateTime(newEvent.Date)));
+                        cmd.Parameters.Add(new MySqlParameter("@num_participants", newEvent.NumParticipants));
+                        cmd.Parameters.Add(new MySqlParameter("@num_participants_max", newEvent.NumMaxParticipantes));
+                        cmd.Parameters.Add(new MySqlParameter("@type", newEvent.Type));
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", newEvent.Id_user));
                         cmd.ExecuteNonQuery();
                         b = true;
                     }

@@ -163,7 +163,7 @@ namespace BuckApp
                 if (b == true)
                 {
                     MessageBox.Show("Evento borrado correctamente !!");
-                    //Close();
+                    Close();
                 }
                 else
                 {

@@ -32,13 +32,25 @@ namespace Model
             this.id_user = id_user;
         }
 
+        public Event(String name, String description, String location, String date, int numParticipants,
+         int numMaxParticipantes, String type, int id_user)
+        {
+            this.name = name;
+            this.description = description;
+            this.location = location;
+            this.date = date;
+            this.numParticipants = numParticipants;
+            this.numMaxParticipantes = numMaxParticipantes;
+            this.type = type;
+            this.id_user = id_user;
+        }
+
         public int Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
         public string Description { get => description; set => description = value; }
         public string Location { get => location; set => location = value; }
         public string Date { get => date; set => date = value; }
         public string Type { get => type; set => type = value; }
-        public string Type1 { get => type; set => type = value; }
         public int NumMaxParticipantes { get => numMaxParticipantes; set => numMaxParticipantes = value; }
         public int Id_user { get => id_user; set => id_user = value; }
         public int NumParticipants { get => numParticipants; set => numParticipants = value; }
