@@ -20,6 +20,7 @@ namespace BuckApp
         private MoodController moodcontroller;
         int numeromood;
         User user;
+        DateTime fecha;
         public GraficoMood(User user)
         {
             InitializeComponent();
@@ -27,58 +28,52 @@ namespace BuckApp
             moodcontroller = new MoodController();
             themood = new List<Mood>();
             loaddatamood();
-            numeromood = themood.Count;
-            //numeromood = numeromood;
         }
 
         private void loaddatamood()
         {
             themood = moodcontroller.loadOnePersonMood(user.Id);
-           
+        }
+
+        private void loadGrafic()
+        {
+            numeromood = themood.Count;
+            for (int i = 0; i < numeromood; i++)
+            {
+                fecha = Convert.ToDateTime(themood[i].Fecha);
+                chart1.Series["Mood"].Points.Add(themood[i].Moods);
+                chart1.Series["Mood"].Points[i].Color = Color.Green;
+                chart1.Series["Mood"].Points[i].AxisLabel = "Mood Dia: " + fecha.ToShortDateString();
+                chart1.Series["Mood"].Points[i].LegendText = "Mood Dia: " + fecha.ToShortDateString();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataTable dt = cn.ConsultarMood();
-            chart1.Titles.Add("Grafico Modd");
-            //foreach (DataRow row in dt.Rows)
-            //{
-            //  Series series = chart1.Series.Add(row["date"].ToString());
-            //series.Points.Add(Convert.ToDouble(row["mood"].ToString()));
-            // series.Label = row["date"].ToString();
-            // series.ChartType = SeriesChartType.FastLine;
-            //  MessageBox.Show("Numero total es "+ dt.Rows.Count);
-            //prueba2
-                for (int i = 0; i< numeromood; i++)
-                {
-                //for (int j = 0; j < i; j++)
-                //{
-                        chart1.Series["Mood"].Points.Add(themood[i].Moods);
-                        chart1.Series["Mood"].Points[i].Color = Color.Green;
-                        chart1.Series["Mood"].Points[i].AxisLabel = "Mood Dia: "+themood[i].Fecha;
-                        chart1.Series["Mood"].Points[i].LegendText = "Mood Dia: " + themood[i].Fecha;
-                // chart1.Series["Mood"].Points[i].Label = "Mood Dia: "+themood[i].Fecha;
 
-                //}
+            if (themood == null)
+            {
+                MessageBox.Show("No tienes datos de Mood!!");
+            } 
+            else if (themood.Count ==1){
 
-                //i = i;
-
-                // }
-
-                //
-                //chart1.Series["Mood"].Points.Add(Convert.ToInt32(row["mood"].ToString()));
-                //chart1.Series["Mood"].Points[1].Color = Color.Red;
-                //chart1.Series["Mood"].Points[1].AxisLabel = "Mood2";
-                //chart1.Series["Mood"].Points[1].LegendText = "Mood2";
-                //chart1.Series["Mood"].Points[1].Label = "Mood2";
-
-
+                MessageBox.Show("Solo tienes un dato mood, No se puede crear grafico, Intentalo Mañana");
             }
+            else
+            {
+                loadGrafic();
+            }
+
         }
 
         private void GraficoMood_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
