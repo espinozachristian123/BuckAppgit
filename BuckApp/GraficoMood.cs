@@ -48,7 +48,7 @@ namespace BuckApp
             // series.Label = row["date"].ToString();
             // series.ChartType = SeriesChartType.FastLine;
             //  MessageBox.Show("Numero total es "+ dt.Rows.Count);
-            //prueba
+            //prueba2
                 for (int i = 0; i< numeromood; i++)
                 {
                 //for (int j = 0; j < i; j++)
