@@ -59,6 +59,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 356);
             this.Controls.Add(this.chart1);
+            this.MaximizeBox = false;
             this.Name = "GraficoMood";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GraficoMood";

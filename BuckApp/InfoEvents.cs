@@ -158,7 +158,7 @@ namespace BuckApp
                         }
                         else
                         {
-                            MessageBox.Show("Actividad completa!");
+                            MessageBox.Show("Actividad completa o fuera de termino!!");
                         }
                     }
                 }

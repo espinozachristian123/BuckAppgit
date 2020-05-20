@@ -23,7 +23,7 @@ namespace Model
         public List<Event> loadDataWithFilterMood(int userID)
         {
             events = new List<Event>();
-            String QUERY_SELECT_EVENTS_WITH_MOOD = "SELECT * FROM `events` WHERE mood in (SELECT mood FROM `mood` where id_user = @id_user ORDER BY date DESC) and  date >= NOW()";
+            String QUERY_SELECT_EVENTS_WITH_MOOD = "SELECT * FROM `events` WHERE mood in (SELECT * FROM (SELECT mood FROM `mood` where id_user = @id_user ORDER BY date DESC LIMIT 1) as t ) and date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();

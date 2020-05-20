@@ -116,6 +116,7 @@
             // 
             this.tbConfirmPassword.Location = new System.Drawing.Point(237, 161);
             this.tbConfirmPassword.Name = "tbConfirmPassword";
+            this.tbConfirmPassword.PasswordChar = '*';
             this.tbConfirmPassword.Size = new System.Drawing.Size(130, 19);
             this.tbConfirmPassword.TabIndex = 7;
             // 
@@ -162,6 +163,7 @@
             this.Font = new System.Drawing.Font("OpenSymbol", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de usuario";

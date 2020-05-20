@@ -297,7 +297,7 @@ namespace BuckApp
                 selected_option = 1;
             }
         }
-
+        
         public bool Exit { get => exit; set => exit = value; }
     }
 }

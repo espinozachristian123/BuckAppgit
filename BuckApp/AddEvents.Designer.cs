@@ -172,12 +172,12 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Fecha:";
             // 
-            // dtpFecha
+            // dtpDate
             // 
             this.dtpDate.CustomFormat = "";
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDate.Location = new System.Drawing.Point(277, 261);
-            this.dtpDate.Name = "dtpFecha";
+            this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(211, 20);
             this.dtpDate.TabIndex = 14;
             // 
@@ -236,12 +236,12 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "Hora:";
             // 
-            // dtpHora
+            // dtpTime
             // 
             this.dtpTime.CustomFormat = "hh:mm";
             this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpTime.Location = new System.Drawing.Point(277, 296);
-            this.dtpTime.Name = "dtpHora";
+            this.dtpTime.Name = "dtpTime";
             this.dtpTime.ShowUpDown = true;
             this.dtpTime.Size = new System.Drawing.Size(211, 20);
             this.dtpTime.TabIndex = 23;
@@ -285,6 +285,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.Titol);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "AddEvents";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SubirEventos";

@@ -43,6 +43,7 @@ namespace BuckApp
                 {
                     usercontroller.validateRegister(username, password, email);
                     MessageBox.Show("Usuario registrado correctamente !!");
+                    Close();
                 }
                 else
                 {
@@ -51,13 +52,27 @@ namespace BuckApp
                 }
             }
         }
+        
+        /*private void controlName()
+        {
+            String newName = tbUsername.Text;
+            if (!newName.Equals(user.Username))
+            {
+                if (usercontroller.sameName(newName) == true)
+                {
+                    MessageBox.Show("Error, usuario registrado anteriormente !!");
+                }
+                else
+                {
+                    usercontroller.modifyNames(newName, user.Id);
+                }
+            }
+        }*/
 
         private void cleanTextBoxPassword()
         {
             tbPassword.Text = String.Empty;
             tbConfirmPassword.Text = String.Empty;
         }
-
-
     }
 }

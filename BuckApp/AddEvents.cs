@@ -130,7 +130,9 @@ namespace BuckApp
                         eventController.addEvent(newName, newDescription, newCity, newDirection, dateFinal, newDuration, nPart, newMaxPart, newCategory, valueMood, userID);
                         MessageBox.Show("El evento se ha añadido correctamente!");
                         cleanFields();
-                    }else
+                        Close();
+                    }
+                    else
                     {
                         MessageBox.Show("Has puesto una fecha anterior a la de hoy!");
                     }
