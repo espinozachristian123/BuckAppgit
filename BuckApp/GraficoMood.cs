@@ -47,15 +47,19 @@ namespace BuckApp
                 chart1.Series["Mood"].Points[i].LegendText = "Mood Dia: " + fecha.ToShortDateString();
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void GraficoMood_Load(object sender, EventArgs e)
         {
+            CargarMetodos();
+        }
 
+        private void CargarMetodos()
+        {
             if (themood == null)
             {
                 MessageBox.Show("No tienes datos de Mood!!");
-            } 
-            else if (themood.Count ==1){
+            }
+            else if (themood.Count == 1)
+            {
 
                 MessageBox.Show("Solo tienes un dato mood, No se puede crear grafico, Intentalo Mañana");
             }
@@ -63,17 +67,6 @@ namespace BuckApp
             {
                 loadGrafic();
             }
-
-        }
-
-        private void GraficoMood_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAtras_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }
