@@ -21,7 +21,7 @@ namespace BuckApp
         User user;
         String newName, newDescription, newCity, newDirection, newDate,newTime, newDuration, newCategory, newMood;
         int nPart,newMaxPart, valueMood;
-        DateTime datehoy,datepasar;
+        DateTime dateToday,dateEvent;
         public AddEvents(User user)
         {
             InitializeComponent();
@@ -68,6 +68,7 @@ namespace BuckApp
             newMaxPart = Convert.ToInt32(txtMaxParticipants.Text);
             newCategory = CbType.Text;
             newMood = cbMood.Text;
+            userID = this.user.Id;
             putValuesMood();
         }
 
@@ -101,12 +102,11 @@ namespace BuckApp
         {
             try
             {
-                datehoy = DateTime.Today;
                 loadData();
+                dateToday = DateTime.Today;
                 String dateFinal = newDate + " " + newTime;
-                userID = this.user.Id;
-                if (txtName.Text.Length == 0 || txtDescription.Text.Length == 0 || txtLocation.Text.Length == 0 ||
-                    txtDirection.Text.Length == 0|| newDate.Length == 0 || newTime.Length == 0 || newDuration.Length == 0 || 
+                if (newName.Length == 0 || newDescription.Length == 0 || newCity.Length == 0 ||
+                    newDirection.Length == 0|| newDate.Length == 0 || newTime.Length == 0 || newDuration.Length == 0 || 
                     txtMaxParticipants.Text.Length == 0||newCategory.Length == 0 || newMood.Length == 0 )
                 {
                     MessageBox.Show("Los Campos no pueden estar vacios!");
@@ -118,8 +118,8 @@ namespace BuckApp
                 }
                 else
                 {
-                    datepasar = Convert.ToDateTime(dateFinal);
-                    if (datepasar>= datehoy)
+                    dateEvent = Convert.ToDateTime(dateFinal);
+                    if (dateEvent >= dateToday)
                     {
                         eventController.addEvent(newName, newDescription, newCity, newDirection, dateFinal, newDuration, nPart, newMaxPart, newCategory, valueMood, userID);
                         MessageBox.Show("El evento se ha añadido correctamente!");
@@ -145,7 +145,6 @@ namespace BuckApp
             txtLocation.Text = String.Empty;
             txtDirection.Text = String.Empty;
             txtMaxParticipants.Text = String.Empty;
-            
         }
     }
 }
