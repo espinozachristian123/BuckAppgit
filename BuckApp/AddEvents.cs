@@ -21,7 +21,7 @@ namespace BuckApp
         User user;
         String newName, newDescription, newCity, newDirection, newDate,newTime, newDuration, newCategory, newMood;
         int nPart,newMaxPart, valueMood;
-
+        DateTime datehoy,datepasar;
         public AddEvents(User user)
         {
             InitializeComponent();
@@ -66,8 +66,8 @@ namespace BuckApp
             newDuration = dtpDate.Value.ToShortTimeString();
             nPart = 0;
             newMaxPart = Convert.ToInt32(txtMaxParticipants.Text);
-            newCategory = CbType.SelectedItem.ToString();
-            newMood = cbMood.SelectedItem.ToString();
+            newCategory = CbType.Text;
+            newMood = cbMood.Text;
             putValuesMood();
         }
 
@@ -101,10 +101,13 @@ namespace BuckApp
         {
             try
             {
+                datehoy = DateTime.Today;
                 loadData();
                 String dateFinal = newDate + " " + newTime;
                 userID = this.user.Id;
-                if (txtName.Text.Length == 0 || txtDescription.Text.Length == 0 || txtLocation.Text.Length == 0 || txtMaxParticipants.Text.Length == 0)
+                if (txtName.Text.Length == 0 || txtDescription.Text.Length == 0 || txtLocation.Text.Length == 0 ||
+                    txtDirection.Text.Length == 0|| newDate.Length == 0 || newTime.Length == 0 || newDuration.Length == 0 || 
+                    txtMaxParticipants.Text.Length == 0||newCategory.Length == 0 || newMood.Length == 0 )
                 {
                     MessageBox.Show("Los Campos no pueden estar vacios!");
                 }
@@ -115,9 +118,18 @@ namespace BuckApp
                 }
                 else
                 {
-                    eventController.addEvent(newName, newDescription, newCity, newDirection, dateFinal, newDuration, nPart, newMaxPart, newCategory, valueMood, userID);
-                    MessageBox.Show("El evento se ha añadido correctamente!");
-                    cleanFields();
+                    datepasar = Convert.ToDateTime(dateFinal);
+                    if (datepasar>= datehoy)
+                    {
+                        eventController.addEvent(newName, newDescription, newCity, newDirection, dateFinal, newDuration, nPart, newMaxPart, newCategory, valueMood, userID);
+                        MessageBox.Show("El evento se ha añadido correctamente!");
+                        cleanFields();
+                    }else
+                    {
+                        MessageBox.Show("Has puesto una fecha anterior a la de hoy!");
+                    }
+
+                    
                 }
             }
             catch (FormatException)
@@ -131,7 +143,9 @@ namespace BuckApp
             txtName.Text = String.Empty;
             txtDescription.Text = String.Empty;
             txtLocation.Text = String.Empty;
+            txtDirection.Text = String.Empty;
             txtMaxParticipants.Text = String.Empty;
+            
         }
     }
 }

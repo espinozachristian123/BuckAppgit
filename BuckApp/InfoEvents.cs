@@ -145,14 +145,19 @@ namespace BuckApp
         {
             String newName = tbName.Text;
             String newDescr = tbDescription.Text;
-            String newLocation = tbCity.Text;
+            String newCity = tbCity.Text;
+            String newDirection = tbDirection.Text;
             DateTime newDate = dtpDate.Value;
+            String newDuration = tbDuration.Text;
+            String newtbMood = tbMood.Text;
+            string nwdate = newDate.ToShortDateString();
+            DateTime dateFinal = Convert.ToDateTime(nwdate + " " + tbTime.Text);
             int newNum_max = Convert.ToInt16(tbMaxParticipants.Text);
             String newType = cbType.SelectedItem.ToString();
             var result = MessageBox.Show("Estas seguro que quieres modificar el evento?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if(result == DialogResult.Yes)
             {
-                Boolean b = eventController.modifyEvent(newName, newDescr, newLocation, newDate, newNum_max, newType, id_event);
+                Boolean b = eventController.modifyEvent(newName, newDescr, newCity,newDirection, dateFinal, newDuration,newNum_max,newType,newtbMood, id_event);
                 if (b == true)
                 {
                     MessageBox.Show("Evento modificado correctamente !!");

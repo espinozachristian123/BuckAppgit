@@ -173,6 +173,7 @@
             // 
             this.tbNEnroll.Location = new System.Drawing.Point(159, 310);
             this.tbNEnroll.Name = "tbNEnroll";
+            this.tbNEnroll.ReadOnly = true;
             this.tbNEnroll.Size = new System.Drawing.Size(200, 20);
             this.tbNEnroll.TabIndex = 13;
             // 

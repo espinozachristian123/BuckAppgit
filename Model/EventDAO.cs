@@ -86,7 +86,7 @@ namespace Model
         public List<Event> loadDataWithFilter(string locationEvent, string typeEvent)
         {
             List<Event> eventsWithFilter = new List<Event>();
-            String QUERY_SELECT_EVENTS_WITH_FILTER = "Select * from events where location = @location and type = @type and date >= NOW()";
+            String QUERY_SELECT_EVENTS_WITH_FILTER = "Select * from events where city = @location and name_category = @type and date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();
@@ -140,7 +140,7 @@ namespace Model
         public List<Event> loadDataWithFilterLocation(string locationEvent)
         {
             List<Event> eventsWithFilterLocation = new List<Event>();
-            String QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION = "Select * from events where location = @location and date >= NOW()";
+            String QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION = "Select * from events where city = @location and date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();
@@ -193,7 +193,7 @@ namespace Model
         public List<Event> loadDataWithFilterType(string typeEvent)
         {
             List<Event> eventsWithFilterType = new List<Event>();
-            String QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION = "Select * from events where type = @type and date >= NOW()";
+            String QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION = "Select * from events where name_category = @type and date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();
@@ -512,11 +512,11 @@ namespace Model
         }
     
 
-        public Boolean modifyEvent(String name, String description, String location, DateTime date, int num_max, String type, int id)
+        public Boolean modifyEvent(string name, string description, string location, string newDirection, DateTime date, string newDuration, int num_max, string type, string newtbMood, int id)
         {
            
             Boolean b = false;
-            String QUERY_MODIFY_EVENT = "UPDATE `events` SET `name`= @name,`description`= @description,`location`= @location,`date`= @date,`num_participants_max`= @num_max,`type`= @type WHERE id = @id";
+            String QUERY_MODIFY_EVENT = "UPDATE `events` SET `name`= @name,`description`= @description,`city`= @location,`direction`= @direction,`date`= @date,`duration`= @duration,`num_participants_max`= @num_max,`name_category`= @type,`mood`= @mood WHERE id = @id";
             try
             {
                 connection = dbConnect.getConnection();
@@ -529,9 +529,12 @@ namespace Model
                         cmd.Parameters.Add(new MySqlParameter("@name", name));
                         cmd.Parameters.Add(new MySqlParameter("@description", description));
                         cmd.Parameters.Add(new MySqlParameter("@location", location));
+                        cmd.Parameters.Add(new MySqlParameter("@direction", newDirection));
                         cmd.Parameters.Add(new MySqlParameter("@date", Convert.ToDateTime(date)));
+                        cmd.Parameters.Add(new MySqlParameter("@duration", newDuration));
                         cmd.Parameters.Add(new MySqlParameter("@num_max", num_max));
                         cmd.Parameters.Add(new MySqlParameter("@type", type));
+                        cmd.Parameters.Add(new MySqlParameter("@mood", Convert.ToInt32(newtbMood)));
                         cmd.Parameters.Add(new MySqlParameter("@id", id));
                         cmd.ExecuteNonQuery();
                         b = true;

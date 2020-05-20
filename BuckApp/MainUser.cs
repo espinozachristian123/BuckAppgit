@@ -31,7 +31,8 @@ namespace BuckApp
             InitializeComponent();
             this.user = user;
             eventController = new EventController();
-            events = new List<Event>();
+           // events = new List<Event>();
+            typeEvents = new List<String>();
             loadEventsListView();
             loadComboBox();
         }
@@ -91,7 +92,7 @@ namespace BuckApp
             try
             {
                 location = tbCity.Text;
-                type = cbCategory.SelectedItem.ToString();
+                type = cbCategory.Text;
                 if (location.Equals(String.Empty) && type.Equals(String.Empty))
                 {
                     events = eventController.loadDatas();
