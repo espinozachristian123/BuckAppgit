@@ -34,7 +34,9 @@ namespace Model
         }
 
         public int Id_user { get => id_user; set => id_user = value; }
+        public int Mod { get => mood; set => mood = value; }
         public int Moods { get => moods; set => moods = value; }
+        public string Date { get => date; set => date = value; }
         public string Fecha { get => fecha; set => fecha = value; }
     }
 }

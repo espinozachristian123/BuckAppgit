@@ -13,7 +13,6 @@ H:\DAM-2-Proyecto\BuckApp\Model\obj\Debug\Model.pdb
 H:\DAM-2-Proyecto\BuckApp\Model\obj\Debug\Model.csprojAssemblyReference.cache
 C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\Model\bin\Debug\Model.dll
 C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\Model\bin\Debug\Model.pdb
-C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\Model\obj\Debug\Model.csprojAssemblyReference.cache
 C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\Model\obj\Debug\Model.csproj.CopyComplete
 C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\Model\obj\Debug\Model.dll

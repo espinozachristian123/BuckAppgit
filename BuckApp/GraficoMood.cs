@@ -40,7 +40,7 @@ namespace BuckApp
             numeromood = themood.Count;
             for (int i = 0; i < numeromood; i++)
             {
-                fecha = Convert.ToDateTime(themood[i].Fecha);
+                fecha = Convert.ToDateTime(themood[i].Date);
                 chart1.Series["Mood"].Points.Add(themood[i].Moods);
                 chart1.Series["Mood"].Points[i].Color = Color.Green;
                 chart1.Series["Mood"].Points[i].AxisLabel = "Mood Dia: " + fecha.ToShortDateString();

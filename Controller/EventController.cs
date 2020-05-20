@@ -20,9 +20,9 @@ namespace Controller
             events = new List<Event>();
         }
 
-        public List<Event> loadDataWithFilterMood()
+        public List<Event> loadDataWithFilterMood(int id_user)
         {
-            events = eventDao.loadDataWithFilterMood();
+            events = eventDao.loadDataWithFilterMood(id_user);
             return events;
         }
 

@@ -21,6 +21,11 @@ namespace Controller
             return moodDao.loadDataComboBox();
         }
 
+        public DateTime takeDate(int userID)
+        {
+            return moodDao.checkDate(userID);
+        }
+
         public Boolean validateInsert(int id_user, int mood, String fecha)
         {
             Mood newMood = new Mood(id_user, mood, fecha); 

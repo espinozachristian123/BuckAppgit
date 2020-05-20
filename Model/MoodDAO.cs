@@ -20,7 +20,7 @@ namespace Model
             dbConnect = DBConnection.getInstance();
         }
 
-        public List <String> loadDataComboBox()
+        public List<String> loadDataComboBox()
         {
             List<String> valueMoods = new List<String>();
             valueMoods.Add("1.-Para personas que estan muy triste");
@@ -31,11 +31,51 @@ namespace Model
             return valueMoods;
         }
 
-       
+        public DateTime checkDate(int userID)
+        {
+            DateTime date = default(DateTime);
+            String QUERY_CHECK_DATE = "SELECT date FROM `mood` WHERE id_user = @id_user ORDER BY date DESC LIMIT 1";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_CHECK_DATE, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", userID));
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                date = reader.GetDateTime(0);
+                            }
+                        }
+                        else
+                        {
+                            date = default(DateTime);
+                        }
+                        reader.Close();
+                    }
+                }
+            }
+            catch (MySqlException error)
+            {
+                date = default(DateTime);
+            }
+            catch (Exception e)
+            {
+                date = default(DateTime);
+            }
+            return date;
+        }
+
         public Boolean insertMood(Mood newMood)
         {
             Boolean b = false;
-            String QUERY_ADD_MOOD = "Insert into mood (id_user, mood, date) values (@id_user, @mood, @fecha)";
+            String QUERY_ADD_MOOD = "Insert into mood (id_user, mood, date) values (@id_user, @mood, @date)";
             try
             {
                 connection = dbConnect.getConnection();
@@ -46,8 +86,8 @@ namespace Model
                     using (MySqlCommand cmd = new MySqlCommand(QUERY_ADD_MOOD, connection))
                     {
                         cmd.Parameters.Add(new MySqlParameter("@id_user", newMood.Id_user));
-                        cmd.Parameters.Add(new MySqlParameter("@mood", newMood.Moods));
-                        cmd.Parameters.Add(new MySqlParameter("@fecha", Convert.ToDateTime(newMood.Fecha)));
+                        cmd.Parameters.Add(new MySqlParameter("@mood", newMood.Mod));
+                        cmd.Parameters.Add(new MySqlParameter("@date", Convert.ToDateTime(newMood.Date)));
                         cmd.ExecuteNonQuery();
                         b = true;
                     }

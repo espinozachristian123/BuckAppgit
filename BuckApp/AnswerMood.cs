@@ -17,7 +17,7 @@ namespace BuckApp
         int mood;
         MoodController moodController;
         User user;
-        DateTime fechaHoy;
+        String fechaHoy;
 
         public AnswerMood(User user)
         {
@@ -52,7 +52,7 @@ namespace BuckApp
 
         public void validate(int mood)
         {
-            fechaHoy = DateTime.Today;
+            fechaHoy = DateTime.Today.ToShortDateString();
             var result = MessageBox.Show("Estas seguro?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
