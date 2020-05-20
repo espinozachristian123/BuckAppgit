@@ -194,17 +194,6 @@ namespace Model
             }
             return moodsOnePerson;
         }
-
-        public DataTable ConsultarMood()
-        {
-            connection = dbConnect.getConnection();
-            string query = "select * from mood";
-            MySqlCommand cmd = new MySqlCommand(query, connection);
-            MySqlDataAdapter data = new MySqlDataAdapter(cmd);
-            DataTable tabla = new DataTable();
-            data.Fill(tabla);
-            return tabla;
-        }
-
+        
     }
 }

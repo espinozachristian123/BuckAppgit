@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,10 +20,12 @@ namespace BuckApp
         String newName, newDescr, newCity, newDirection, newDate, newTime, newDuration, newType, newMood;
         int newNumMax;
 
-        List<String> typeEvents, valuesMood;
+        List<String> valuesMood;
+        List<Categories> categories;
 
         EventController eventController;
         MoodController moodController;
+        CategoriesController categoriesController;
 
         public InfoEvents(int id_event, String name, String description, String city, String direction, String date, String time,
             String duration, int n_participants, int n_maxParticipants, String type, String mood, int id_user, int userID)
@@ -44,6 +47,8 @@ namespace BuckApp
             this.userID = userID;
             eventController = new EventController();
             moodController = new MoodController();
+            categoriesController = new CategoriesController();
+            categories = new List<Categories>();
         }
 
         private void InfoEvents_Load(object sender, EventArgs e)
@@ -117,10 +122,10 @@ namespace BuckApp
 
         private void loadComboBox()
         {
-            typeEvents = eventController.loadDataComboBox();
-            for (int i = 0; i < typeEvents.Count; i++)
+            categories = categoriesController.loadDataComboBox();
+            for (int i = 0; i < categories.Count; i++)
             {
-                cbType.Items.Add(typeEvents[i]);
+                cbType.Items.Add(categories[i].Name);
             }
         }
 

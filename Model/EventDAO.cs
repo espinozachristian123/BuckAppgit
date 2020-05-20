@@ -73,7 +73,7 @@ namespace Model
             return events;
         }
         
-        public List<String> loadDataComboBox()
+        /*public List<String> loadDataComboBox()
         {
             categories.Add("");
             categories.Add("Deportivo");
@@ -82,7 +82,7 @@ namespace Model
             categories.Add("Musical");
             categories.Add("Gastronomico");
             return categories;
-        }
+        }*/
 
         public List<Event> loadDataWithFilter(string locationEvent, string typeEvent)
         {

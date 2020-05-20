@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriesController.cs" />
     <Compile Include="EventController.cs" />
     <Compile Include="MoodController.cs" />
     <Compile Include="UserController.cs" />

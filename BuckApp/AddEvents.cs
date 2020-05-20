@@ -15,18 +15,24 @@ namespace BuckApp
     public partial class AddEvents : Form
     {
         int userID;
-        List<String> typeEvents, valueMoods;
+        List<String> valueMoods;
         private EventController eventController;
         private MoodController moodController;
+        private CategoriesController categoriesController;
         User user;
         String newName, newDescription, newCity, newDirection, newDate,newTime, newDuration, newCategory, newMood;
         int nPart,newMaxPart, valueMood;
         DateTime dateToday,dateEvent;
+
+        List<Categories> categories;
+
         public AddEvents(User user)
         {
             InitializeComponent();
             eventController = new EventController();
             moodController = new MoodController();
+            categoriesController = new CategoriesController();
+            categories = new List<Categories>();
             loadComboBox();
             loadMoodComboBox();
             this.user = user;
@@ -34,10 +40,10 @@ namespace BuckApp
 
         private void loadComboBox()
         {
-            typeEvents = eventController.loadDataComboBox();
-            for (int i = 0; i < typeEvents.Count; i++)
+            categories = categoriesController.loadDataComboBox();
+            for (int i = 0; i < categories.Count; i++)
             {
-                CbType.Items.Add(typeEvents[i]);
+                CbType.Items.Add(categories[i].Name);
             }
         }
 

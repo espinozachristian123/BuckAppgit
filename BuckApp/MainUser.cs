@@ -16,12 +16,14 @@ namespace BuckApp
     {
 
         private EventController eventController;
+        private CategoriesController categoriesController;
         ListViewItem itm;
         List<Event> events;
-        List<String> typeEvents;
         User user;
         Boolean exit;
         int selected_option = 0;
+
+        List<Categories> categories;
 
         string location;
         string type;
@@ -31,8 +33,7 @@ namespace BuckApp
             InitializeComponent();
             this.user = user;
             eventController = new EventController();
-           // events = new List<Event>();
-            typeEvents = new List<String>();
+            categoriesController = new CategoriesController();
             loadEventsListView();
             loadComboBox();
         }
@@ -52,10 +53,10 @@ namespace BuckApp
 
         private void loadComboBox()
         {
-            typeEvents = eventController.loadDataComboBox();
-            for (int i = 0; i < typeEvents.Count; i++)
+            categories = categoriesController.loadDataComboBox();
+            for (int i = 0; i < categories.Count; i++)
             {
-                cbCategory.Items.Add(typeEvents[i]);
+                cbCategory.Items.Add(categories[i].Name);
             }
         }
 
