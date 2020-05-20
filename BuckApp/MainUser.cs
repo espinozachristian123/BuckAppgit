@@ -41,12 +41,8 @@ namespace BuckApp
         private void loadEventsListView()
         {
             events = eventController.loadDataWithFilterMood(user.Id);
-            if (events == null)
-            {
-                MessageBox.Show("No se ha podido cargar la lista de eventos !!");
-            }
-            else
-            {
+            if (events != null)
+            { 
                 loadListListView();
             }
         }
@@ -97,11 +93,7 @@ namespace BuckApp
                 if (location.Equals(String.Empty) && type.Equals(String.Empty))
                 {
                     events = eventController.loadDataWithFilterMood(user.Id);
-                    if (events == null)
-                    {
-                        MessageBox.Show("No se ha podido cargar la lista de eventos !!");
-                    }
-                    else
+                    if (events != null)
                     {
                         loadListListView();
                     }
