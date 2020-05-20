@@ -12,6 +12,7 @@ namespace Model
     {
         private DBConnection dbConnect;
         private MySqlConnection connection;
+
         List<Mood> moods = new List<Mood>();
 
         public MoodDAO()
@@ -30,6 +31,7 @@ namespace Model
             return valueMoods;
         }
 
+       
         public Boolean insertMood(Mood newMood)
         {
             Boolean b = false;
@@ -152,6 +154,7 @@ namespace Model
             }
             return moodsOnePerson;
         }
+
         public DataTable ConsultarMood()
         {
             connection = dbConnect.getConnection();

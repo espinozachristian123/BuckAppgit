@@ -20,10 +20,10 @@ namespace Model
             dbConnect = DBConnection.getInstance();
         }
 
-        public List<Event> loadData()
+        public List<Event> loadDataWithFilterMood()
         {
             events = new List<Event>();
-            String QUERY_SELECT_EVENTS = "SELECT * FROM `events` WHERE date >= NOW()";
+            String QUERY_SELECT_EVENTS_WITH_MOOD = "SELECT * FROM `events` WHERE mood in (SELECT mood FROM `mood` where id_user = 1 ORDER BY date DESC) and  date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();
@@ -31,7 +31,7 @@ namespace Model
                 if (connection != null)
                 {
                     connection.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(QUERY_SELECT_EVENTS, connection))
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_SELECT_EVENTS_WITH_MOOD, connection))
                     {
                         MySqlDataReader reader = cmd.ExecuteReader();
                         if (reader.HasRows)
