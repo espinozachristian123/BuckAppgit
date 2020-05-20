@@ -512,7 +512,7 @@ namespace Model
         }
     
 
-        public Boolean modifyEvent(string name, string description, string location, string newDirection, DateTime date, string newDuration, int num_max, string type, string newtbMood, int id)
+        public Boolean modifyEvent(Event eventModify)
         {
            
             Boolean b = false;
@@ -526,16 +526,16 @@ namespace Model
                     connection.Open();
                     using (MySqlCommand cmd = new MySqlCommand(QUERY_MODIFY_EVENT, connection))
                     {
-                        cmd.Parameters.Add(new MySqlParameter("@name", name));
-                        cmd.Parameters.Add(new MySqlParameter("@description", description));
-                        cmd.Parameters.Add(new MySqlParameter("@location", location));
-                        cmd.Parameters.Add(new MySqlParameter("@direction", newDirection));
-                        cmd.Parameters.Add(new MySqlParameter("@date", Convert.ToDateTime(date)));
-                        cmd.Parameters.Add(new MySqlParameter("@duration", newDuration));
-                        cmd.Parameters.Add(new MySqlParameter("@num_max", num_max));
-                        cmd.Parameters.Add(new MySqlParameter("@type", type));
-                        cmd.Parameters.Add(new MySqlParameter("@mood", Convert.ToInt32(newtbMood)));
-                        cmd.Parameters.Add(new MySqlParameter("@id", id));
+                        cmd.Parameters.Add(new MySqlParameter("@name", eventModify.Name));
+                        cmd.Parameters.Add(new MySqlParameter("@description", eventModify.Description));
+                        cmd.Parameters.Add(new MySqlParameter("@location", eventModify.City));
+                        cmd.Parameters.Add(new MySqlParameter("@direction", eventModify.Direction));
+                        cmd.Parameters.Add(new MySqlParameter("@date", Convert.ToDateTime(eventModify.Date)));
+                        cmd.Parameters.Add(new MySqlParameter("@duration", eventModify.Duration));
+                        cmd.Parameters.Add(new MySqlParameter("@num_max", eventModify.NumMaxParticipantes));
+                        cmd.Parameters.Add(new MySqlParameter("@type", eventModify.Type));
+                        cmd.Parameters.Add(new MySqlParameter("@mood", eventModify.Mood));
+                        cmd.Parameters.Add(new MySqlParameter("@id", eventModify.Id));
                         cmd.ExecuteNonQuery();
                         b = true;
                     }

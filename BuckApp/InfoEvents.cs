@@ -13,15 +13,19 @@ namespace BuckApp
 {
     public partial class InfoEvents : Form
     {
-        String name, description, city, date, type, duration,direction,time;
-        int  id_event, n_participants, n_maxParticipants, id_user, userID, mood;
+        String name, description, city, date, type, duration, direction, time, mood;
+        int id_event, n_participants, n_maxParticipants, id_user, userID, valueMood;
 
-        List<String> typeEvents;
-        
+        String newName, newDescr, newCity, newDirection, newDate, newTime, newDuration, newType, newMood;
+        int newNumMax;
+
+        List<String> typeEvents, valuesMood;
+
         EventController eventController;
+        MoodController moodController;
 
-        public InfoEvents(int id_event, String name, String description, String city, String direction, String date,String time,
-            String duration, int n_participants, int n_maxParticipants, String type, int mood, int id_user, int userID)
+        public InfoEvents(int id_event, String name, String description, String city, String direction, String date, String time,
+            String duration, int n_participants, int n_maxParticipants, String type, String mood, int id_user, int userID)
         {
             InitializeComponent();
             this.id_event = id_event;
@@ -39,28 +43,56 @@ namespace BuckApp
             this.id_user = id_user;
             this.userID = userID;
             eventController = new EventController();
-            loadComboBox();
+            moodController = new MoodController();
         }
 
         private void InfoEvents_Load(object sender, EventArgs e)
         {
-            putDataTextBox();
+            putDataFields();
             hideFields();
+            loadComboBox();
+            loadMoodComboBox();
         }
 
-        private void putDataTextBox()
+        private void putDataFields()
         {
             tbName.Text = name;
             tbDescription.Text = description;
             tbCity.Text = city;
             tbDirection.Text = direction;
             dtpDate.Value = Convert.ToDateTime(date);
-            tbTime.Text = time;
-            tbDuration.Text = duration;
+            dtpTime.Text = time;
+            dtpDuration.Text = duration;
             tbNEnroll.Text = Convert.ToString(n_participants);
             tbMaxParticipants.Text = Convert.ToString(n_maxParticipants);
             cbType.Text = type;
-            tbMood.Text = Convert.ToString(mood);
+            cbMood.Text = mood;
+        }
+
+        private void putValuesMood()
+        {
+            switch (newMood)
+            {
+                case "1.-Para personas que estan muy triste":
+                    valueMood = 1;
+                    break;
+
+                case "2.-Para personas que estan triste":
+                    valueMood = 2;
+                    break;
+
+                case "3.-Para personas que estan normal":
+                    valueMood = 3;
+                    break;
+
+                case "4.-Para personas que estan bien":
+                    valueMood = 4;
+                    break;
+
+                case "5.-Para personas que estan muy bien":
+                    valueMood = 5;
+                    break;
+            }
         }
 
         private void hideFields()
@@ -70,10 +102,14 @@ namespace BuckApp
                 tbName.ReadOnly = true;
                 tbDescription.ReadOnly = true;
                 tbCity.ReadOnly = true;
+                tbDirection.ReadOnly = true;
                 dtpDate.Enabled = false;
+                dtpTime.Enabled = false;
+                dtpDuration.Enabled = false;
                 tbNEnroll.ReadOnly = true;
                 tbMaxParticipants.ReadOnly = true;
                 cbType.Enabled = false;
+                cbMood.Enabled = false;
                 btModify.Enabled = false;
                 btDelete.Enabled = false;
             }
@@ -88,12 +124,21 @@ namespace BuckApp
             }
         }
 
+        private void loadMoodComboBox()
+        {
+            valuesMood = moodController.valueMoods();
+            for (int i = 0; i < valuesMood.Count; i++)
+            {
+                cbMood.Items.Add(valuesMood[i]);
+            }
+        }
+
         private void registerEvent(object sender, EventArgs e)
         {
             Boolean a = eventController.checkRegister(id_event, userID);
             DateTime dateFinal = Convert.ToDateTime(date + " " + time);
             DateTime dateActual = Convert.ToDateTime(DateTime.Now.ToString());
-            if(a == false)
+            if (a == false)
             {
                 if ((n_participants < n_maxParticipants) && (dateFinal >= dateActual))
                 {
@@ -123,10 +168,10 @@ namespace BuckApp
                 if (result == DialogResult.Yes)
                 {
                     Boolean d = eventController.deleteRegisterEvent(id_event, userID);
-                    if(d == true)
+                    if (d == true)
                     {
                         n_participants--;
-                        Boolean f = eventController.updateNumMax(n_participants,id_event);
+                        Boolean f = eventController.updateNumMax(n_participants, id_event);
                         if (f == true)
                         {
                             MessageBox.Show("Usuario borrado del evento!");
@@ -138,33 +183,47 @@ namespace BuckApp
                     }
                 }
             }
-            
+
+        }
+
+        private void takeNewData()
+        {
+            newName = tbName.Text;
+            newDescr = tbDescription.Text;
+            newCity = tbCity.Text;
+            newDirection = tbDirection.Text;
+            newDate = dtpDate.Value.ToShortDateString();
+            newTime = dtpTime.Value.ToShortTimeString();
+            newDuration = dtpDuration.Value.ToShortTimeString();
+            newNumMax = Convert.ToInt32(tbMaxParticipants.Text);
+            newType = cbType.Text;
+            newMood = cbMood.Text;
+            putValuesMood();
         }
 
         private void modifyEvent(object sender, EventArgs e)
         {
-            String newName = tbName.Text;
-            String newDescr = tbDescription.Text;
-            String newCity = tbCity.Text;
-            String newDirection = tbDirection.Text;
-            DateTime newDate = dtpDate.Value;
-            String newDuration = tbDuration.Text;
-            String newtbMood = tbMood.Text;
-            string nwdate = newDate.ToShortDateString();
-            DateTime dateFinal = Convert.ToDateTime(nwdate + " " + tbTime.Text);
-            int newNum_max = Convert.ToInt16(tbMaxParticipants.Text);
-            String newType = cbType.SelectedItem.ToString();
+            takeNewData();
+            DateTime dateToday = DateTime.Today;
+            String dateFinal = newDate + " " + newTime;
             var result = MessageBox.Show("Estas seguro que quieres modificar el evento?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(result == DialogResult.Yes)
+            if (result == DialogResult.Yes)
             {
-                Boolean b = eventController.modifyEvent(newName, newDescr, newCity,newDirection, dateFinal, newDuration,newNum_max,newType,newtbMood, id_event);
-                if (b == true)
+                if(Convert.ToDateTime(newDate) > dateToday)
                 {
-                    MessageBox.Show("Evento modificado correctamente !!");
+                    Boolean b = eventController.modifyEvent(newName, newDescr, newCity, newDirection, dateFinal, newDuration, newNumMax, newType, valueMood, id_event);
+                    if (b == true)
+                    {
+                        MessageBox.Show("Evento modificado correctamente !!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("EL evento no se ha podido modificar !!");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("EL evento no se ha podido modificar !!");
+                    MessageBox.Show("No puedes poner una fecha anterior a la de hoy!!");
                 }
             }
         }

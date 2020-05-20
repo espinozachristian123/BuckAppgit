@@ -72,9 +72,10 @@ namespace Controller
             return eventDao.deleteRegisterEvent(id_event, id_user);
         }
 
-        public Boolean modifyEvent(string name, string description, string location, string newDirection, DateTime date, string newDuration, int num_max, string type, string newtbMood, int id)
+        public Boolean modifyEvent(string name, string description, string city, string direction, string date, string duration, int num_max, string type, int mood, int id)
         {
-            return eventDao.modifyEvent(name, description, location, newDirection, date, newDuration, num_max,type, newtbMood, id);
+            Event eventModify = new Event(id,name, description, city, direction, date, duration, num_max, type, mood);
+            return eventDao.modifyEvent(eventModify);
         }
 
         public Boolean deleteEvent(int id)

@@ -192,7 +192,7 @@ namespace BuckApp
             int n_participants = Convert.ToInt32(listItem.SubItems[7].Text);
             int n_maxParticipants = Convert.ToInt32(listItem.SubItems[8].Text);
             String type = listItem.SubItems[9].Text;
-            int mood = Convert.ToInt32(listItem.SubItems[10].Text);
+            String mood = listItem.SubItems[10].Text;
             int id_user = Convert.ToInt32(listItem.SubItems[11].Text);
             int id_event = Convert.ToInt32(listItem.SubItems[12].Text);
             InfoEvents infoEvents = new InfoEvents(id_event, name, description, city, direction, date,time ,duration, n_participants, n_maxParticipants, type, mood, id_user, user.Id);

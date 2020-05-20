@@ -38,8 +38,8 @@ namespace Model
             this.id_user = id_user;
         }
 
-        public Event(string name, string description, string city, string direction, string date, 
-            string duration, int num_participants, int num_participants_max, string type, int mood, int id_user)
+        public Event(string name, string description, string city, string direction, string date,
+            string duration, int num_participants,int num_participants_max, string type, int mood, int id_user)
         {
             this.name = name;
             this.description = description;
@@ -52,6 +52,21 @@ namespace Model
             this.type = type;
             this.mood = mood;
             this.id_user = id_user;
+        }
+
+        public Event(int id, string name, string description, string city, string direction, string date, 
+            string duration, int num_participants_max, string type, int mood)
+        {
+            this.id = id;
+            this.name = name;
+            this.description = description;
+            this.city = city;
+            this.direction = direction;
+            this.date = date;
+            this.duration = duration;
+            this.numMaxParticipantes = num_participants_max;
+            this.type = type;
+            this.mood = mood;
         }
 
         public int Id { get => id; set => id = value; }

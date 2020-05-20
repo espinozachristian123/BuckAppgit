@@ -73,10 +73,5 @@ namespace BuckApp
                 }
             }
         }
-
-        private void AnswerMood_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
