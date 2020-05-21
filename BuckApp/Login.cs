@@ -43,8 +43,27 @@ namespace BuckApp
                 user = userController.validateUser(username, password);
                 if (user != null)
                 {
-                    DateTime lastDate = moodController.takeDate(user.Id);
-                    if(lastDate == today)
+                    if (user.Rol.Equals("user"))
+                    {
+                        DateTime lastDate = moodController.takeDate(user.Id);
+                        if (lastDate == today)
+                        {
+                            MainUser mainUser = new MainUser(user);
+                            this.Hide();
+                            mainUser.ShowDialog();
+                            if (mainUser.Exit == true)
+                            {
+                                this.Show();
+                            }
+                        }
+                        else
+                        {
+                            AnswerMood answerMood = new AnswerMood(user);
+                            this.Hide();
+                            answerMood.ShowDialog();
+                        }
+                    }
+                    else if(user.Rol.Equals("admin"))
                     {
                         MainUser mainUser = new MainUser(user);
                         this.Hide();
@@ -54,13 +73,6 @@ namespace BuckApp
                             this.Show();
                         }
                     }
-                    else
-                    {
-                        AnswerMood answerMood = new AnswerMood(user);
-                        this.Hide();
-                        answerMood.ShowDialog();
-                    }
-                    
                 }
                 else
                 {
@@ -81,7 +93,6 @@ namespace BuckApp
         {
             Register register = new Register();
             register.ShowDialog();
-
         }
     }
 }

@@ -15,7 +15,7 @@ namespace BuckApp
     public partial class InfoEvents : Form
     {
         String name, description, city, date, type, duration, direction, time, mood;
-        int id_event, n_participants, n_maxParticipants, id_user, userID, valueMood;
+        int id_event, n_participants, n_maxParticipants, id_user, valueMood;
 
         String newName, newDescr, newCity, newDirection, newDate, newTime, newDuration, newType, newMood;
         int newNumMax;
@@ -26,9 +26,10 @@ namespace BuckApp
         EventController eventController;
         MoodController moodController;
         CategoriesController categoriesController;
+        User user;
 
         public InfoEvents(int id_event, String name, String description, String city, String direction, String date, String time,
-            String duration, int n_participants, int n_maxParticipants, String type, String mood, int id_user, int userID)
+            String duration, int n_participants, int n_maxParticipants, String type, String mood, int id_user, User user)
         {
             InitializeComponent();
             this.id_event = id_event;
@@ -44,7 +45,7 @@ namespace BuckApp
             this.type = type;
             this.mood = mood;
             this.id_user = id_user;
-            this.userID = userID;
+            this.user = user;
             eventController = new EventController();
             moodController = new MoodController();
             categoriesController = new CategoriesController();
@@ -102,7 +103,24 @@ namespace BuckApp
 
         private void hideFields()
         {
-            if (id_user != userID)
+            if (user.Rol.Equals("admin"))
+            {
+                tbName.ReadOnly = true;
+                tbDescription.ReadOnly = true;
+                tbCity.ReadOnly = true;
+                tbDirection.ReadOnly = true;
+                dtpDate.Enabled = false;
+                dtpTime.Enabled = false;
+                dtpDuration.Enabled = false;
+                tbNEnroll.ReadOnly = true;
+                tbMaxParticipants.ReadOnly = true;
+                cbType.Enabled = false;
+                cbMood.Enabled = false;
+                btRegisterEvent.Enabled = false;
+                btModify.Enabled = false;
+                btDelete.Enabled = true;
+            }
+            else if ((id_user != user.Id) && (user.Rol.Equals("user")))
             {
                 tbName.ReadOnly = true;
                 tbDescription.ReadOnly = true;
@@ -117,7 +135,7 @@ namespace BuckApp
                 cbMood.Enabled = false;
                 btModify.Enabled = false;
                 btDelete.Enabled = false;
-            }
+            } 
         }
 
         private void loadComboBox()
@@ -140,14 +158,14 @@ namespace BuckApp
 
         private void registerEvent(object sender, EventArgs e)
         {
-            Boolean a = eventController.checkRegister(id_event, userID);
+            Boolean a = eventController.checkRegister(id_event, user.Id);
             DateTime dateFinal = Convert.ToDateTime(date + " " + time);
             DateTime dateActual = Convert.ToDateTime(DateTime.Now.ToString());
             if (a == false)
             {
                 if ((n_participants < n_maxParticipants) && (dateFinal >= dateActual))
                 {
-                    Boolean b = eventController.registerEvent(dateFinal, id_event, userID);
+                    Boolean b = eventController.registerEvent(dateFinal, id_event, user.Id);
                     if (b == true)
                     {
                         n_participants++;
@@ -172,7 +190,7 @@ namespace BuckApp
                 var result = MessageBox.Show("El usuario ya esta registrado en este evento! Quieres eliminarte del evento?", "Borrarte de la actividad", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    Boolean d = eventController.deleteRegisterEvent(id_event, userID);
+                    Boolean d = eventController.deleteRegisterEvent(id_event, user.Id);
                     if (d == true)
                     {
                         n_participants--;

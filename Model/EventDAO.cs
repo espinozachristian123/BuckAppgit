@@ -20,6 +20,57 @@ namespace Model
             dbConnect = DBConnection.getInstance();
         }
 
+        public List<Event> loadAllEventsForAdmin()
+        {
+            events = new List<Event>();
+            String QUERY_SELECT_EVENTS = "SELECT * FROM `events` WHERE date >= NOW()";
+            try{
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_SELECT_EVENTS, connection))
+                    {
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                int id = reader.GetInt32(0);
+                                string name = reader.GetString(1);
+                                string description = reader.GetString(2);
+                                string location = reader.GetString(3);
+                                string direction = reader.GetString(4);
+                                string date = reader.GetDateTime(5).ToString();
+                                string duration = reader.GetTimeSpan(6).ToString();
+                                int numPart = reader.GetInt32(7);
+                                int numMax = reader.GetInt32(8);
+                                string type = reader.GetString(9);
+                                int mood = reader.GetInt32(10);
+                                int id_user = reader.GetInt32(11);
+                                events.Add(new Event(id, name, description, location, direction, date, duration, numPart, numMax, type, mood, id_user));
+                            }
+                        }
+                        else
+                        {
+                            events = null;
+                        }
+                        reader.Close();
+                    }
+                }
+            }
+            catch (MySqlException error)
+            {
+                events = null;
+            }
+            catch (Exception e)
+            {
+                events = null;
+            }
+            return events;
+        }
+
         public List<Event> loadDataWithFilterMood(int userID)
         {
             events = new List<Event>();

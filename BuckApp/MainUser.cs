@@ -34,17 +34,42 @@ namespace BuckApp
             this.user = user;
             eventController = new EventController();
             categoriesController = new CategoriesController();
+            hideButtons();
             loadEventsListView();
             loadComboBox();
         }
 
+        private void hideButtons()
+        {
+            if (user.Rol.Equals("admin"))
+            {
+                consultProfileToolStripMenuItem.Enabled = false;
+                consultGraphicToolStripMenuItem.Enabled = false;
+                misActividadesToolStripMenuItem.Enabled = false;
+                actividadesQueEstoyRegistradoToolStripMenuItem.Enabled = false;
+            }
+            
+        }
+
         private void loadEventsListView()
         {
-            events = eventController.loadDataWithFilterMood(user.Id);
-            if (events != null)
-            { 
-                loadListListView();
+            if (user.Rol.Equals("admin"))
+            {
+                events = eventController.loadAllEventsForAdmin();
+                if (events != null)
+                {
+                    loadListListView();
+                }
             }
+            else if (user.Rol.Equals("user"))
+            {
+                events = eventController.loadDataWithFilterMood(user.Id);
+                if (events != null)
+                {
+                    loadListListView();
+                }
+            }
+            
         }
 
         private void loadComboBox()
@@ -188,7 +213,7 @@ namespace BuckApp
             String mood = listItem.SubItems[10].Text;
             int id_user = Convert.ToInt32(listItem.SubItems[11].Text);
             int id_event = Convert.ToInt32(listItem.SubItems[12].Text);
-            InfoEvents infoEvents = new InfoEvents(id_event, name, description, city, direction, date,time ,duration, n_participants, n_maxParticipants, type, mood, id_user, user.Id);
+            InfoEvents infoEvents = new InfoEvents(id_event, name, description, city, direction, date,time ,duration, n_participants, n_maxParticipants, type, mood, id_user, user);
             infoEvents.ShowDialog();
             updateListView();
         }

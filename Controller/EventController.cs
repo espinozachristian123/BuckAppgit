@@ -26,11 +26,10 @@ namespace Controller
             return events;
         }
 
-        /*public List <String> loadDataComboBox()
+        public List<Event> loadAllEventsForAdmin()
         {
-            datosComboBox = eventDao.loadDataComboBox();
-            return datosComboBox;
-        }*/
+            return eventDao.loadAllEventsForAdmin();
+        }
 
         public List<Event> loadDataWithFilter(String location, String type)
         {
