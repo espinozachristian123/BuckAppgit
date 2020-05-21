@@ -31,7 +31,7 @@ namespace Model
         {
             try
             {
-                using (con = new MySqlConnection(connectionString)) ;
+                using (con = new MySqlConnection(connectionString));
 
 
             }
