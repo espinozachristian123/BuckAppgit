@@ -13,7 +13,10 @@ namespace BuckApp
 {
     public partial class Register : Form
     {
-        
+        String username;
+        String password;
+        String confirmPassword;
+        String email;
         UserController usercontroller;
         public Register()
         {
@@ -24,10 +27,10 @@ namespace BuckApp
         
         private void registerUser(object sender, EventArgs e)
         {
-            String username = tbUsername.Text;
-            String password = tbPassword.Text;
-            String confirmPassword = tbConfirmPassword.Text;
-            String email = tbEmail.Text;
+            username = tbUsername.Text;
+            password = tbPassword.Text;
+            confirmPassword = tbConfirmPassword.Text;
+            email = tbEmail.Text;
             
             if (username.Equals(String.Empty) || password.Equals(String.Empty) || confirmPassword.Equals(String.Empty) || email.Equals(String.Empty))
             {
@@ -39,35 +42,43 @@ namespace BuckApp
             }
             else
             {
-                if (password.Equals(confirmPassword))
+                if(controlName() == true)
                 {
-                    usercontroller.validateRegister(username, password, email);
-                    MessageBox.Show("Usuario registrado correctamente !!");
-                    Close();
+                    controlpass();
                 }
-                else
-                {
-                    MessageBox.Show("Las dos contraseñas no coinciden !!");
-                    cleanTextBoxPassword();
-                }
+                
             }
         }
-        
-        /*private void controlName()
+
+        private void controlpass()
         {
-            String newName = tbUsername.Text;
-            if (!newName.Equals(user.Username))
+            if (password.Equals(confirmPassword))
             {
-                if (usercontroller.sameName(newName) == true)
-                {
-                    MessageBox.Show("Error, usuario registrado anteriormente !!");
-                }
-                else
-                {
-                    usercontroller.modifyNames(newName, user.Id);
-                }
+                usercontroller.validateRegister(username, password, email);
+                MessageBox.Show("Usuario registrado correctamente !!");
+                Close();
             }
-        }*/
+            else
+            {
+                MessageBox.Show("Las dos contraseñas no coinciden !!");
+                cleanTextBoxPassword();
+            }
+        }
+
+        private bool controlName()
+        {
+            if (usercontroller.sameName(username) == true)
+            {
+                MessageBox.Show("Error, usuario registrado anteriormente !!");
+                tbUsername.Text = "";
+                return false;
+            }
+            else
+            {
+            return true;
+            }
+            
+        }
 
         private void cleanTextBoxPassword()
         {
