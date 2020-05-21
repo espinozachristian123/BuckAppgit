@@ -49,13 +49,8 @@ C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debug\Bu
 C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debug\Controller.dll
 C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debug\Model.dll
 C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debug\MySql.Data.dll
-C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debug\Google.Protobuf.dll
-C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debug\BouncyCastle.Crypto.dll
-C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debug\Ubiety.Dns.Core.dll
-C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debug\Renci.SshNet.dll
 C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debug\Controller.pdb
 C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debug\Model.pdb
-C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debug\MySql.Data.xml
 C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.csprojAssemblyReference.cache
 C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.InfoEvents.resources
 C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.Login.resources
@@ -126,3 +121,6 @@ C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debu
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.csproj.CopyComplete
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.exe
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.pdb
+C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.AnswerMood.resources
+C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.GraficoMood.resources
+C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.AddEvents.resources
