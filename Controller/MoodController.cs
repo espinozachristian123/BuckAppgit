@@ -32,7 +32,7 @@ namespace Controller
             return moodDao.insertMood(newMood);
         }
 
-        public List<Mood> loadDatamoods()
+        public List<Mood> loadDataMoods()
         {
             moods = moodDao.loadData();
             return moods;

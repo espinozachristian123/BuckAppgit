@@ -14,26 +14,30 @@ namespace BuckApp
 {
     public partial class MainUser : Form
     {
+        private string location, type;
+        private int selected_option = 0;
+        Boolean exit;
+
+        private ListViewItem itm;
+        private List<Event> events;
+        private List<Categories> categories;
 
         private EventController eventController;
         private CategoriesController categoriesController;
-        ListViewItem itm;
-        List<Event> events;
+        
         User user;
-        Boolean exit;
-        int selected_option = 0;
-
-        List<Categories> categories;
-
-        string location;
-        string type;
-
+        
         public MainUser(User user)
         {
             InitializeComponent();
             this.user = user;
             eventController = new EventController();
             categoriesController = new CategoriesController();
+            
+        }
+
+        private void MainUser_Load(object sender, EventArgs e)
+        {
             hideButtons();
             loadEventsListView();
             loadComboBox();
@@ -48,7 +52,6 @@ namespace BuckApp
                 misActividadesToolStripMenuItem.Enabled = false;
                 actividadesQueEstoyRegistradoToolStripMenuItem.Enabled = false;
             }
-            
         }
 
         private void loadEventsListView()
@@ -252,20 +255,6 @@ namespace BuckApp
             selected_option = 2;
             updateListView();
         }
-
-        private void logOut(object sender, EventArgs e)
-        {
-            var answer = MessageBox.Show("Estas seguro de cerrar sesion?? ", "Cerrar sesion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (answer == DialogResult.Yes)
-            {
-                this.Close();
-                exit = true;
-            }
-            else
-            {
-                exit = false;
-            }
-        }
         
         private void consultGraphicToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -314,7 +303,21 @@ namespace BuckApp
                 selected_option = 1;
             }
         }
-        
+
+        private void logOut(object sender, EventArgs e)
+        {
+            var answer = MessageBox.Show("Estas seguro de cerrar sesion?? ", "Cerrar sesion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (answer == DialogResult.Yes)
+            {
+                this.Close();
+                exit = true;
+            }
+            else
+            {
+                exit = false;
+            }
+        }
+
         public bool Exit { get => exit; set => exit = value; }
     }
 }

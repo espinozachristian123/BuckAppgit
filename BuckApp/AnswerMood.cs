@@ -14,11 +14,12 @@ namespace BuckApp
 {
     public partial class AnswerMood : Form
     {
+        String fechaHoy;
         int mood;
+
         MoodController moodController;
         User user;
-        String fechaHoy;
-
+        
         public AnswerMood(User user)
         {
             InitializeComponent();
@@ -64,7 +65,8 @@ namespace BuckApp
                     mainUser.ShowDialog();
                     if (mainUser.Exit == true)
                     {
-                        this.Show();
+                        Login login = new Login();
+                        login.ShowDialog();
                     }
                 }
                 else

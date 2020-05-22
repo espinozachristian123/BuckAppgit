@@ -26,6 +26,7 @@ namespace BuckApp
         EventController eventController;
         MoodController moodController;
         CategoriesController categoriesController;
+
         User user;
 
         public InfoEvents(int id_event, String name, String description, String city, String direction, String date, String time,
@@ -75,32 +76,6 @@ namespace BuckApp
             cbMood.Text = mood;
         }
 
-        private void putValuesMood()
-        {
-            switch (newMood)
-            {
-                case "1.-Para personas que estan muy triste":
-                    valueMood = 1;
-                    break;
-
-                case "2.-Para personas que estan triste":
-                    valueMood = 2;
-                    break;
-
-                case "3.-Para personas que estan normal":
-                    valueMood = 3;
-                    break;
-
-                case "4.-Para personas que estan bien":
-                    valueMood = 4;
-                    break;
-
-                case "5.-Para personas que estan muy bien":
-                    valueMood = 5;
-                    break;
-            }
-        }
-
         private void hideFields()
         {
             if (user.Rol.Equals("admin"))
@@ -135,7 +110,7 @@ namespace BuckApp
                 cbMood.Enabled = false;
                 btModify.Enabled = false;
                 btDelete.Enabled = false;
-            } 
+            }
         }
 
         private void loadComboBox()
@@ -155,7 +130,7 @@ namespace BuckApp
                 cbMood.Items.Add(valuesMood[i]);
             }
         }
-
+        
         private void registerEvent(object sender, EventArgs e)
         {
             Boolean a = eventController.checkRegister(id_event, user.Id);
@@ -209,21 +184,6 @@ namespace BuckApp
 
         }
 
-        private void takeNewData()
-        {
-            newName = tbName.Text;
-            newDescr = tbDescription.Text;
-            newCity = tbCity.Text;
-            newDirection = tbDirection.Text;
-            newDate = dtpDate.Value.ToShortDateString();
-            newTime = dtpTime.Value.ToShortTimeString();
-            newDuration = dtpDuration.Value.ToShortTimeString();
-            newNumMax = Convert.ToInt32(tbMaxParticipants.Text);
-            newType = cbType.Text;
-            newMood = cbMood.Text;
-            putValuesMood();
-        }
-
         private void modifyEvent(object sender, EventArgs e)
         {
             takeNewData();
@@ -248,6 +208,47 @@ namespace BuckApp
                 {
                     MessageBox.Show("No puedes poner una fecha anterior a la de hoy!!");
                 }
+            }
+        }
+
+        private void takeNewData()
+        {
+            newName = tbName.Text;
+            newDescr = tbDescription.Text;
+            newCity = tbCity.Text;
+            newDirection = tbDirection.Text;
+            newDate = dtpDate.Value.ToShortDateString();
+            newTime = dtpTime.Value.ToShortTimeString();
+            newDuration = dtpDuration.Value.ToShortTimeString();
+            newNumMax = Convert.ToInt32(tbMaxParticipants.Text);
+            newType = cbType.Text;
+            newMood = cbMood.Text;
+            putValuesMood();
+        }
+
+        private void putValuesMood()
+        {
+            switch (newMood)
+            {
+                case "1.-Para personas que estan muy triste":
+                    valueMood = 1;
+                    break;
+
+                case "2.-Para personas que estan triste":
+                    valueMood = 2;
+                    break;
+
+                case "3.-Para personas que estan normal":
+                    valueMood = 3;
+                    break;
+
+                case "4.-Para personas que estan bien":
+                    valueMood = 4;
+                    break;
+
+                case "5.-Para personas que estan muy bien":
+                    valueMood = 5;
+                    break;
             }
         }
 

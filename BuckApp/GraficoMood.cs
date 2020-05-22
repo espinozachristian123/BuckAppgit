@@ -15,41 +15,33 @@ namespace BuckApp
 {
     public partial class GraficoMood : Form
     {
-        List<Mood> themood;
-        MoodDAO cn = new MoodDAO();
+        private int numeromood;
+        private DateTime fecha;
+        private List<Mood> themood;
+
+        private MoodDAO cn;
         private MoodController moodcontroller;
-        int numeromood;
+        
         User user;
-        DateTime fecha;
+        
         public GraficoMood(User user)
         {
             InitializeComponent();
             this.user = user;
             moodcontroller = new MoodController();
             themood = new List<Mood>();
+            cn = new MoodDAO();
             loaddatamood();
+        }
+
+        private void GraficoMood_Load(object sender, EventArgs e)
+        {
+            CargarMetodos();
         }
 
         private void loaddatamood()
         {
             themood = moodcontroller.loadOnePersonMood(user.Id);
-        }
-
-        private void loadGrafic()
-        {
-            numeromood = themood.Count;
-            for (int i = 0; i < numeromood; i++)
-            {
-                fecha = Convert.ToDateTime(themood[i].Date);
-                chart1.Series["Mood"].Points.Add(themood[i].Moods);
-                chart1.Series["Mood"].Points[i].Color = Color.Green;
-                chart1.Series["Mood"].Points[i].AxisLabel = "Mood Dia: " + fecha.ToShortDateString();
-                chart1.Series["Mood"].Points[i].LegendText = "Mood Dia: " + fecha.ToShortDateString();
-            }
-        }
-        private void GraficoMood_Load(object sender, EventArgs e)
-        {
-            CargarMetodos();
         }
 
         private void CargarMetodos()
@@ -66,6 +58,19 @@ namespace BuckApp
             else
             {
                 loadGrafic();
+            }
+        }
+
+        private void loadGrafic()
+        {
+            numeromood = themood.Count;
+            for (int i = 0; i < numeromood; i++)
+            {
+                fecha = Convert.ToDateTime(themood[i].Date);
+                chart1.Series["Mood"].Points.Add(themood[i].Moods);
+                chart1.Series["Mood"].Points[i].Color = Color.Green;
+                chart1.Series["Mood"].Points[i].AxisLabel = "Mood Dia: " + fecha.ToShortDateString();
+                chart1.Series["Mood"].Points[i].LegendText = "Mood Dia: " + fecha.ToShortDateString();
             }
         }
     }

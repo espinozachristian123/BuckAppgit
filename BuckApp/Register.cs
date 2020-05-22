@@ -13,11 +13,10 @@ namespace BuckApp
 {
     public partial class Register : Form
     {
-        String username;
-        String password;
-        String confirmPassword;
-        String email;
+        String username, password, confirmPassword, email;
+
         UserController usercontroller;
+
         public Register()
         {
             this.MaximizeBox = false;
@@ -50,6 +49,20 @@ namespace BuckApp
             }
         }
 
+        private bool controlName()
+        {
+            if (usercontroller.sameName(username) == true)
+            {
+                MessageBox.Show("Error, usuario registrado anteriormente !!");
+                tbUsername.Text = "";
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
         private void controlpass()
         {
             if (password.Equals(confirmPassword))
@@ -64,22 +77,7 @@ namespace BuckApp
                 cleanTextBoxPassword();
             }
         }
-
-        private bool controlName()
-        {
-            if (usercontroller.sameName(username) == true)
-            {
-                MessageBox.Show("Error, usuario registrado anteriormente !!");
-                tbUsername.Text = "";
-                return false;
-            }
-            else
-            {
-            return true;
-            }
-            
-        }
-
+        
         private void cleanTextBoxPassword()
         {
             tbPassword.Text = String.Empty;
