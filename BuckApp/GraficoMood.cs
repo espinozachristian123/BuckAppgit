@@ -31,20 +31,20 @@ namespace BuckApp
             moodcontroller = new MoodController();
             themood = new List<Mood>();
             cn = new MoodDAO();
-            loaddatamood();
         }
 
         private void GraficoMood_Load(object sender, EventArgs e)
         {
-            CargarMetodos();
+            loadDataMood();
+            loadGraphicMood();
         }
 
-        private void loaddatamood()
+        private void loadDataMood()
         {
             themood = moodcontroller.loadOnePersonMood(user.Id);
         }
 
-        private void CargarMetodos()
+        private void loadGraphicMood()
         {
             if (themood == null)
             {
@@ -53,7 +53,8 @@ namespace BuckApp
             else if (themood.Count == 1)
             {
 
-                MessageBox.Show("Solo tienes un dato mood, No se puede crear grafico, Intentalo Mañana");
+                MessageBox.Show("Con un dato de estado de animo, no es posible crear un grafico !!");
+                this.Close();
             }
             else
             {

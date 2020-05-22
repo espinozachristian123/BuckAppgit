@@ -28,6 +28,9 @@ namespace BuckApp
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void loadData()
         {
             txtName.Text = user.Username;
@@ -37,7 +40,11 @@ namespace BuckApp
             txtRol.Text = user.Rol;
         }
         
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void modificarPerfil(object sender, EventArgs e)
         {
             String newName = txtName.Text;
@@ -82,6 +89,9 @@ namespace BuckApp
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void controlName()
         {
             String newName = txtName.Text;
@@ -98,6 +108,9 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void controlEmail()
         {
             String newEmail = txtEmail.Text;

@@ -26,6 +26,14 @@ namespace BuckApp
             moodController = new MoodController();
         }
 
+        /// <summary>
+        //we collect the data from the textbox, if the fields are empty the program returns an error message
+        //If the information is complete, we search for a user with those credentials in the database.
+        //If the user is not found, the program notifies the client, otherwise the program accesses the following window with the user's complete information.
+        //To decide which window goes to the user, the program looks at 2 factors: 1- Registration of a state of mind 2- If that registration is from today or not
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void validate(object sender, EventArgs e)
         {
             String username = tbUsername.Text;
@@ -82,14 +90,20 @@ namespace BuckApp
             }
         }
 
-        
+        /// <summary>
+        /// Empty the current two fields
+        /// </summary>
         private void cleanFields()
         {
             tbUsername.Text = "";
             tbPassword.Text = "";
         }
 
-        
+        /// <summary>
+        /// Redirect to the register window to be able to log in later
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void registerClick(object sender, EventArgs e)
         {
             Register register = new Register();

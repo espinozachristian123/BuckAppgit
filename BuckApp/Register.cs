@@ -23,7 +23,14 @@ namespace BuckApp
             InitializeComponent();
             usercontroller = new UserController(); 
         }
-        
+
+        /// <summary>
+        /// Take the data from the fields.
+        /// Check if these data are not empty, if the password does not reach the minimum value of length and if the email already exists
+        /// After all those checks, if it does, add a new user to the database called the controlPass method.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void registerUser(object sender, EventArgs e)
         {
             username = tbUsername.Text;
@@ -57,6 +64,10 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// Check that the username has not been previously registered
+        /// </summary>
+        /// <returns> true if the name has not been registered and false if it already exists </returns>
         private bool controlName()
         {
             if (usercontroller.sameName(username) == true)
@@ -72,6 +83,11 @@ namespace BuckApp
 
         }
 
+        /// <summary>
+        /// Check that the email model is valid
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns> true if the email is correct and false if it is not </returns>
         private bool controlEmail(String email)
         {
             Boolean b;
@@ -86,6 +102,11 @@ namespace BuckApp
             return b;
         }
 
+        /// <summary>
+        /// Check the data in the password and new password field.
+        /// If that condition is met, then add the user to the database
+        /// Otherwise it calls the method of emptying fields and displays an error message
+        /// </summary>
         private void controlpass()
         {
             if (password.Equals(confirmPassword))
@@ -100,7 +121,10 @@ namespace BuckApp
                 cleanTextBoxPassword();
             }
         }
-        
+
+        /// <summary>
+        /// Empty the current fields
+        /// </summary>
         private void cleanTextBoxPassword()
         {
             tbPassword.Text = String.Empty;
