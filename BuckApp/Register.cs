@@ -30,14 +30,22 @@ namespace BuckApp
             password = tbPassword.Text;
             confirmPassword = tbConfirmPassword.Text;
             email = tbEmail.Text;
-            
+
             if (username.Equals(String.Empty) || password.Equals(String.Empty) || confirmPassword.Equals(String.Empty) || email.Equals(String.Empty))
             {
                 MessageBox.Show("No pueden haber campos vacios !!");
             }
+            else if(password.Length <= 8)
+            {
+                MessageBox.Show("Longitud minima debe superar los 8 digitos");
+            }
             else if (usercontroller.sameEmail(email) == true)
             {
                 MessageBox.Show("Error, correo registrado anteriormente !!");
+            }
+            else if (controlEmail(email) == false)
+            {
+                MessageBox.Show("Modelo de correo incorrecto!!");
             }
             else
             {
@@ -63,6 +71,21 @@ namespace BuckApp
             }
 
         }
+
+        private bool controlEmail(String email)
+        {
+            Boolean b;
+            if ( email.Contains("@gmail.com") || email.Contains("@hotmail.com"))
+            {
+                b = true;
+            }
+            else
+            {
+                b = false;
+            }
+            return b;
+        }
+
         private void controlpass()
         {
             if (password.Equals(confirmPassword))

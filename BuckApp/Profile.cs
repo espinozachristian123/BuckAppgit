@@ -52,6 +52,10 @@ namespace BuckApp
                 {
                     MessageBox.Show("No pueden haber campos vacios !!");
                 }
+                else if (newPass.Length <= 8)
+                {
+                    MessageBox.Show("El minimo de digitos debe de ser 9 !");
+                }
                 else if (newName.Equals(user.Username) && newPass.Equals(user.Password) && newEmail.Equals(user.Email))
                 {
                     MessageBox.Show("No se ha modificado el ningun campo");
@@ -102,6 +106,10 @@ namespace BuckApp
                 if (usercontrol.sameEmail(newEmail) == true)
                 {
                     MessageBox.Show("Error, correo registrado anteriormente !!");
+                }
+                else if(!(newEmail.Contains("@gmail.com"))|| !(newEmail.Contains("@hotmail.com")))
+                {
+                    MessageBox.Show("Modelo de correo no valido. Debe ser gmail o hotmail !!");
                 }
                 else
                 {

@@ -33,7 +33,6 @@ namespace BuckApp
             this.user = user;
             eventController = new EventController();
             categoriesController = new CategoriesController();
-            
         }
 
         private void MainUser_Load(object sender, EventArgs e)
@@ -128,15 +127,37 @@ namespace BuckApp
                 }
                 else if (location.Equals(String.Empty))
                 {
-                    loadDataWithFilterType(type);
+                    if (user.Rol.Equals("admin"))
+                    {
+                        loadDataWithFilterType(type);
+                    }
+                    else if (user.Rol.Equals("user"))
+                    {
+                        loadDataWithFilterTypeAndMood(type, user.Id);
+                    }
                 }
                 else if (type.Equals(String.Empty))
                 {
-                    loadDataWithFilterLocation(location);
+                    if (user.Rol.Equals("admin"))
+                    {
+                        loadDataWithFilterLocation(location);
+                    }
+                    else if (user.Rol.Equals("user"))
+                    {
+                        loadDataWithFilterLocationAndMood(location, user.Id);
+                    }
                 }
                 else
                 {
-                    loadDataWithFilterLocationType(location,type);
+                    if (user.Rol.Equals("admin"))
+                    {
+                        loadDataWithFilterLocationType(location, type);
+                    }
+                    else if (user.Rol.Equals("user"))
+                    {
+                        loadDataWithFilterLocationTypeAndMood(location, type, user.Id);
+                    }
+                    
                 }
             }
             catch(Exception ex)
@@ -149,6 +170,22 @@ namespace BuckApp
         private void loadDataWithFilterType(String type)
         {
             events = eventController.loadDataWithFilterType(type);
+            if (events == null)
+            {
+                MessageBox.Show("No se ha podido cargar la lista de eventos segun la categoria." +
+                    "Volviendo a la lista general de eventos!!");
+                loadEventsListView();
+            }
+            else
+            {
+                loadListListView();
+                selected_option = 4;
+            }
+        }
+
+        private void loadDataWithFilterTypeAndMood(String type, int id_user)
+        {
+            events = eventController.loadDataWithFilterTypeAndMood(type, id_user);
             if (events == null)
             {
                 MessageBox.Show("No se ha podido cargar la lista de eventos segun la categoria." +
@@ -175,6 +212,38 @@ namespace BuckApp
             {
                 loadListListView();
                 selected_option = 3;
+            }
+        }
+
+        private void loadDataWithFilterLocationAndMood(String location, int id_user)
+        {
+            events = eventController.loadDataWithFilterLocationAndMood(location, id_user);
+            if (events == null)
+            {
+                MessageBox.Show("No se ha podido cargar la lista de eventos segun la ciudad." +
+                    "Volviendo a la lista general de eventos!!");
+                loadEventsListView();
+            }
+            else
+            {
+                loadListListView();
+                selected_option = 3;
+            }
+        }
+
+        private void loadDataWithFilterLocationTypeAndMood(String location, String type, int id_user)
+        {
+            events = eventController.loadDataWithFilterAndMood(location, type, id_user);
+            if (events == null)
+            {
+                MessageBox.Show("No se ha podido cargar la lista de eventos " +
+                    "Volviendo a la lista general de eventos!!");
+                loadEventsListView();
+            }
+            else
+            {
+                loadListListView();
+                selected_option = 5;
             }
         }
 

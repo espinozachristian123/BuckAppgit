@@ -20,7 +20,7 @@ namespace BuckApp
 
         private List<String> valueMoods;
         private List<Categories> categories;
-
+        
         private EventController eventController;
         private MoodController moodController;
         private CategoriesController categoriesController;
@@ -112,7 +112,7 @@ namespace BuckApp
             newDirection = txtDirection.Text;
             newDate = dtpDate.Value.ToShortDateString();
             newTime = dtpTime.Value.ToShortTimeString();
-            newDuration = dtpDate.Value.ToShortTimeString();
+            newDuration = dtpDuration.Value.ToShortTimeString();
             nPart = 0;
             newMaxPart = Convert.ToInt32(txtMaxParticipants.Text);
             newCategory = CbType.Text;

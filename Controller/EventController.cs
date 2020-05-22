@@ -36,15 +36,34 @@ namespace Controller
             return events;
         }
 
+        public List<Event> loadDataWithFilterAndMood(String location, String type, int id_user)
+        {
+            events = eventDao.loadDataWithFilterAndMood(location, type, id_user);
+            return events;
+        }
+        
+
         public List<Event> loadDataWithFilterLocation(String location)
         {
             events = eventDao.loadDataWithFilterLocation(location);
             return events;
         }
 
+        public List<Event> loadDataWithFilterLocationAndMood(String location, int id_user)
+        {
+            events = eventDao.loadDataWithFilterLocationAndMood(location, id_user);
+            return events;
+        }
+
         public List<Event> loadDataWithFilterType(String type)
         {
             events = eventDao.loadDataWithFilterType(type);
+            return events;
+        }
+
+        public List<Event> loadDataWithFilterTypeAndMood(String type, int id_user)
+        {
+            events = eventDao.loadDataWithFilterTypeAndMood(type, id_user);
             return events;
         }
 

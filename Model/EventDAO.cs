@@ -123,17 +123,61 @@ namespace Model
             }
             return events;
         }
-        
-        /*public List<String> loadDataComboBox()
+
+        public List<Event> loadDataWithFilterAndMood(string locationEvent, string typeEvent, int userID)
         {
-            categories.Add("");
-            categories.Add("Deportivo");
-            categories.Add("Ocio");
-            categories.Add("Cultural");
-            categories.Add("Musical");
-            categories.Add("Gastronomico");
-            return categories;
-        }*/
+            List<Event> eventsWithFilterAndMood = new List<Event>();
+            String QUERY_SELECT_EVENTS_WITH_FILTER_AND_MOOD = "SELECT * FROM `events` WHERE mood in (SELECT mood FROM `mood` where id_user = @id_user ) and city = @location and name_category = @type and date >= NOW()";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_SELECT_EVENTS_WITH_FILTER_AND_MOOD, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@location", locationEvent));
+                        cmd.Parameters.Add(new MySqlParameter("@type", typeEvent));
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", userID));
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                int id = reader.GetInt32(0);
+                                string name = reader.GetString(1);
+                                string description = reader.GetString(2);
+                                string location = reader.GetString(3);
+                                string direction = reader.GetString(4);
+                                string date = reader.GetDateTime(5).ToString();
+                                string duration = reader.GetTimeSpan(6).ToString();
+                                int numPart = reader.GetInt32(7);
+                                int numMax = reader.GetInt32(8);
+                                string type = reader.GetString(9);
+                                int mood = reader.GetInt32(10);
+                                int id_user = reader.GetInt32(11);
+                                eventsWithFilterAndMood.Add(new Event(id, name, description, location, direction, date, duration, numPart, numMax, type, mood, id_user));
+                            }
+                        }
+                        else
+                        {
+                            eventsWithFilterAndMood = null;
+                        }
+                        reader.Close();
+                    }
+                }
+            }
+            catch (MySqlException error)
+            {
+                eventsWithFilterAndMood = null;
+            }
+            catch (Exception e)
+            {
+                eventsWithFilterAndMood = null;
+            }
+            return eventsWithFilterAndMood;
+        }
 
         public List<Event> loadDataWithFilter(string locationEvent, string typeEvent)
         {
@@ -241,7 +285,61 @@ namespace Model
             }
             return eventsWithFilterLocation;
         }
-        
+
+        public List<Event> loadDataWithFilterLocationAndMood(string locationEvent, int userID)
+        {
+            List<Event> eventsWithFilterLocationAndMood = new List<Event>();
+            String QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION_AND_MOOD = "SELECT * FROM `events` WHERE mood in (SELECT mood FROM `mood` where id_user = @id_user ) and city = @location and date >= NOW()";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION_AND_MOOD, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@location", locationEvent));
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", userID));
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                int id = reader.GetInt32(0);
+                                string name = reader.GetString(1);
+                                string description = reader.GetString(2);
+                                string location = reader.GetString(3);
+                                string direction = reader.GetString(4);
+                                string date = reader.GetDateTime(5).ToString();
+                                string duration = reader.GetTimeSpan(6).ToString();
+                                int numPart = reader.GetInt32(7);
+                                int numMax = reader.GetInt32(8);
+                                string type = reader.GetString(9);
+                                int mood = reader.GetInt32(10);
+                                int id_user = reader.GetInt32(11);
+                                eventsWithFilterLocationAndMood.Add(new Event(id, name, description, location, direction, date, duration, numPart, numMax, type, mood, id_user));
+                            }
+                        }
+                        else
+                        {
+                            eventsWithFilterLocationAndMood = null;
+                        }
+                        reader.Close();
+                    }
+                }
+            }
+            catch (MySqlException error)
+            {
+                eventsWithFilterLocationAndMood = null;
+            }
+            catch (Exception e)
+            {
+                eventsWithFilterLocationAndMood = null;
+            }
+            return eventsWithFilterLocationAndMood;
+        }
+
         public List<Event> loadDataWithFilterType(string typeEvent)
         {
             List<Event> eventsWithFilterType = new List<Event>();
@@ -293,6 +391,60 @@ namespace Model
                 eventsWithFilterType = null;
             }
             return eventsWithFilterType;
+        }
+
+        public List<Event> loadDataWithFilterTypeAndMood(string typeEvent, int userID)
+        {
+            List<Event> eventsWithFilterTypeAndMood = new List<Event>();
+            String QUERY_SELECT_EVENTS_WITH_FILTER_TYPE_AND_MOOD = "SELECT * FROM `events` WHERE mood in (SELECT mood FROM `mood` where id_user = @id_user ) and name_category = @type and date >= NOW()";
+            try
+            {
+                connection = dbConnect.getConnection();
+
+                if (connection != null)
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_SELECT_EVENTS_WITH_FILTER_TYPE_AND_MOOD, connection))
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("@type", typeEvent));
+                        cmd.Parameters.Add(new MySqlParameter("@id_user", userID));
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                int id = reader.GetInt32(0);
+                                string name = reader.GetString(1);
+                                string description = reader.GetString(2);
+                                string location = reader.GetString(3);
+                                string direction = reader.GetString(4);
+                                string date = reader.GetDateTime(5).ToString();
+                                string duration = reader.GetTimeSpan(6).ToString();
+                                int numPart = reader.GetInt32(7);
+                                int numMax = reader.GetInt32(8);
+                                string type = reader.GetString(9);
+                                int mood = reader.GetInt32(10);
+                                int id_user = reader.GetInt32(11);
+                                eventsWithFilterTypeAndMood.Add(new Event(id, name, description, location, direction, date, duration, numPart, numMax, type, mood, id_user));
+                            }
+                        }
+                        else
+                        {
+                            eventsWithFilterTypeAndMood = null;
+                        }
+                        reader.Close();
+                    }
+                }
+            }
+            catch (MySqlException error)
+            {
+                eventsWithFilterTypeAndMood = null;
+            }
+            catch (Exception e)
+            {
+                eventsWithFilterTypeAndMood = null;
+            }
+            return eventsWithFilterTypeAndMood;
         }
 
         public List<Event> loadOnePersonActivities(int iD_user)
