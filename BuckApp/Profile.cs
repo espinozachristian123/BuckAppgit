@@ -14,6 +14,8 @@ namespace BuckApp
 {
     public partial class Profile : Form
     {
+        Boolean b;
+
         User user;
         UserController usercontrol;
 
@@ -23,10 +25,10 @@ namespace BuckApp
             usercontrol = new UserController();
             this.user = user;
             loadData();
-            
+
         }
 
-       private void loadData()
+        private void loadData()
         {
             txtName.Text = user.Username;
             txtPassword.Text = user.Password;
@@ -34,7 +36,7 @@ namespace BuckApp
             txtEmail.Text = user.Email;
             txtRol.Text = user.Rol;
         }
-        Boolean b;
+        
 
         private void modificarPerfil(object sender, EventArgs e)
         {
@@ -75,21 +77,6 @@ namespace BuckApp
 
 
         }
-        private void controlEmail()
-        {
-           String newEmail = txtEmail.Text;
-            if (!newEmail.Equals(user.Email))
-            {
-                if (usercontrol.sameEmail(newEmail) == true)
-                {
-                    MessageBox.Show("Error, correo registrado anteriormente !!");
-                }
-                else
-                {
-                    usercontrol.modifyEmail(newEmail, user.Id);
-                }
-            }
-        }
 
         private void controlName()
         {
@@ -102,7 +89,23 @@ namespace BuckApp
                 }
                 else
                 {
-                    usercontrol.modifyNames(newName,user.Id);
+                    usercontrol.modifyNames(newName, user.Id);
+                }
+            }
+        }
+
+        private void controlEmail()
+        {
+            String newEmail = txtEmail.Text;
+            if (!newEmail.Equals(user.Email))
+            {
+                if (usercontrol.sameEmail(newEmail) == true)
+                {
+                    MessageBox.Show("Error, correo registrado anteriormente !!");
+                }
+                else
+                {
+                    usercontrol.modifyEmail(newEmail, user.Id);
                 }
             }
         }

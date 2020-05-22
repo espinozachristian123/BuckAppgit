@@ -82,13 +82,14 @@ namespace BuckApp
             }
         }
 
+        
         private void cleanFields()
         {
             tbUsername.Text = "";
             tbPassword.Text = "";
-
         }
 
+        
         private void registerClick(object sender, EventArgs e)
         {
             Register register = new Register();
