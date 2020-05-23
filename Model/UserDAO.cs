@@ -22,7 +22,12 @@ namespace Model
         {
             dbConnect = DBConnection.getInstance();
         }
-        
+        /// <summary>
+        /// Select the data in the users table as long as the username and password are the same as the one we passed by parameter
+        /// If there is an error with the server connection the exception is controlled
+        /// </summary>
+        /// <param name="user">value user</param>
+        /// <returns></returns>
         public Boolean loginUser(User user)
         {
             Boolean b = false;
@@ -69,7 +74,14 @@ namespace Model
 
             return b;
         }
-
+        /// <summary>
+        /// Modify the password that is in the database and replace it with the password that we pass it to you
+        /// filtering by the user id in which we are connected
+        /// If there is an error with the server connection the exception is controlled
+        /// </summary>
+        /// <param name="password"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool modifyPassword(string password, int id)
         {
             Boolean b = false;
@@ -104,7 +116,14 @@ namespace Model
             }
             return b;
         }
-
+        /// <summary>
+        /// Modify the email that is in the database and replace it with the email that we send it
+        /// filtering by the user id in which we are connected
+        /// If there is an error with the server connection the exception is controlled
+        /// </summary>
+        /// <param name="email">value email</param>
+        /// <param name="id">value id</param>
+        /// <returns></returns>
         public bool modifyEmail(string email, int id)
         {
             Boolean b = false;
@@ -139,7 +158,14 @@ namespace Model
             }
             return b;
         }
-
+        /// <summary>
+        /// Modify the username that is in the database and replace it with the username that we pass it to you
+        /// filtering by the user id in which we are connected
+        /// If there is an error with the server connection the exception is controlled
+        /// </summary>
+        /// <param name="newName">new value name</param>
+        /// <param name="id_user">value id_user</param>
+        /// <returns></returns>
         public bool modifyName(string newName, int id_user)
         {
             Boolean b = false;
@@ -174,7 +200,17 @@ namespace Model
             }
             return b;
         }
-
+        /// <summary>
+        /// Modify the user that we pass to it with our records 
+        /// that we pass to it by parameters 
+        /// and filtering by the user id that we have modified
+        /// If there is an error with the server connection the exception is controlled
+        /// </summary>
+        /// <param name="newName"></param>
+        /// <param name="newPass"></param>
+        /// <param name="newEmail"></param>
+        /// <param name="id_user"></param>
+        /// <returns></returns>
         public bool modifyUser(string newName, string newPass, string newEmail, int id_user)
         {
             Boolean b = false;
@@ -211,7 +247,14 @@ namespace Model
             }
             return b;
         }
-
+        /// <summary>
+        /// We insert the values ​​of the users table with the values ​​that we pass by parameter
+        /// If there is an error with the server connection the exception is controlled
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="emailRegister"></param>
+        /// <returns></returns>
         public Boolean register(String username, String password, String emailRegister)
         {
             Boolean b = false;
@@ -248,7 +291,12 @@ namespace Model
             }
             return b;
         }
-
+        /// <summary>
+        /// Select the user table where the user's email is the same as the email that we pass by parameter
+        /// If there is an error with the server connection the exception is controlled
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public Boolean takeUser(String email)
         {
             Boolean b = false;
@@ -290,6 +338,12 @@ namespace Model
             }
             return b;
         }
+        /// <summary>
+        /// Select the table of the user where the username of the user is equal to the username that we pass him by parameter
+        /// If there is an error with the server connection the exception is controlled
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public Boolean UserEquals(String username)
         {
             Boolean b = false;

@@ -16,7 +16,12 @@ namespace Model
         {
             dbConnect = DBConnection.getInstance();
         }
-
+        /// <summary>
+        /// Select all the data in the category table
+        /// Check if the connection to the server is successful
+        /// if not, the exception is controlled
+        /// </summary>
+        /// <returns></returns>
         public List<Categories> loadDataComboBox()
         {
             List<Categories> categories = new List<Categories>();
