@@ -27,7 +27,12 @@ namespace BuckApp
             this.user = user;
         }
 
-        private void Botones(object sender, EventArgs e)
+        /// <summary>
+        /// Take the value of the mood from the option chosen by the user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Buttons(object sender, EventArgs e)
         {
             Button b = (Button)sender;
             switch (b.Name)
@@ -51,6 +56,13 @@ namespace BuckApp
             validate(mood);
         }
 
+        /// <summary>
+        /// ask the user if are he shure and then check the answer.
+        /// if the answer is yes, insert the value of mood and the Date in database.
+        /// if the insert is correctly , the program will show the next window.
+        /// in case of error , the program show a message of error.
+        /// </summary>
+        /// <param name="mood"></param>
         public void validate(int mood)
         {
             fechaHoy = DateTime.Today.ToShortDateString();
@@ -71,7 +83,7 @@ namespace BuckApp
                 }
                 else
                 {
-                    MessageBox.Show("error");
+                    MessageBox.Show("No se ha podido insertar tu estado de animo","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
             }
         }

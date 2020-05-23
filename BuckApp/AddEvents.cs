@@ -125,7 +125,7 @@ namespace BuckApp
         }
 
         /// <summary>
-        /// 
+        /// Get the new values of text fields .
         /// </summary>
         private void loadData()
         {
@@ -145,7 +145,7 @@ namespace BuckApp
         }
 
         /// <summary>
-        /// 
+        /// Take the value of the mood from the option chosen by the user
         /// </summary>
         private void putValuesMood()
         {

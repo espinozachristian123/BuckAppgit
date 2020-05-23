@@ -106,7 +106,7 @@
             this.btVeryGood.Size = new System.Drawing.Size(83, 82);
             this.btVeryGood.TabIndex = 10;
             this.btVeryGood.UseVisualStyleBackColor = true;
-            this.btVeryGood.Click += new System.EventHandler(this.Botones);
+            this.btVeryGood.Click += new System.EventHandler(this.Buttons);
             // 
             // btGood
             // 
@@ -118,7 +118,7 @@
             this.btGood.Size = new System.Drawing.Size(83, 82);
             this.btGood.TabIndex = 9;
             this.btGood.UseVisualStyleBackColor = true;
-            this.btGood.Click += new System.EventHandler(this.Botones);
+            this.btGood.Click += new System.EventHandler(this.Buttons);
             // 
             // btNormal
             // 
@@ -130,7 +130,7 @@
             this.btNormal.Size = new System.Drawing.Size(83, 82);
             this.btNormal.TabIndex = 8;
             this.btNormal.UseVisualStyleBackColor = true;
-            this.btNormal.Click += new System.EventHandler(this.Botones);
+            this.btNormal.Click += new System.EventHandler(this.Buttons);
             // 
             // btBad
             // 
@@ -142,7 +142,7 @@
             this.btBad.Size = new System.Drawing.Size(83, 82);
             this.btBad.TabIndex = 7;
             this.btBad.UseVisualStyleBackColor = true;
-            this.btBad.Click += new System.EventHandler(this.Botones);
+            this.btBad.Click += new System.EventHandler(this.Buttons);
             // 
             // btVeryBad
             // 
@@ -154,7 +154,7 @@
             this.btVeryBad.Size = new System.Drawing.Size(83, 82);
             this.btVeryBad.TabIndex = 6;
             this.btVeryBad.UseVisualStyleBackColor = true;
-            this.btVeryBad.Click += new System.EventHandler(this.Botones);
+            this.btVeryBad.Click += new System.EventHandler(this.Buttons);
             // 
             // AnswerMood
             // 

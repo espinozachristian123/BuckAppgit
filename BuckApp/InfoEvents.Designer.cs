@@ -192,6 +192,7 @@
             this.tbMaxParticipants.Name = "tbMaxParticipants";
             this.tbMaxParticipants.Size = new System.Drawing.Size(200, 20);
             this.tbMaxParticipants.TabIndex = 16;
+            this.tbMaxParticipants.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMaxParticipants_KeyPress);
             // 
             // dtpDate
             // 
