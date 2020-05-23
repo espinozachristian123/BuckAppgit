@@ -62,10 +62,10 @@ namespace Controller
         /// <param name="newEmail"> new value email</param>
         /// <param name="id_user"> id user login</param>
         /// <returns> if true the user are modify else not modify </returns>
-        public bool modifyUser(string newName, string newPass, string newEmail, int id_user)
-        {
-            return model.modifyUser(newName, newPass, newEmail,id_user);
-        }
+        //public bool modifyUser(string newName, string newPass, string newEmail, int id_user)
+        //{
+        //    return model.modifyUser(newName, newPass, newEmail,id_user);
+        //}
 
         /// <summary>
         /// 

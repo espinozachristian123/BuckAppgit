@@ -48,15 +48,6 @@ namespace Controller
             return moodDao.insertMood(newMood);
         }
 
-        /// <summary>
-        /// collects the mood values ​​you have received from the database in a list
-        /// </summary>
-        /// <returns>Mood list</returns>
-        public List<Mood> loadDataMoods()
-        {
-            moods = moodDao.loadData();
-            return moods;
-        }
 
         /// <summary>
         /// collects all the mood values ​​of a person

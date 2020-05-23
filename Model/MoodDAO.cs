@@ -19,7 +19,10 @@ namespace Model
         {
             dbConnect = DBConnection.getInstance();
         }
-
+        /// <summary>
+        /// Load a list to fill the combobox
+        /// </summary>
+        /// <returns></returns>
         public List<String> loadDataComboBox()
         {
             List<String> valueMoods = new List<String>();
@@ -30,7 +33,12 @@ namespace Model
             valueMoods.Add("5.-Para personas que estan muy bien");
             return valueMoods;
         }
-
+        /// <summary>
+        /// Select the date from the mood table by filtering by the user
+        /// that we pass it by parameter and ordering the date in Descending way
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
         public DateTime checkDate(int userID)
         {
             DateTime date = default(DateTime);
@@ -71,7 +79,11 @@ namespace Model
             }
             return date;
         }
-
+        /// <summary>
+        /// We insert the data from the mood table with the data that we pass by parameter
+        /// </summary>
+        /// <param name="newMood"></param>
+        /// <returns></returns>
         public Boolean insertMood(Mood newMood)
         {
             Boolean b = false;
@@ -107,50 +119,12 @@ namespace Model
             }
             return b;
         }
-
-        public List<Mood> loadData()
-        {
-            moods = new List<Mood>();
-            String QUERY_SELECT_EVENTS = "SELECT * FROM `mood`";
-            try
-            {
-                connection = dbConnect.getConnection();
-
-                if (connection != null)
-                {
-                    connection.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(QUERY_SELECT_EVENTS, connection))
-                    {
-                        MySqlDataReader reader = cmd.ExecuteReader();
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                int id_user = reader.GetInt16(0);
-                                int mood = reader.GetInt16(1);
-                                string date = reader.GetDateTime(2).ToString();
-                                moods.Add(new Mood(id_user, mood, date));
-                            }
-                        }
-                        else
-                        {
-                            moods = null;
-                        }
-                        reader.Close();
-                    }
-                }
-            }
-            catch (MySqlException error)
-            {
-                moods = null;
-            }
-            catch (Exception e)
-            {
-                moods = null;
-            }
-            return moods;
-        }
-
+        /// <summary>
+        /// We collect the data from the mood table by filtering by the user id that is connected
+        /// If there is an error with the server connection the exception is controlled
+        /// </summary>
+        /// <param name="id_user"></param>
+        /// <returns></returns>
         public List<Mood> loadOnePersonMood(int id_user)
         {
             List<Mood> moodsOnePerson = new List<Mood>();
