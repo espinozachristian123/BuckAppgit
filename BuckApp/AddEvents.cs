@@ -38,7 +38,9 @@ namespace BuckApp
             loadMoodComboBox();
             this.user = user;
         }
-
+        /// <summary>
+        /// We load the categories we have per database and enter it in our combobox
+        /// </summary>
         private void loadComboBox()
         {
             categories = categoriesController.loadDataComboBox();
@@ -47,7 +49,9 @@ namespace BuckApp
                 CbType.Items.Add(categories[i].Name);
             }
         }
-
+        /// <summary>
+        /// We load the mood values ​​that we have per database and enter it in our combobox
+        /// </summary>
         private void loadMoodComboBox()
         {
             valueMoods = moodController.valueMoods();
@@ -56,12 +60,24 @@ namespace BuckApp
                 cbMood.Items.Add(valueMoods[i]);
             }
         }
-        
+        /// <summary>
+        /// We control the maxParticipants field so that the keyboard cannot be used to enter a non-numeric character
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtMaxParticipantes_KeyPress(object sender, KeyPressEventArgs e)
         {
             eventController.validateNumbers(e);
         }
-        
+        /// <summary>
+        ///Check that the fields are not empty
+        ///Check that the number of participants has not been exceeded by more than 100
+        ///We check that the date entered is greater than or equal to today's date
+        ///If this condition is met add the event
+        ///If this condition is not met, inform the user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveEvent(object sender, EventArgs e)
         {
             try
@@ -77,7 +93,7 @@ namespace BuckApp
                 }
                 else if (newMaxPart > 100)
                 {
-                    MessageBox.Show("Numero de participantes maximos superado");
+                    MessageBox.Show("Numero de participantes maximos superado (Maximo 100 Participantes)");
                     txtMaxParticipants.Text = "";
                 }
                 else
@@ -146,7 +162,9 @@ namespace BuckApp
                     break;
             }
         }
-
+        /// <summary>
+        /// Clean our fields
+        /// </summary>
         public void cleanFields()
         {
             txtName.Text = String.Empty;

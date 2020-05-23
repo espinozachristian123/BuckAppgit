@@ -29,7 +29,7 @@ namespace BuckApp
         }
 
         /// <summary>
-        /// Pone toda la informacion del usuario en los campos correspondientes
+        /// Put all the information of the user in the corresponding fields
         /// </summary>
         private void loadData()
         {
@@ -39,9 +39,15 @@ namespace BuckApp
             txtEmail.Text = user.Email;
             txtRol.Text = user.Rol;
         }
-        
+
         /// <summary>
-        /// 
+        /// Check that the fields to be modified are not empty
+        /// Check that the new password entered has a minimum size of 8 characters
+        /// Check that the fields that have already been entered have been modified
+        /// Check if any field has been modified and if this condition is met, call the methods
+        /// Check if any field has been modified and if this condition is met, call the methods to control the names and the email entered
+        /// Also check if the new password is the same when confirming password
+        /// If these conditions are met, the user modifies
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
