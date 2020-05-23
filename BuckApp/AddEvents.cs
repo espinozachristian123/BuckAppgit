@@ -38,6 +38,7 @@ namespace BuckApp
             loadMoodComboBox();
             this.user = user;
         }
+
         /// <summary>
         /// We load the categories we have per database and enter it in our combobox
         /// </summary>
@@ -49,6 +50,7 @@ namespace BuckApp
                 CbType.Items.Add(categories[i].Name);
             }
         }
+
         /// <summary>
         /// We load the mood values ​​that we have per database and enter it in our combobox
         /// </summary>
@@ -60,6 +62,7 @@ namespace BuckApp
                 cbMood.Items.Add(valueMoods[i]);
             }
         }
+
         /// <summary>
         /// We control the maxParticipants field so that the keyboard cannot be used to enter a non-numeric character
         /// </summary>
@@ -69,6 +72,7 @@ namespace BuckApp
         {
             eventController.validateNumbers(e);
         }
+
         /// <summary>
         ///Check that the fields are not empty
         ///Check that the number of participants has not been exceeded by more than 100
@@ -120,6 +124,9 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void loadData()
         {
             newName = txtName.Text;
@@ -137,6 +144,9 @@ namespace BuckApp
             putValuesMood();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void putValuesMood()
         {
             switch (newMood)
@@ -162,6 +172,7 @@ namespace BuckApp
                     break;
             }
         }
+
         /// <summary>
         /// Clean our fields
         /// </summary>
