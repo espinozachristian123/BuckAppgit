@@ -15,7 +15,7 @@ namespace BuckApp
     public partial class AddEvents : Form
     {
         private int userID, nPart, newMaxPart, valueMood;
-        private String newName, newDescription, newCity, newDirection, newDate, newTime, newDuration, newCategory, newMood;
+        private String newName, newDescription, newCity, newDirection, newDate, newTime, newDuration, newCategory, newMood, newCompleteDirection;
         private DateTime dateToday, dateEvent;
 
         private List<String> valueMoods;
@@ -169,6 +169,56 @@ namespace BuckApp
 
                 case "5.-Para personas que estan muy bien":
                     valueMood = 5;
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// When the user presses the Add location button, the window changes to that of google maps
+        //  when you close the window you get the value of the location
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addUbication_Click(object sender, EventArgs e)
+        {
+            TakeUbication ubication = new TakeUbication();
+            ubication.ShowDialog();
+            newCompleteDirection = ubication.Direccion_Definitiva;
+            takeUbication();
+        }
+
+        /// <summary>
+        /// Get the value of the google maps location and put them in the corresponding fields
+        /// </summary>
+        private void takeUbication()
+        {
+            String[] info = newCompleteDirection.Split(',');
+            switch (info.Length)
+            {
+                case 1:
+                    MessageBox.Show("No se ha encontrado la ciudad!! Escribalo manualmente");
+                    txtLocation.Text = String.Empty;
+                    txtDirection.Text = info[0];
+                    break;
+                case 2:
+                    txtLocation.Text = info[1];
+                    txtDirection.Text = info[0];
+                    break;
+                case 3:
+                    if (info[2].Any(c => char.IsDigit(c)) == true)
+                    {
+                        txtLocation.Text = info[2];
+                        txtDirection.Text = info[0] + "," + info[1];
+                    }
+                    else
+                    {
+                        txtLocation.Text = info[1];
+                        txtDirection.Text = info[0];
+                    }
+                    break;
+                case 4:
+                    txtLocation.Text = info[2];
+                    txtDirection.Text = info[0] + "," + info[1];
                     break;
             }
         }

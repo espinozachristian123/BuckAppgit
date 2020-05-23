@@ -55,6 +55,7 @@
             this.dtpTime = new System.Windows.Forms.DateTimePicker();
             this.dtpDuration = new System.Windows.Forms.DateTimePicker();
             this.cbMood = new System.Windows.Forms.ComboBox();
+            this.btnAddUbication = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -292,12 +293,23 @@
             this.cbMood.Size = new System.Drawing.Size(200, 21);
             this.cbMood.TabIndex = 30;
             // 
+            // btnAddUbication
+            // 
+            this.btnAddUbication.Location = new System.Drawing.Point(377, 134);
+            this.btnAddUbication.Name = "btnAddUbication";
+            this.btnAddUbication.Size = new System.Drawing.Size(75, 57);
+            this.btnAddUbication.TabIndex = 31;
+            this.btnAddUbication.Text = "Añadir Ubicacion";
+            this.btnAddUbication.UseVisualStyleBackColor = true;
+            this.btnAddUbication.Click += new System.EventHandler(this.addUbication_Click);
+            // 
             // InfoEvents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(411, 516);
+            this.ClientSize = new System.Drawing.Size(464, 516);
+            this.Controls.Add(this.btnAddUbication);
             this.Controls.Add(this.cbMood);
             this.Controls.Add(this.dtpDuration);
             this.Controls.Add(this.dtpTime);
@@ -363,5 +375,6 @@
         private System.Windows.Forms.DateTimePicker dtpTime;
         private System.Windows.Forms.DateTimePicker dtpDuration;
         private System.Windows.Forms.ComboBox cbMood;
+        private System.Windows.Forms.Button btnAddUbication;
     }
 }

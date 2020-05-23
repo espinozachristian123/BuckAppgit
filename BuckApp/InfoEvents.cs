@@ -18,9 +18,8 @@ namespace BuckApp
         int id_event, n_participants, n_maxParticipants, id_user, valueMood;
 
         String newName, newDescr, newCity, newDirection, newDate, newTime, newDuration, newType, newMood;
-
-   
-
+        String newCompleteDirection;
+        
         int newNumMax;
 
         List<String> valuesMood;
@@ -29,6 +28,8 @@ namespace BuckApp
         EventController eventController;
         MoodController moodController;
         CategoriesController categoriesController;
+
+        TakeUbication ubication;
 
         User user;
 
@@ -109,6 +110,7 @@ namespace BuckApp
                 cbType.Enabled = false;
                 cbMood.Enabled = false;
                 btRegisterEvent.Enabled = false;
+                btnAddUbication.Enabled = false;
                 btModify.Enabled = false;
                 btDelete.Enabled = true;
             }
@@ -125,6 +127,7 @@ namespace BuckApp
                 tbMaxParticipants.ReadOnly = true;
                 cbType.Enabled = false;
                 cbMood.Enabled = false;
+                btnAddUbication.Enabled = false;
                 btModify.Enabled = false;
                 btDelete.Enabled = false;
             }
@@ -246,9 +249,6 @@ namespace BuckApp
                     {
                         MessageBox.Show("Numero de participantes maximos superado (Maximo 100 Participantes)");
 
-                    } else if (valueMood == 0)
-                    {
-                        MessageBox.Show("La actividad tiene que tener un estado de animo");
                     }
                     else
                     {
@@ -327,6 +327,7 @@ namespace BuckApp
                     break;
             }
         }
+
         /// <summary>
         /// ask the user if he want delete the event,
         /// if user click "Yes" the program delete the event,
@@ -349,6 +350,56 @@ namespace BuckApp
                 {
                     MessageBox.Show("EL evento no se ha podido borrar !!");
                 }
+            }
+        }
+
+        /// <summary>
+        /// When the user presses the Add location button, the window changes to that of google maps
+        //  when you close the window you get the value of the location
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addUbication_Click(object sender, EventArgs e)
+        {
+            TakeUbication ubication = new TakeUbication();
+            ubication.ShowDialog();
+            newCompleteDirection = ubication.Direccion_Definitiva;
+            takeUbication();
+        }
+
+        /// <summary>
+        /// Get the value of the google maps location and put them in the corresponding fields
+        /// </summary>
+        private void takeUbication()
+        {
+            String[] info = newCompleteDirection.Split(',');
+            switch (info.Length)
+            {
+                case 1:
+                    MessageBox.Show("No se ha encontrado la ciudad!! Escribalo manualmente");
+                    tbCity.Text = String.Empty;
+                    tbDirection.Text = info[0];
+                    break;
+                case 2:
+                    tbCity.Text = info[1];
+                    tbDirection.Text = info[0];
+                    break;
+                case 3:
+                    if(info[2].Any(c => char.IsDigit(c)) == true)
+                    {
+                        tbCity.Text = info[2];
+                        tbDirection.Text = info[0] + "," + info[1];
+                    }
+                    else
+                    {
+                        tbCity.Text = info[1];
+                        tbDirection.Text = info[0];
+                    }
+                    break;
+                case 4:
+                    tbCity.Text = info[2];
+                    tbDirection.Text = info[0] + "," + info[1];
+                    break;
             }
         }
     }
