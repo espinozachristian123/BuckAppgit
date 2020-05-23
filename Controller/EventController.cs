@@ -29,7 +29,7 @@ namespace Controller
             return events;
         }
         /// <summary>
-        /// load all events in the principal scren
+        /// load all events in the principal screen
         /// </summary>
         /// <returns>events or null if not are events</returns>
         public List<Event> loadAllEventsForAdmin()
@@ -73,77 +73,149 @@ namespace Controller
         /// <summary>
         /// load the activities by location and mood by user
         /// </summary>
-        /// <param name="location"></param>
-        /// <param name="id_user"></param>
+        /// <param name="location">value of textbox</param>
+        /// <param name="id_user">id user login</param>
         /// <returns>event if are exist or null if are not exist</returns>
         public List<Event> loadDataWithFilterLocationAndMood(String location, int id_user)
         {
             events = eventDao.loadDataWithFilterLocationAndMood(location, id_user);
             return events;
         }
-
+        /// <summary>
+        /// load the activitis depend of type
+        /// </summary>
+        /// <param name="type">value of combobox</param>
+        /// <returns>event if are exist or null if are not exist</returns>
         public List<Event> loadDataWithFilterType(String type)
         {
             events = eventDao.loadDataWithFilterType(type);
             return events;
         }
-
+        /// <summary>
+        /// load the activitis depend of type and mood
+        /// </summary>
+        /// <param name="type"> value of combobox</param>
+        /// <param name="id_user">id user of login</param>
+        /// <returns>event if are exist or null if are not exist</returns>
         public List<Event> loadDataWithFilterTypeAndMood(String type, int id_user)
         {
             events = eventDao.loadDataWithFilterTypeAndMood(type, id_user);
             return events;
         }
-
+        /// <summary>
+        /// loads the activities that a user has created
+        /// </summary>
+        /// <param name="id_user">id user of login</param>
+        /// <returns>event if are exist or null if are not exist</returns>
         public List<Event> loadOnePersonActivities(int id_user)
         {
             events = eventDao.loadOnePersonActivities(id_user);
             return events;
         }
-
+        /// <summary>
+        /// load activtis thah user are registered
+        /// </summary>
+        /// <param name="id_user"></param>
+        /// <returns>event if are exist or null if are not exist</returns>
         public List<Event> loadActivitiesRegisterOnePerson(int id_user)
         {
             return eventDao.loadActivitiesRegisterOnePerson(id_user);
         }
-
+        /// <summary>
+        /// check the user are not registered in the activity
+        /// </summary>
+        /// <param name="id_event">id of event</param>
+        /// <param name="id_user">od user of login</param>
+        /// <returns>true if are registered or false if are not registered</returns>
         public Boolean checkRegister(int id_event, int id_user)
         {
             return eventDao.checkRegister(id_event, id_user);
         }
-
+        /// <summary>
+        /// register the user in that event
+        /// </summary>
+        /// <param name="fecha">value of datapicker</param>
+        /// <param name="id_event">value of id event</param>
+        /// <param name="id_user">id user of login</param>
+        /// <returns>true if are registered in event or false in case of error</returns>
         public Boolean registerEvent(DateTime fecha, int id_event, int id_user)
         {
             return eventDao.registerEvent(fecha, id_event, id_user);
         }
-
+        /// <summary>
+        /// update the num participants if depends the user are registered or deregister of activity
+        /// </summary>
+        /// <param name="num_participants">value of event selected in listbox</param>
+        /// <param name="id">id of event selected in listbox</param>
+        /// <returns>true if update or false in case of error</returns>
         public Boolean updateNumMax(int num_participants, int id)
         {
             return eventDao.updateNumParticipants(num_participants, id);
         }
-
+        /// <summary>
+        /// delete the user when he dont want take a part in event
+        /// </summary>
+        /// <param name="id_event">value selected in listbox</param>
+        /// <param name="id_user">id user of login</param>
+        /// <returns>true if correctly or false in case of error</returns>
         public Boolean deleteRegisterEvent(int id_event, int id_user)
         {
             return eventDao.deleteRegisterEvent(id_event, id_user);
         }
-
+        /// <summary>
+        /// add a event 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="description"></param>
+        /// <param name="city"></param>
+        /// <param name="direction"></param>
+        /// <param name="date"></param>
+        /// <param name="duration"></param>
+        /// <param name="num_participants"></param>
+        /// <param name="num_participants_max"></param>
+        /// <param name="type"></param>
+        /// <param name="mood"></param>
+        /// <param name="id_user"></param>
+        /// <returns>true if the params are correctly or false in case of error</returns>
         public Boolean addEvent(string name, string description, string city, string direction, string date, string duration, int num_participants, int num_participants_max, string type, int mood, int id_user)
         {
             Event newEvent = new Event(name, description, city, direction, date, duration, num_participants, num_participants_max, type, mood, id_user);
             return eventDao.addEvent(newEvent);
         }
-
+        /// <summary>
+        /// modify the event
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="description"></param>
+        /// <param name="city"></param>
+        /// <param name="direction"></param>
+        /// <param name="date"></param>
+        /// <param name="duration"></param>
+        /// <param name="num_max"></param>
+        /// <param name="type"></param>
+        /// <param name="mood"></param>
+        /// <param name="id"></param>
+        /// <returns>true if modify are correctly or false in case of error</returns>
         public Boolean modifyEvent(string name, string description, string city, string direction, string date, string duration, int num_max, string type, int mood, int id)
         {
             Event eventModify = new Event(id,name, description, city, direction, date, duration, num_max, type, mood);
             return eventDao.modifyEvent(eventModify);
         }
-
+        /// <summary>
+        /// delete the event
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>true if delete are succesfully or false in case of error</returns>
         public Boolean deleteEvent(int id)
         {
             Boolean flag = eventDao.deleteEvent(id);
             return flag;
 
         }
-        
+        /// <summary>
+        /// check the character is only a number
+        /// </summary>
+        /// <param name="pe"></param>
         public void validateNumbers(KeyPressEventArgs pe)
         {
             if (char.IsDigit(pe.KeyChar))

@@ -19,7 +19,13 @@ namespace Model
         {
             dbConnect = DBConnection.getInstance();
         }
-
+        /// <summary>
+        /// load all events of database where the date are bigger than today
+        ///  if connection is diferent of null
+        /// execute the query of method.
+        /// and save the values in a list of events
+        /// </summary>
+        /// <returns>list of events</returns>
         public List<Event> loadAllEventsForAdmin()
         {
             events = new List<Event>();
@@ -70,7 +76,14 @@ namespace Model
             }
             return events;
         }
-
+        /// <summary>
+        /// load the event of database , filtered by mood of user and the date is bigger or equals the date today
+        ///  if connection is diferent of null
+        /// execute the query of method.
+        /// and save the values in a list of event
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns>event or null if are not exist</returns>
         public List<Event> loadDataWithFilterMood(int userID)
         {
             events = new List<Event>();
@@ -123,7 +136,16 @@ namespace Model
             }
             return events;
         }
-
+        /// <summary>
+        /// load the event of database filtered by location or type with mood of user and the date is bigger or equals the date today
+        /// if connection is diferent of null
+        /// execute the query of method.
+        /// and save the values in a list of event
+        /// </summary>
+        /// <param name="locationEvent"></param>
+        /// <param name="typeEvent"></param>
+        /// <param name="userID"></param>
+        /// <returns>event or null if are not exist</returns>
         public List<Event> loadDataWithFilterAndMood(string locationEvent, string typeEvent, int userID)
         {
             List<Event> eventsWithFilterAndMood = new List<Event>();
@@ -178,7 +200,15 @@ namespace Model
             }
             return eventsWithFilterAndMood;
         }
-
+        /// <summary>
+        /// load the event of database filtered by location or type and the date is bigger or equals the date today
+        ///  if connection is diferent of null
+        /// execute the query of method.
+        /// and save the values in a list of event.
+        /// </summary>
+        /// <param name="locationEvent"></param>
+        /// <param name="typeEvent"></param>
+        /// <returns>event or null if are not exist</returns>
         public List<Event> loadDataWithFilter(string locationEvent, string typeEvent)
         {
             List<Event> eventsWithFilter = new List<Event>();
@@ -232,7 +262,14 @@ namespace Model
             }
             return eventsWithFilter;
         }
-
+        /// <summary>
+        /// load the event of database filtered by location and the date is bigger or equals the date today
+        ///  if connection is diferent of null
+        /// execute the query of method.
+        /// and save the values in a list of event.
+        /// </summary>
+        /// <param name="locationEvent"></param>
+        /// <returns>event or null if are not exist</returns>
         public List<Event> loadDataWithFilterLocation(string locationEvent)
         {
             List<Event> eventsWithFilterLocation = new List<Event>();
@@ -285,7 +322,15 @@ namespace Model
             }
             return eventsWithFilterLocation;
         }
-
+        /// <summary>
+        /// load events of database filtered by location and mood of user and the date is bigger or equals the date today
+        ///  if connection is diferent of null
+        /// execute the query of method.
+        /// and save the values in a list of event.
+        /// </summary>
+        /// <param name="locationEvent"></param>
+        /// <param name="userID"></param>
+        /// <returns>event or null if are not exist</returns>
         public List<Event> loadDataWithFilterLocationAndMood(string locationEvent, int userID)
         {
             List<Event> eventsWithFilterLocationAndMood = new List<Event>();
@@ -339,7 +384,14 @@ namespace Model
             }
             return eventsWithFilterLocationAndMood;
         }
-
+        /// <summary>
+        /// load the event filtered by type and the date is bigger or equals the date today
+        ///  if connection is diferent of null
+        /// execute the query of method.
+        /// and save the values in a list of event.
+        /// </summary>
+        /// <param name="typeEvent"></param>
+        /// <returns>event or null if are not exist</returns>
         public List<Event> loadDataWithFilterType(string typeEvent)
         {
             List<Event> eventsWithFilterType = new List<Event>();
@@ -392,7 +444,15 @@ namespace Model
             }
             return eventsWithFilterType;
         }
-
+        /// <summary>
+        /// load the event of database filetered by type with mood user and the date is bigger or equals the date today
+        ///  if connection is diferent of null
+        /// execute the query of method.
+        /// and save the values in a list of event.
+        /// </summary>
+        /// <param name="typeEvent"></param>
+        /// <param name="userID"></param>
+        /// <returns>event or null if are not exist</returns>
         public List<Event> loadDataWithFilterTypeAndMood(string typeEvent, int userID)
         {
             List<Event> eventsWithFilterTypeAndMood = new List<Event>();
@@ -446,7 +506,14 @@ namespace Model
             }
             return eventsWithFilterTypeAndMood;
         }
-
+        /// <summary>
+        /// load the events of database filtered by id of user
+        ///  if connection is diferent of null
+        /// execute the query of method.
+        /// and save the values in a list of event.
+        /// </summary>
+        /// <param name="iD_user"></param>
+        /// <returns>event or null if are not exist</returns>
         public List<Event> loadOnePersonActivities(int iD_user)
         {
             List<Event> eventsOnePerson = new List<Event>();
@@ -499,7 +566,13 @@ namespace Model
             }
             return eventsOnePerson;
         }
-
+        /// <summary>
+        /// add a new event in database doing a insert
+        ///  if connection is diferent of null
+        /// execute the query of method.
+        /// </summary>
+        /// <param name="newEvent"></param>
+        /// <returns>true if added succesflly or false in case of error</returns>
         public Boolean addEvent(Event newEvent)
         {
             Boolean b = false;
@@ -544,7 +617,15 @@ namespace Model
             }
             return b;
         }
-
+        /// <summary>
+        /// register user in one event
+        ///  if connection is diferent of null
+        /// execute the query of method.
+        /// </summary>
+        /// <param name="fecha"></param>
+        /// <param name="id_event"></param>
+        /// <param name="id_user"></param>
+        /// <returns>true if are registered correctly or false in case of error</returns>
         public Boolean registerEvent(DateTime fecha, int id_event, int id_user)
         {
             Boolean b = false;
@@ -580,7 +661,14 @@ namespace Model
             }
             return b;
         }
-
+        /// <summary>
+        /// delete user of userevents table of databse
+        ///  if connection is diferent of null
+        /// execute the query of method.
+        /// </summary>
+        /// <param name="id_event"></param>
+        /// <param name="id_user"></param>
+        /// <returns>true if the user are deleted of activity or false in case of error</returns>
         public Boolean deleteRegisterEvent(int id_event , int id_user)
         {
             Boolean b = false;
@@ -615,7 +703,14 @@ namespace Model
             }
             return b;
         }
-
+        /// <summary>
+        /// check if one user are not registeres in one activity
+        /// if connection is diferent of null
+        /// execute the query of method.
+        /// </summary>
+        /// <param name="id_event"></param>
+        /// <param name="id_user"></param>
+        /// <returns>true if user are registered or false in case of error</returns>
         public Boolean checkRegister(int id_event,int id_user)
         {
             Boolean b = false;
@@ -661,7 +756,13 @@ namespace Model
             }
             return b;
         }
-
+        /// <summary>
+        /// load the activitis of database that user are registered in any activity
+        /// if connection is diferent of null
+        /// execute the query of method.
+        /// </summary>
+        /// <param name="iD_user"></param>
+        /// <returns>true if user are registered in one activty or false in case of error</returns>
         public List <Event> loadActivitiesRegisterOnePerson(int iD_user)
         {
             List<Event> listEventsRegisterOnePerson = new List<Event>(); ;
@@ -715,7 +816,13 @@ namespace Model
             return listEventsRegisterOnePerson;
         }
     
-
+        /// <summary>
+        /// modify event of user doing update in databse
+        /// if connection is diferent of null
+        /// execute the query of method.
+        /// </summary>
+        /// <param name="eventModify"></param>
+        /// <returns>true if are modified correctly or false in case of error</returns>
         public Boolean modifyEvent(Event eventModify)
         {
            
@@ -759,7 +866,14 @@ namespace Model
             }
             return b;
         }
-
+        /// <summary>
+        /// this method update the num of participants depend if the user are registered or his delete of activity
+        /// check if conection are correctly
+        /// and execute query
+        /// </summary>
+        /// <param name="num_participants"></param>
+        /// <param name="id"></param>
+        /// <returns>true if the update are correctly or false in case of error</returns>
         public Boolean updateNumParticipants(int num_participants,  int id)
         {
 
@@ -795,7 +909,13 @@ namespace Model
             }
             return b;
         }
-
+        /// <summary>
+        /// delete the event of user doing a "delete" in database
+        /// check the conection are succesfully
+        /// and then executy query
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>true if the event are deleted or false in case of error</returns>
         public Boolean deleteEvent(int id)
         {
             Boolean b = false;
