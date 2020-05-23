@@ -29,7 +29,7 @@ namespace BuckApp
         }
 
         /// <summary>
-        /// 
+        /// Pone toda la informacion del usuario en los campos correspondientes
         /// </summary>
         private void loadData()
         {
@@ -90,7 +90,9 @@ namespace BuckApp
         }
 
         /// <summary>
-        /// 
+        /// Take the new value in the name field.
+        /// If the new name already exists in the database notify the user
+        /// Otherwise modify the name of the user
         /// </summary>
         private void controlName()
         {
@@ -109,7 +111,10 @@ namespace BuckApp
         }
 
         /// <summary>
-        /// 
+        /// Take the new value of the email field.
+        /// If the new email, already exists in the database or does not comply
+        /// with the default mail model the program notifies the user of an error
+        /// If not modify the mail to the user
         /// </summary>
         private void controlEmail()
         {

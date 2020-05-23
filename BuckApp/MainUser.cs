@@ -35,6 +35,11 @@ namespace BuckApp
             categoriesController = new CategoriesController();
         }
 
+        /// <summary>
+        /// Load the necessary methods to make that window work
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainUser_Load(object sender, EventArgs e)
         {
             hideButtons();
@@ -42,6 +47,10 @@ namespace BuckApp
             loadComboBox();
         }
 
+        /// <summary>
+        /// Disable certain buttons if the user being logged in is Admin
+        /// since the admin should not do those actions
+        /// </summary>
         private void hideButtons()
         {
             if (user.Rol.Equals("admin"))
@@ -53,6 +62,11 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// Loads the list of events according to the user being logged in
+        /// If the user is an administrator, load all available events
+        /// If the user is a user, load the events according to their mood
+        /// </summary>
         private void loadEventsListView()
         {
             if (user.Rol.Equals("admin"))
@@ -74,6 +88,9 @@ namespace BuckApp
             
         }
 
+        /// <summary>
+        /// Collect the data you receive from the database and save it in a combo box
+        /// </summary>
         private void loadComboBox()
         {
             categories = categoriesController.loadDataComboBox();
@@ -83,6 +100,9 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// Take the list of events previously loaded and put the data of it in the listview
+        /// </summary>
         private void loadListListView()
         {
             
@@ -110,6 +130,12 @@ namespace BuckApp
 
         }
 
+        /// <summary>
+        /// Clear the current data from the field to display the new data.
+        /// Take the available filters and according to the filters that exist and the role of the user, show the corresponding events
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void loadListViewWithFilter(object sender, EventArgs e)
         {
             listViewEvent.Items.Clear();
@@ -167,6 +193,11 @@ namespace BuckApp
             
         }
 
+        /// <summary>
+        /// collects the events according to the type filter and loads them in the listview
+        /// If the list is empty, notify the user
+        /// </summary>
+        /// <param name="type"></param>
         private void loadDataWithFilterType(String type)
         {
             events = eventController.loadDataWithFilterType(type);
@@ -183,6 +214,13 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// collects the events according to the type filter + the user's mood
+        /// and load them into the listView
+        /// If the list is empty, notify the user
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="id_user"></param>
         private void loadDataWithFilterTypeAndMood(String type, int id_user)
         {
             events = eventController.loadDataWithFilterTypeAndMood(type, id_user);
@@ -199,6 +237,11 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// collects the events according to the location and loads them in the listview
+        /// If the list is empty, notify the user
+        /// </summary>
+        /// <param name="location"></param>
         private void loadDataWithFilterLocation(String location)
         {
             events = eventController.loadDataWithFilterLocation(location);
@@ -215,6 +258,12 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// collects the events according to the location + the mood of the user and loads them in the listview
+        /// If the list is empty, notify the user
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="id_user"></param>
         private void loadDataWithFilterLocationAndMood(String location, int id_user)
         {
             events = eventController.loadDataWithFilterLocationAndMood(location, id_user);
@@ -231,6 +280,13 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// collects the events according to the location, type and mood of the user and loads them in the listview
+        /// If the list is empty, notify the user
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="type"></param>
+        /// <param name="id_user"></param>
         private void loadDataWithFilterLocationTypeAndMood(String location, String type, int id_user)
         {
             events = eventController.loadDataWithFilterAndMood(location, type, id_user);
@@ -247,6 +303,12 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// collects the events according to the location + type and loads them in the listview
+        /// If the list is empty, notify the user
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="type"></param>
         private void loadDataWithFilterLocationType(String location, String type)
         {
             events = eventController.loadDataWithFilter(location, type);
@@ -263,12 +325,24 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// When the user presses the button, it redirects the user to the next window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void consultProfile(object sender, EventArgs e)
         {
             Profile profile = new Profile(user);
             profile.ShowDialog();
         }
-        
+
+        /// <summary>
+        /// Collect the data of the event that we select to display it later in the following window
+        /// When the window is opened later it closes, if there is any modification of any event update
+        /// the listView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listViewEvent_MouseClick(object sender, MouseEventArgs e)
         {
             ListViewItem listItem = listViewEvent.SelectedItems[0];
@@ -290,6 +364,10 @@ namespace BuckApp
             updateListView();
         }
 
+        /// <summary>
+        /// method to stay in the list of events that the user is currently.
+        /// If the user is in their activities and deletes one, the updated list that will be shown later will be this
+        /// </summary>
         private void updateListView()
         {
             events = new List<Event>();
@@ -317,6 +395,12 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// It changes of window when the user presses the button to add event.
+        /// when the window closes it updates the list view with the new event created
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addEvent(object sender, EventArgs e)
         {
             AddEvents subir = new AddEvents(user);
@@ -324,19 +408,33 @@ namespace BuckApp
             selected_option = 2;
             updateListView();
         }
-        
+
+        /// <summary>
+        /// It changes of window when the user presses the button to consult grafic.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void consultGraphicToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GraficoMood gm = new GraficoMood(user);
             gm.Show();
         }
 
+        /// <summary>
+        /// Clear the listview to show the events that a person has created
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listOnePersonActivities_Click(object sender, EventArgs e)
         {
             listViewEvent.Items.Clear();
             listOnePersonActivities();
         }
 
+        /// <summary>
+        /// Take the events that a person has created and show them
+        /// If the list is empty, the program notifies you
+        /// </summary>
         private void listOnePersonActivities()
         {
             events = eventController.loadOnePersonActivities(user.Id);
@@ -352,12 +450,21 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// Clear the listview to show the events that a person is registered
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void activitiesRegisterOnePerson_Click(object sender, EventArgs e)
         {
             listViewEvent.Items.Clear();
             activitiesRegister();
         }
 
+        /// <summary>
+        /// Take the events that a person is registered and show them
+        /// If the list is empty, the program notifies you
+        /// </summary>
         private void activitiesRegister()
         {
             events = eventController.loadActivitiesRegisterOnePerson(user.Id);
@@ -373,6 +480,12 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// When the user presses the button, the program asks if you agree.
+        /// If the user answers yes, the program returns to the login window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void logOut(object sender, EventArgs e)
         {
             var answer = MessageBox.Show("Estas seguro de cerrar sesion?? ", "Cerrar sesion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
