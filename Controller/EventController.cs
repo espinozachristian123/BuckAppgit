@@ -18,37 +18,64 @@ namespace Controller
             eventDao = new EventDAO();
             events = new List<Event>();
         }
-
+        /// <summary>
+        /// check the moood of user and then show the activitis depend of mood of user.
+        /// </summary>
+        /// <param name="id_user"></param>
+        /// <returns>events</returns>
         public List<Event> loadDataWithFilterMood(int id_user)
         {
             events = eventDao.loadDataWithFilterMood(id_user);
             return events;
         }
-
+        /// <summary>
+        /// load all events in the principal scren
+        /// </summary>
+        /// <returns>events or null if not are events</returns>
         public List<Event> loadAllEventsForAdmin()
         {
             return eventDao.loadAllEventsForAdmin();
         }
-
+        /// <summary>
+        /// filter the activitis by location or type of event
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="type"></param>
+        /// <returns>event if are exist or null if are not exist</returns>
         public List<Event> loadDataWithFilter(String location, String type)
         {
             events = eventDao.loadDataWithFilter(location,type);
             return events;
         }
-
+        /// <summary>
+        /// load events with category or location with mood of user
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="type"></param>
+        /// <param name="id_user"></param>
+        /// <returns>event if are exist or null if are not exist</returns>
         public List<Event> loadDataWithFilterAndMood(String location, String type, int id_user)
         {
             events = eventDao.loadDataWithFilterAndMood(location, type, id_user);
             return events;
         }
-        
 
+        /// <summary>
+        /// load the activitis depend of location of event
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns>event if are exist or null if are not exist</returns>
         public List<Event> loadDataWithFilterLocation(String location)
         {
             events = eventDao.loadDataWithFilterLocation(location);
             return events;
         }
-
+        /// <summary>
+        /// load the activities by location and mood by user
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="id_user"></param>
+        /// <returns>event if are exist or null if are not exist</returns>
         public List<Event> loadDataWithFilterLocationAndMood(String location, int id_user)
         {
             events = eventDao.loadDataWithFilterLocationAndMood(location, id_user);

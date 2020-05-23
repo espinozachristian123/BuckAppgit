@@ -15,7 +15,7 @@ namespace BuckApp
     public partial class AddEvents : Form
     {
         private int userID, nPart, newMaxPart, valueMood;
-        private String newName, newDescription, newCity, newDirection, newDate, newTime, newDuration, newCategory, newMood;
+        private String newName, newDescription, newCity, newDirection, newDate, newTime, newDuration, newCategory, newMood, newCompleteDirection;
         private DateTime dateToday, dateEvent;
 
         private List<String> valueMoods;
@@ -38,6 +38,7 @@ namespace BuckApp
             loadMoodComboBox();
             this.user = user;
         }
+
         /// <summary>
         /// We load the categories we have per database and enter it in our combobox
         /// </summary>
@@ -49,6 +50,7 @@ namespace BuckApp
                 CbType.Items.Add(categories[i].Name);
             }
         }
+
         /// <summary>
         /// We load the mood values ​​that we have per database and enter it in our combobox
         /// </summary>
@@ -60,6 +62,7 @@ namespace BuckApp
                 cbMood.Items.Add(valueMoods[i]);
             }
         }
+
         /// <summary>
         /// We control the maxParticipants field so that the keyboard cannot be used to enter a non-numeric character
         /// </summary>
@@ -69,6 +72,7 @@ namespace BuckApp
         {
             eventController.validateNumbers(e);
         }
+
         /// <summary>
         ///Check that the fields are not empty
         ///Check that the number of participants has not been exceeded by more than 100
@@ -120,6 +124,9 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// Get the new values of text fields .
+        /// </summary>
         private void loadData()
         {
             newName = txtName.Text;
@@ -137,6 +144,9 @@ namespace BuckApp
             putValuesMood();
         }
 
+        /// <summary>
+        /// Take the value of the mood from the option chosen by the user
+        /// </summary>
         private void putValuesMood()
         {
             switch (newMood)
@@ -162,6 +172,57 @@ namespace BuckApp
                     break;
             }
         }
+
+        /// <summary>
+        /// When the user presses the Add location button, the window changes to that of google maps
+        //  when you close the window you get the value of the location
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addUbication_Click(object sender, EventArgs e)
+        {
+            TakeUbication ubication = new TakeUbication();
+            ubication.ShowDialog();
+            newCompleteDirection = ubication.Direccion_Definitiva;
+            takeUbication();
+        }
+
+        /// <summary>
+        /// Get the value of the google maps location and put them in the corresponding fields
+        /// </summary>
+        private void takeUbication()
+        {
+            String[] info = newCompleteDirection.Split(',');
+            switch (info.Length)
+            {
+                case 1:
+                    MessageBox.Show("No se ha encontrado la ciudad!! Escribalo manualmente");
+                    txtLocation.Text = String.Empty;
+                    txtDirection.Text = info[0];
+                    break;
+                case 2:
+                    txtLocation.Text = info[1];
+                    txtDirection.Text = info[0];
+                    break;
+                case 3:
+                    if (info[2].Any(c => char.IsDigit(c)) == true)
+                    {
+                        txtLocation.Text = info[2];
+                        txtDirection.Text = info[0] + "," + info[1];
+                    }
+                    else
+                    {
+                        txtLocation.Text = info[1];
+                        txtDirection.Text = info[0];
+                    }
+                    break;
+                case 4:
+                    txtLocation.Text = info[2];
+                    txtDirection.Text = info[0] + "," + info[1];
+                    break;
+            }
+        }
+
         /// <summary>
         /// Clean our fields
         /// </summary>

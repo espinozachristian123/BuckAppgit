@@ -16,7 +16,15 @@ namespace Controller
         {
             model = new UserDAO();
         }
-        
+
+        /// <summary>
+        /// Get the values username and password and then validate if the user exist or not.
+        /// if user exist create a new user with the values are geting in database,
+        /// else user is null.
+        /// </summary>
+        /// <param name="username"> value fields name </param>
+        /// <param name="password">value fields pass </param>
+        /// <returns>user</returns>
         public User validateUser(String username, String password)
         {
             User userValidate = new User(username,password);
@@ -33,17 +41,37 @@ namespace Controller
             return user;
         }
 
+        /// <summary>
+        /// get the values of register window and pass to database
+        /// </summary>
+        /// <param name="username"> value fields name</param>
+        /// <param name="password"> value fields pass</param>
+        /// <param name="email"> value fields email</param>
+        /// <returns> if flag is true the user are registred else  is false the user are registered </returns>
         public Boolean validateRegister(String username, String password, String email)
         {
             Boolean flag = model.register(username,password,email);
             return flag;
         }
 
+        /// <summary>
+        ///  get the new values of profile window and pass to database
+        /// </summary>
+        /// <param name="newName"> new value name </param>
+        /// <param name="newPass"> new value pass</param>
+        /// <param name="newEmail"> new value email</param>
+        /// <param name="id_user"> id user login</param>
+        /// <returns> if true the user are modify else not modify </returns>
         public bool modifyUser(string newName, string newPass, string newEmail, int id_user)
         {
             return model.modifyUser(newName, newPass, newEmail,id_user);
         }
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newName"> new value name </param>
+        /// <returns></returns>
         public bool sameName(string newName)
         {
             return model.UserEquals(newName);

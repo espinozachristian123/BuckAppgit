@@ -99,6 +99,12 @@
     <Compile Include="AddEvents.Designer.cs">
       <DependentUpon>AddEvents.cs</DependentUpon>
     </Compile>
+    <Compile Include="TakeUbication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TakeUbication.Designer.cs">
+      <DependentUpon>TakeUbication.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AnswerMood.resx">
       <DependentUpon>AnswerMood.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddEvents.resx">
       <DependentUpon>AddEvents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TakeUbication.resx">
+      <DependentUpon>TakeUbication.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

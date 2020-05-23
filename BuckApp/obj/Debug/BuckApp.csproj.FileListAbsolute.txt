@@ -124,3 +124,4 @@ C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debu
 C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.AnswerMood.resources
 C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.GraficoMood.resources
 C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.AddEvents.resources
+C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.TakeUbication.resources

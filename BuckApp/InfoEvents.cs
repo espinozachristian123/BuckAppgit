@@ -18,6 +18,8 @@ namespace BuckApp
         int id_event, n_participants, n_maxParticipants, id_user, valueMood;
 
         String newName, newDescr, newCity, newDirection, newDate, newTime, newDuration, newType, newMood;
+        String newCompleteDirection;
+        
         int newNumMax;
 
         List<String> valuesMood;
@@ -26,6 +28,8 @@ namespace BuckApp
         EventController eventController;
         MoodController moodController;
         CategoriesController categoriesController;
+
+        TakeUbication ubication;
 
         User user;
 
@@ -53,6 +57,12 @@ namespace BuckApp
             categories = new List<Categories>();
         }
 
+        /// <summary>
+        /// Load of methods to run this window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void InfoEvents_Load(object sender, EventArgs e)
         {
             putDataFields();
@@ -61,6 +71,9 @@ namespace BuckApp
             loadMoodComboBox();
         }
 
+        /// <summary>
+        ///  Get the values of the selected event and set in the fields of this window.
+        /// </summary>
         private void putDataFields()
         {
             tbName.Text = name;
@@ -76,6 +89,11 @@ namespace BuckApp
             cbMood.Text = mood;
         }
 
+        /// <summary>
+        /// Hide the fields depend on user and admin.
+        /// if the user has not created the event, they can only register
+        /// if the user is a Admin he only can show the event and the delete if the event are incorrectly.
+        /// </summary>
         private void hideFields()
         {
             if (user.Rol.Equals("admin"))
@@ -92,6 +110,7 @@ namespace BuckApp
                 cbType.Enabled = false;
                 cbMood.Enabled = false;
                 btRegisterEvent.Enabled = false;
+                btnAddUbication.Enabled = false;
                 btModify.Enabled = false;
                 btDelete.Enabled = true;
             }
@@ -108,11 +127,14 @@ namespace BuckApp
                 tbMaxParticipants.ReadOnly = true;
                 cbType.Enabled = false;
                 cbMood.Enabled = false;
+                btnAddUbication.Enabled = false;
                 btModify.Enabled = false;
                 btDelete.Enabled = false;
             }
         }
-
+        /// <summary>
+        /// Get the values of data base and load the combobox whith the that values.
+        /// </summary>
         private void loadComboBox()
         {
             categories = categoriesController.loadDataComboBox();
@@ -122,6 +144,9 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// Get the values of data base and load the combobox whith the that values.
+        /// </summary>
         private void loadMoodComboBox()
         {
             valuesMood = moodController.valueMoods();
@@ -130,7 +155,20 @@ namespace BuckApp
                 cbMood.Items.Add(valuesMood[i]);
             }
         }
-        
+
+        /// <summary>
+        /// Check if the user are registered or not.
+        /// If the user aren't registered check two items,
+        ///     the first if the num_participantes are smaller than num_max_participants,
+        ///     the second  if today's date is not higher than the event.
+        ///     if this condition is fullfiled, the user register in the event
+        ///     and update the num of participants in the event.
+        ///If the user are registered, the program notify the user of registered, and show the option if the user want to delete of event. 
+        ///     if the user click "YES" delete the register and update the  num of participants of event.
+        ///     in case of any error, the program will show a message of error in the screen.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void registerEvent(object sender, EventArgs e)
         {
             Boolean a = eventController.checkRegister(id_event, user.Id);
@@ -183,7 +221,15 @@ namespace BuckApp
             }
 
         }
-
+        /// <summary>
+        /// Ask the user if he want modify the event,
+        /// if the user Click "YES" the program,check all params if are correctly
+        /// and then modify the event
+        /// in case of error the program show a message of error in the screen.
+        /// if the user Click "No", the program not modify the event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void modifyEvent(object sender, EventArgs e)
         {
             takeNewData();
@@ -194,15 +240,30 @@ namespace BuckApp
             {
                 if(Convert.ToDateTime(newDate) > dateToday)
                 {
-                    Boolean b = eventController.modifyEvent(newName, newDescr, newCity, newDirection, dateFinal, newDuration, newNumMax, newType, valueMood, id_event);
-                    if (b == true)
+                    if (newName.Length == 0 || newDescr.Length == 0 || newCity.Length == 0 ||
+                    newDirection.Length == 0 || newDate.Length == 0 || newTime.Length == 0 || newDuration.Length == 0 ||
+                    newNumMax == 0 || newType.Length == 0 || newMood.Length == 0)
                     {
-                        MessageBox.Show("Evento modificado correctamente !!");
+                        MessageBox.Show("Los Campos no pueden estar vacios!");
+                    } else if (newNumMax > 100)
+                    {
+                        MessageBox.Show("Numero de participantes maximos superado (Maximo 100 Participantes)");
+
                     }
                     else
                     {
-                        MessageBox.Show("EL evento no se ha podido modificar !!");
+                        Boolean b = eventController.modifyEvent(newName, newDescr, newCity, newDirection, dateFinal, newDuration, newNumMax, newType, valueMood, id_event);
+
+                        if (b == true)
+                        {
+                            MessageBox.Show("Evento modificado correctamente !!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("EL evento no se ha podido modificar !!");
+                        }
                     }
+                    
                 }
                 else
                 {
@@ -210,7 +271,19 @@ namespace BuckApp
                 }
             }
         }
+        /// <summary>
+        /// We control the maxParticipants field so that the keyboard cannot be used to enter a non-numeric character
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tbMaxParticipants_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            eventController.validateNumbers(e);
+        }
 
+        /// <summary>
+        /// take the new values of fields and save in a variable.
+        /// </summary>
         private void takeNewData()
         {
             newName = tbName.Text;
@@ -226,6 +299,9 @@ namespace BuckApp
             putValuesMood();
         }
 
+        /// <summary>
+        /// Take the value of the mood from the option chosen by the user
+        /// </summary>
         private void putValuesMood()
         {
             switch (newMood)
@@ -252,6 +328,13 @@ namespace BuckApp
             }
         }
 
+        /// <summary>
+        /// ask the user if he want delete the event,
+        /// if user click "Yes" the program delete the event,
+        /// in case of error, the program show a message of error in the screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void deleteEventClick(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Estas seguro que quieres borrar el evento?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -267,6 +350,56 @@ namespace BuckApp
                 {
                     MessageBox.Show("EL evento no se ha podido borrar !!");
                 }
+            }
+        }
+
+        /// <summary>
+        /// When the user presses the Add location button, the window changes to that of google maps
+        //  when you close the window you get the value of the location
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addUbication_Click(object sender, EventArgs e)
+        {
+            TakeUbication ubication = new TakeUbication();
+            ubication.ShowDialog();
+            newCompleteDirection = ubication.Direccion_Definitiva;
+            takeUbication();
+        }
+
+        /// <summary>
+        /// Get the value of the google maps location and put them in the corresponding fields
+        /// </summary>
+        private void takeUbication()
+        {
+            String[] info = newCompleteDirection.Split(',');
+            switch (info.Length)
+            {
+                case 1:
+                    MessageBox.Show("No se ha encontrado la ciudad!! Escribalo manualmente");
+                    tbCity.Text = String.Empty;
+                    tbDirection.Text = info[0];
+                    break;
+                case 2:
+                    tbCity.Text = info[1];
+                    tbDirection.Text = info[0];
+                    break;
+                case 3:
+                    if(info[2].Any(c => char.IsDigit(c)) == true)
+                    {
+                        tbCity.Text = info[2];
+                        tbDirection.Text = info[0] + "," + info[1];
+                    }
+                    else
+                    {
+                        tbCity.Text = info[1];
+                        tbDirection.Text = info[0];
+                    }
+                    break;
+                case 4:
+                    tbCity.Text = info[2];
+                    tbDirection.Text = info[0] + "," + info[1];
+                    break;
             }
         }
     }

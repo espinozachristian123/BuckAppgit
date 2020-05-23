@@ -16,6 +16,10 @@ namespace Controller
             categoryDAO = new CategoryDAO();
         }
 
+        /// <summary>
+        /// collects the values ​​you have received from the database in a list
+        /// </summary>
+        /// <returns> list of categories </returns>
         public List <Categories> loadDataComboBox()
         {
             return categoryDAO.loadDataComboBox();
