@@ -56,7 +56,6 @@ C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\Controller\bin\D
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\Controller\bin\Debug\Ubiety.Dns.Core.dll
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\Controller\bin\Debug\Renci.SshNet.dll
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\Controller\bin\Debug\Model.pdb
-C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\Controller\bin\Debug\MySql.Data.xml
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\Controller\obj\Debug\Controller.csprojAssemblyReference.cache
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\Controller\obj\Debug\Controller.csproj.CoreCompileInputs.cache
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\Controller\obj\Debug\Controller.csproj.CopyComplete
