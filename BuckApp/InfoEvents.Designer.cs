@@ -108,25 +108,25 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(49, 372);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 13);
+            this.label6.Size = new System.Drawing.Size(52, 13);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Tipo";
+            this.label6.Text = "Categoria";
             // 
             // btRegisterEvent
             // 
-            this.btRegisterEvent.Location = new System.Drawing.Point(52, 457);
+            this.btRegisterEvent.Location = new System.Drawing.Point(52, 451);
             this.btRegisterEvent.Name = "btRegisterEvent";
-            this.btRegisterEvent.Size = new System.Drawing.Size(79, 35);
+            this.btRegisterEvent.Size = new System.Drawing.Size(101, 47);
             this.btRegisterEvent.TabIndex = 6;
-            this.btRegisterEvent.Text = "Registrarse a evento";
+            this.btRegisterEvent.Text = "Registrarse / Desregistrase a evento";
             this.btRegisterEvent.UseVisualStyleBackColor = true;
             this.btRegisterEvent.Click += new System.EventHandler(this.registerEvent);
             // 
             // btModify
             // 
-            this.btModify.Location = new System.Drawing.Point(155, 457);
+            this.btModify.Location = new System.Drawing.Point(176, 451);
             this.btModify.Name = "btModify";
-            this.btModify.Size = new System.Drawing.Size(93, 35);
+            this.btModify.Size = new System.Drawing.Size(101, 47);
             this.btModify.TabIndex = 7;
             this.btModify.Text = "Modificar evento";
             this.btModify.UseVisualStyleBackColor = true;
@@ -140,9 +140,9 @@
             this.btDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btDelete.ForeColor = System.Drawing.Color.Yellow;
-            this.btDelete.Location = new System.Drawing.Point(272, 457);
+            this.btDelete.Location = new System.Drawing.Point(296, 451);
             this.btDelete.Name = "btDelete";
-            this.btDelete.Size = new System.Drawing.Size(87, 35);
+            this.btDelete.Size = new System.Drawing.Size(101, 47);
             this.btDelete.TabIndex = 8;
             this.btDelete.Text = "Borrar evento";
             this.btDelete.UseVisualStyleBackColor = false;
@@ -167,6 +167,7 @@
             // 
             this.tbCity.Location = new System.Drawing.Point(159, 137);
             this.tbCity.Name = "tbCity";
+            this.tbCity.ReadOnly = true;
             this.tbCity.Size = new System.Drawing.Size(200, 20);
             this.tbCity.TabIndex = 11;
             // 
@@ -243,6 +244,7 @@
             // 
             this.tbDirection.Location = new System.Drawing.Point(159, 171);
             this.tbDirection.Name = "tbDirection";
+            this.tbDirection.ReadOnly = true;
             this.tbDirection.Size = new System.Drawing.Size(200, 20);
             this.tbDirection.TabIndex = 22;
             // 

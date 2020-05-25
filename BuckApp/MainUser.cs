@@ -24,9 +24,9 @@ namespace BuckApp
 
         private EventController eventController;
         private CategoriesController categoriesController;
-        
+
         User user;
-        
+
         public MainUser(User user)
         {
             InitializeComponent();
@@ -74,6 +74,7 @@ namespace BuckApp
                 events = eventController.loadAllEventsForAdmin();
                 if (events != null)
                 {
+                    lbTittleFilter.Text = "Todas las actividades";
                     loadListListView();
                 }
             }
@@ -85,7 +86,7 @@ namespace BuckApp
                     loadListListView();
                 }
             }
-            
+
         }
 
         /// <summary>
@@ -105,7 +106,7 @@ namespace BuckApp
         /// </summary>
         private void loadListListView()
         {
-            
+
             for (int i = 0; i < events.Count; i++)
             {
                 //DateTime date = Convert.ToDateTime(events[i].Date.ToString());
@@ -145,6 +146,7 @@ namespace BuckApp
                 type = cbCategory.Text;
                 if (location.Equals(String.Empty) && type.Equals(String.Empty))
                 {
+                    lbTittleFilter.Text = "Actividades filtradas por estado de animo";
                     events = eventController.loadDataWithFilterMood(user.Id);
                     if (events != null)
                     {
@@ -153,6 +155,7 @@ namespace BuckApp
                 }
                 else if (location.Equals(String.Empty))
                 {
+                    lbTittleFilter.Text = "Actividades filtradas por categoria";
                     if (user.Rol.Equals("admin"))
                     {
                         loadDataWithFilterType(type);
@@ -164,6 +167,7 @@ namespace BuckApp
                 }
                 else if (type.Equals(String.Empty))
                 {
+                    lbTittleFilter.Text = "Actividades filtradas por ciudad";
                     if (user.Rol.Equals("admin"))
                     {
                         loadDataWithFilterLocation(location);
@@ -175,6 +179,7 @@ namespace BuckApp
                 }
                 else
                 {
+                    lbTittleFilter.Text = "Actividades filtradas por ciudad y categoria";
                     if (user.Rol.Equals("admin"))
                     {
                         loadDataWithFilterLocationType(location, type);
@@ -183,14 +188,14 @@ namespace BuckApp
                     {
                         loadDataWithFilterLocationTypeAndMood(location, type, user.Id);
                     }
-                    
+
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Tienes que seleccionar una categoria!!");
             }
-            
+
         }
 
         /// <summary>
@@ -205,6 +210,7 @@ namespace BuckApp
             {
                 MessageBox.Show("No se ha podido cargar la lista de eventos segun la categoria." +
                     "Volviendo a la lista general de eventos!!");
+                lbTittleFilter.Text = "Todas las actividades";
                 loadEventsListView();
             }
             else
@@ -228,6 +234,7 @@ namespace BuckApp
             {
                 MessageBox.Show("No se ha podido cargar la lista de eventos segun la categoria." +
                     "Volviendo a la lista general de eventos!!");
+                lbTittleFilter.Text = "Actividades filtradas por estado de animo";
                 loadEventsListView();
             }
             else
@@ -249,6 +256,7 @@ namespace BuckApp
             {
                 MessageBox.Show("No se ha podido cargar la lista de eventos segun la ciudad." +
                     "Volviendo a la lista general de eventos!!");
+                lbTittleFilter.Text = "Todas las actividades";
                 loadEventsListView();
             }
             else
@@ -271,6 +279,7 @@ namespace BuckApp
             {
                 MessageBox.Show("No se ha podido cargar la lista de eventos segun la ciudad." +
                     "Volviendo a la lista general de eventos!!");
+                lbTittleFilter.Text = "Actividades filtradas por estado de animo";
                 loadEventsListView();
             }
             else
@@ -294,6 +303,7 @@ namespace BuckApp
             {
                 MessageBox.Show("No se ha podido cargar la lista de eventos " +
                     "Volviendo a la lista general de eventos!!");
+                lbTittleFilter.Text = "Actividades filtradas por estado de animo";
                 loadEventsListView();
             }
             else
@@ -316,6 +326,7 @@ namespace BuckApp
             {
                 MessageBox.Show("No se ha podido cargar la lista de eventos " +
                     "Volviendo a la lista general de eventos!!");
+                lbTittleFilter.Text = "Todas las actividades";
                 loadEventsListView();
             }
             else
@@ -359,7 +370,7 @@ namespace BuckApp
             String mood = listItem.SubItems[10].Text;
             int id_user = Convert.ToInt32(listItem.SubItems[11].Text);
             int id_event = Convert.ToInt32(listItem.SubItems[12].Text);
-            InfoEvents infoEvents = new InfoEvents(id_event, name, description, city, direction, date,time ,duration, n_participants, n_maxParticipants, type, mood, id_user, user);
+            InfoEvents infoEvents = new InfoEvents(id_event, name, description, city, direction, date, time, duration, n_participants, n_maxParticipants, type, mood, id_user, user);
             infoEvents.ShowDialog();
             updateListView();
         }
@@ -381,7 +392,7 @@ namespace BuckApp
                     activitiesRegister();
                     break;
                 case 2:
-                    listOnePersonActivities();
+                    loadEventsListView();
                     break;
                 case 3:
                     loadDataWithFilterLocation(location);
@@ -406,6 +417,7 @@ namespace BuckApp
             AddEvents subir = new AddEvents(user);
             subir.ShowDialog();
             selected_option = 2;
+            lbTittleFilter.Text = "Actividades filtradas por estado de animo";
             updateListView();
         }
 
@@ -428,6 +440,7 @@ namespace BuckApp
         private void listOnePersonActivities_Click(object sender, EventArgs e)
         {
             listViewEvent.Items.Clear();
+            lbTittleFilter.Text = "Actividades creadas por mi";
             listOnePersonActivities();
         }
 
@@ -441,6 +454,7 @@ namespace BuckApp
             if (events == null)
             {
                 MessageBox.Show("No has creado ninguna actividad !!");
+                lbTittleFilter.Text = "Actividades filtradas por estado de animo";
                 loadEventsListView(); ;
             }
             else
@@ -458,6 +472,7 @@ namespace BuckApp
         private void activitiesRegisterOnePerson_Click(object sender, EventArgs e)
         {
             listViewEvent.Items.Clear();
+            lbTittleFilter.Text = "Actividades que estoy registrado";
             activitiesRegister();
         }
 
@@ -471,6 +486,7 @@ namespace BuckApp
             if (events == null)
             {
                 MessageBox.Show("No estas registrado en ninguna actividad !!");
+                lbTittleFilter.Text = "Actividades filtradas por estado de animo";
                 loadEventsListView();
             }
             else

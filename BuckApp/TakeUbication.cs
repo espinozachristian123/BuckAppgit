@@ -47,10 +47,17 @@ namespace BuckApp
         /// <param name="e"></param>
         private void TakeUbication_FormClosing(object sender, FormClosingEventArgs e)
         {
-            String ubicacion = wbMaps.Document.Url.OriginalString;
-            String[] infoSplited = ubicacion.Split('/');
-            String direccion = infoSplited[5];
-            direccion_Definitiva = direccion.Replace("+", " ");
+            try
+            {
+                String ubicacion = wbMaps.Document.Url.OriginalString;
+                String[] infoSplited = ubicacion.Split('/');
+                String direccion = infoSplited[5];
+                direccion_Definitiva = direccion.Replace("+", " ");
+            }
+            catch
+            {
+                MessageBox.Show("No has puesto ninguna direccion!!");
+            }
         }
 
         public string Direccion_Definitiva { get => direccion_Definitiva; set => direccion_Definitiva = value; }

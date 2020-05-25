@@ -86,12 +86,13 @@ namespace BuckApp
         /// </summary>
         private void loadGrafic()
         {
+            chart1.ChartAreas[0].AxisY.Maximum = 5;
             numeromood = themood.Count;
             for (int i = 0; i < numeromood; i++)
             {
-                fecha = Convert.ToDateTime(themood[i].Fecha);
-                chart1.Series["Mood"].Points.Add(themood[i].Moods);
-                chart1.Series["Mood"].Points[i].Color = Color.Green;
+                fecha = Convert.ToDateTime(themood[i].Date);
+                chart1.Series["Mood"].Points.Add(themood[i].Mod);
+                chart1.Series["Mood"].Points[i].Color = Color.Blue;
                 chart1.Series["Mood"].Points[i].AxisLabel = fecha.ToShortDateString();
                 for (int j = 0; j < values.Length; j++)
                 {

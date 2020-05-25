@@ -54,6 +54,7 @@
             this.columnNumPart = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnNumPartMax = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lbTittleFilter = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,7 +118,7 @@
             this.cerrarSesionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1026, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1090, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -198,9 +199,9 @@
             this.listViewEvent.FullRowSelect = true;
             this.listViewEvent.GridLines = true;
             this.listViewEvent.HideSelection = false;
-            this.listViewEvent.Location = new System.Drawing.Point(19, 73);
+            this.listViewEvent.Location = new System.Drawing.Point(16, 108);
             this.listViewEvent.Name = "listViewEvent";
-            this.listViewEvent.Size = new System.Drawing.Size(984, 261);
+            this.listViewEvent.Size = new System.Drawing.Size(1062, 261);
             this.listViewEvent.TabIndex = 6;
             this.listViewEvent.UseCompatibleStateImageBehavior = false;
             this.listViewEvent.View = System.Windows.Forms.View.Details;
@@ -256,12 +257,23 @@
             this.columnType.Text = "Categoria";
             this.columnType.Width = 80;
             // 
+            // lbTittleFilter
+            // 
+            this.lbTittleFilter.AutoSize = true;
+            this.lbTittleFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTittleFilter.Location = new System.Drawing.Point(12, 83);
+            this.lbTittleFilter.Name = "lbTittleFilter";
+            this.lbTittleFilter.Size = new System.Drawing.Size(340, 20);
+            this.lbTittleFilter.TabIndex = 7;
+            this.lbTittleFilter.Text = "Actividades filtradas por estado de animo";
+            // 
             // MainUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(1026, 346);
+            this.ClientSize = new System.Drawing.Size(1090, 381);
+            this.Controls.Add(this.lbTittleFilter);
             this.Controls.Add(this.listViewEvent);
             this.Controls.Add(this.btSearch);
             this.Controls.Add(this.cbCategory);
@@ -311,5 +323,6 @@
         private System.Windows.Forms.ColumnHeader columnDirection;
         private System.Windows.Forms.ColumnHeader columnDuration;
         private System.Windows.Forms.ColumnHeader columnTime;
+        private System.Windows.Forms.Label lbTittleFilter;
     }
 }
