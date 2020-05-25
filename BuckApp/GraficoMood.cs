@@ -18,12 +18,16 @@ namespace BuckApp
         private int numeromood;
         private DateTime fecha;
         private List<Mood> themood;
-
+        
         private MoodDAO cn;
         private MoodController moodcontroller;
         
         User user;
-        
+
+        double axisLabelPos = 0.5;
+
+        String[] values = new string[5] { "Muy mal","Mal", "Normal", "Bien" , "Muy bien"};
+
         public GraficoMood(User user)
         {
             InitializeComponent();
@@ -31,7 +35,9 @@ namespace BuckApp
             moodcontroller = new MoodController();
             themood = new List<Mood>();
             cn = new MoodDAO();
+            
         }
+
         /// <summary>
         /// Load the graph data
         /// </summary>
@@ -42,6 +48,7 @@ namespace BuckApp
             loadDataMood();
             loadGraphicMood();
         }
+
         /// <summary>
         /// Loads the mood data of the user who has connected
         /// </summary>
@@ -49,6 +56,7 @@ namespace BuckApp
         {
             themood = moodcontroller.loadOnePersonMood(user.Id);
         }
+
         /// <summary>
         /// Check that the user has data, if it does not have, it shows a message informing that it has no data and does not open the graph
         /// Check that you have if you only have 1 mood data, if you only have 1 data it informs you to come back tomorrow and does not open the graph
@@ -72,6 +80,7 @@ namespace BuckApp
                 loadGrafic();
             }
         }
+
         /// <summary>
         /// Scrolls the mood data to be able to list it on the graph and shows it on the screen with its corresponding date on which the data was collected
         /// </summary>
@@ -80,11 +89,15 @@ namespace BuckApp
             numeromood = themood.Count;
             for (int i = 0; i < numeromood; i++)
             {
-                fecha = Convert.ToDateTime(themood[i].Date);
+                fecha = Convert.ToDateTime(themood[i].Fecha);
                 chart1.Series["Mood"].Points.Add(themood[i].Moods);
                 chart1.Series["Mood"].Points[i].Color = Color.Green;
-                chart1.Series["Mood"].Points[i].AxisLabel = "Mood Dia: " + fecha.ToShortDateString();
-                chart1.Series["Mood"].Points[i].LegendText = "Mood Dia: " + fecha.ToShortDateString();
+                chart1.Series["Mood"].Points[i].AxisLabel = fecha.ToShortDateString();
+                for (int j = 0; j < values.Length; j++)
+                {
+                    chart1.ChartAreas[0].AxisY.CustomLabels.Add(axisLabelPos, axisLabelPos + 1, values[j]);
+                    axisLabelPos = axisLabelPos + 1.0;
+                }
             }
         }
     }
