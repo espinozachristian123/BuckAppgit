@@ -57,7 +57,7 @@ namespace BuckApp
             String newPass = txtPassword.Text;
             String confirm = txtconfirm.Text;
             String newEmail = txtEmail.Text;
-
+            bool check1=false,check2 = false;
             var result = MessageBox.Show("Estas seguro que quieres modificar el Usuario?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (result == DialogResult.Yes)
             {
@@ -75,11 +75,18 @@ namespace BuckApp
                 }
                 else if (!newName.Equals(user.Username) || !newPass.Equals(user.Password) || !newEmail.Equals(user.Email))
                 {
-                    controlName();
-                    controlEmail();
                     if (newPass.Equals(confirm))
                     {
-                        usercontrol.modifyPass(newPass, user.Id);
+                        if (modifytheEmail(check1) == true  && modifythename(check2) ==  true)
+                        {
+                            MessageBox.Show("Usuario modificado");
+                            usercontrol.modifyUser(newName, newPass, newEmail, user.Id);
+                        }
+                        else
+                        {
+                            
+                            MessageBox.Show("Usuario no modificado");
+                        }
                     }
                     else
                     {
@@ -91,55 +98,86 @@ namespace BuckApp
             {
                 MessageBox.Show("El Usuario no se ha podido modificar !!");
             }
-
-
         }
-
-        /// <summary>
-        /// Take the new value in the name field.
-        /// If the new name already exists in the database notify the user
-        /// Otherwise modify the name of the user
-        /// </summary>
-        private void controlName()
-        {
-            String newName = txtName.Text;
-            if (!newName.Equals(user.Username))
-            {
-                if (usercontrol.sameName(newName) == true)
-                {
-                    MessageBox.Show("Error, usuario registrado anteriormente !!");
-                }
-                else
-                {
-                    usercontrol.modifyNames(newName, user.Id);
-                }
-            }
-        }
-
         /// <summary>
         /// Take the new value of the email field.
         /// If the new email, already exists in the database or does not comply
         /// with the default mail model the program notifies the user of an error
         /// If not modify the mail to the user
         /// </summary>
-        private void controlEmail()
+        /// <param name="check"></param>
+        /// <returns></returns>
+        private Boolean modifytheEmail(bool check)
         {
             String newEmail = txtEmail.Text;
+            check = true;
             if (!newEmail.Equals(user.Email))
             {
                 if (usercontrol.sameEmail(newEmail) == true)
                 {
                     MessageBox.Show("Error, correo registrado anteriormente !!");
+                    txtEmail.Text = user.Email;
+                    check = false;
                 }
-                else if(!(newEmail.Contains("@gmail.com"))|| !(newEmail.Contains("@hotmail.com")))
+                else if (controlEmail(newEmail) == false)
                 {
                     MessageBox.Show("Modelo de correo no valido. Debe ser gmail o hotmail !!");
+                    txtEmail.Text = user.Email;
+                    check = false;
                 }
                 else
                 {
-                    usercontrol.modifyEmail(newEmail, user.Id);
+                    check = true;
                 }
             }
+            return check;
         }
+        /// <summary>
+        /// Take the new value in the name field.
+        /// If the new name already exists in the database notify the user
+        /// Otherwise modify the name of the user
+        /// </summary>
+        /// <param name="check"></param>
+        /// <returns></returns>
+
+        private Boolean modifythename(bool check)
+        {
+            check = true;
+            String newName = txtName.Text;
+            if (!newName.Equals(user.Username))
+            {
+                if (usercontrol.sameName(newName) == true)
+                {
+                    MessageBox.Show("Error, usuario registrado anteriormente !!");
+                    txtName.Text = user.Username;
+                    check = false;
+                }
+                else
+                {
+                    usercontrol.modifyNames(newName, user.Id);
+                    check = true;
+                }
+            }
+            return check;
+        }
+        /// <summary>
+        /// Check that the email model is valid
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns> true if the email is correct and false if it is not </returns>
+        private bool controlEmail(String email)
+        {
+            Boolean b;
+            if (email.Contains("@gmail.com") || email.Contains("@hotmail.com"))
+            {
+                b = true;
+            }
+            else
+            {
+                b = false;
+            }
+            return b;
+        }
+
     }
 }
