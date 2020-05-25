@@ -128,7 +128,7 @@ namespace Model
         public List<Mood> loadOnePersonMood(int id_user)
         {
             List<Mood> moodsOnePerson = new List<Mood>();
-            String QUERY_SELECT_EVENTS__ONE_PERSON = "Select * from mood where id_user = @id_user";
+            String QUERY_SELECT_EVENTS__ONE_PERSON = "Select * from mood where id_user = @id_user ORDER BY date ASC";
             try
             {
                 connection = dbConnect.getConnection();
@@ -147,7 +147,7 @@ namespace Model
                                 int id = reader.GetInt16(0);
                                 int mood = reader.GetInt16(1);
                                 string date = reader.GetDateTime(2).ToString();
-                                moodsOnePerson.Add(new Mood(id, mood, date, id_user));
+                                moodsOnePerson.Add(new Mood(id_user, mood, date));
                             }
                         }
                         else

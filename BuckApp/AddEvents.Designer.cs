@@ -133,6 +133,7 @@
             // 
             this.txtLocation.Location = new System.Drawing.Point(277, 186);
             this.txtLocation.Name = "txtLocation";
+            this.txtLocation.ReadOnly = true;
             this.txtLocation.Size = new System.Drawing.Size(211, 20);
             this.txtLocation.TabIndex = 9;
             // 
@@ -196,6 +197,7 @@
             // 
             this.txtDirection.Location = new System.Drawing.Point(277, 224);
             this.txtDirection.Name = "txtDirection";
+            this.txtDirection.ReadOnly = true;
             this.txtDirection.Size = new System.Drawing.Size(211, 20);
             this.txtDirection.TabIndex = 17;
             // 
@@ -263,7 +265,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 58);
             this.button2.TabIndex = 25;
-            this.button2.Text = "Añadir Ubicacion";
+            this.button2.Text = "Buscar ubicacion";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.addUbication_Click);
             // 

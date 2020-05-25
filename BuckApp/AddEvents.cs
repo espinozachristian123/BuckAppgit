@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,13 +21,13 @@ namespace BuckApp
 
         private List<String> valueMoods;
         private List<Categories> categories;
-        
+
         private EventController eventController;
         private MoodController moodController;
         private CategoriesController categoriesController;
 
         User user;
-        
+
         public AddEvents(User user)
         {
             InitializeComponent();
@@ -90,8 +91,8 @@ namespace BuckApp
                 dateToday = DateTime.Today;
                 String dateFinal = newDate + " " + newTime;
                 if (newName.Length == 0 || newDescription.Length == 0 || newCity.Length == 0 ||
-                    newDirection.Length == 0|| newDate.Length == 0 || newTime.Length == 0 || newDuration.Length == 0 || 
-                    txtMaxParticipants.Text.Length == 0||newCategory.Length == 0 || newMood.Length == 0 )
+                    newDirection.Length == 0 || newDate.Length == 0 || newTime.Length == 0 || newDuration.Length == 0 ||
+                    txtMaxParticipants.Text.Length == 0 || newCategory.Length == 0 || newMood.Length == 0)
                 {
                     MessageBox.Show("Los Campos no pueden estar vacios!");
                 }
@@ -115,7 +116,7 @@ namespace BuckApp
                         MessageBox.Show("Has puesto una fecha anterior a la de hoy!");
                     }
 
-                    
+
                 }
             }
             catch (FormatException)
@@ -192,35 +193,48 @@ namespace BuckApp
         /// </summary>
         private void takeUbication()
         {
-            String[] info = newCompleteDirection.Split(',');
-            switch (info.Length)
+            if (newCompleteDirection != null)
             {
-                case 1:
-                    MessageBox.Show("No se ha encontrado la ciudad!! Escribalo manualmente");
-                    txtLocation.Text = String.Empty;
-                    txtDirection.Text = info[0];
-                    break;
-                case 2:
-                    txtLocation.Text = info[1];
-                    txtDirection.Text = info[0];
-                    break;
-                case 3:
-                    if (info[2].Any(c => char.IsDigit(c)) == true)
-                    {
-                        txtLocation.Text = info[2];
+                String[] info = newCompleteDirection.Split(',');
+
+                switch (info.Length)
+                {
+                    case 1:
+                        MessageBox.Show("Especifica la direccion completa. No se ha podido localizar el lugar");
+                        txtLocation.Text = String.Empty;
+                        txtDirection.Text = String.Empty;
+                        break;
+                    case 2:
+                        if (info[1].Any(c => char.IsDigit(c)) == true)
+                        {
+                            txtLocation.Text = Regex.Replace(info[1], @"[\d-]", string.Empty).Substring(2);
+                            txtDirection.Text = info[0];
+                        }
+                        else
+                        {
+                            txtLocation.Text = info[1].Substring(1);
+                            txtDirection.Text = info[0];
+                        }
+                        break;
+                    case 3:
+                        if (info[2].Any(c => char.IsDigit(c)) == true)
+                        {
+                            txtLocation.Text = Regex.Replace(info[2], @"[\d-]", string.Empty).Substring(2);
+                            txtDirection.Text = info[0] + "," + info[1];
+                        }
+                        else
+                        {
+                            txtLocation.Text = Regex.Replace(info[1], @"[\d-]", string.Empty).Substring(2);
+                            txtDirection.Text = info[0];
+                        }
+                        break;
+                    case 4:
+                        txtLocation.Text = Regex.Replace(info[2], @"[\d-]", string.Empty).Substring(2);
                         txtDirection.Text = info[0] + "," + info[1];
-                    }
-                    else
-                    {
-                        txtLocation.Text = info[1];
-                        txtDirection.Text = info[0];
-                    }
-                    break;
-                case 4:
-                    txtLocation.Text = info[2];
-                    txtDirection.Text = info[0] + "," + info[1];
-                    break;
+                        break;
+                }
             }
+
         }
 
         /// <summary>
