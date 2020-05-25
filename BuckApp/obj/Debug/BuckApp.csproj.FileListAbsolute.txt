@@ -126,3 +126,4 @@ C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\Bu
 C:\Users\mohaa\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.AddEvents.resources
 C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.TakeUbication.resources
 C:\Users\Christian\source\repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.TakeUbication.resources
+C:\Users\mohaa\source\repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.TakeUbication.resources

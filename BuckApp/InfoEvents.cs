@@ -172,26 +172,22 @@ namespace BuckApp
         /// <param name="e"></param>
         private void registerEvent(object sender, EventArgs e)
         {
-            Boolean a = eventController.checkRegister(id_event, user.Id);
             DateTime dateFinal = Convert.ToDateTime(date + " " + time);
             DateTime dateActual = Convert.ToDateTime(DateTime.Now.ToString());
+            Boolean a = eventController.checkRegister(id_event, user.Id);
             if (a == false)
             {
                 if ((n_participants < n_maxParticipants) && (dateFinal >= dateActual))
                 {
-                    Boolean b = eventController.registerEvent(dateFinal, id_event, user.Id);
+                    Boolean b = eventController.registerEvent(dateFinal, id_event, user.Id, n_participants);
                     if (b == true)
                     {
                         n_participants++;
-                        Boolean c = eventController.updateNumMax(n_participants, id_event);
-                        if (c == true)
-                        {
-                            MessageBox.Show("Usuario registrado en el evento!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Actividad completa o fuera de termino!!");
-                        }
+                        MessageBox.Show("Usuario registrado en el evento!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Actividad completa o fuera de termino!!");
                     }
                 }
                 else
@@ -204,15 +200,11 @@ namespace BuckApp
                 var result = MessageBox.Show("El usuario ya esta registrado en este evento! Quieres eliminarte del evento?", "Borrarte de la actividad", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    Boolean d = eventController.deleteRegisterEvent(id_event, user.Id);
+                    Boolean d = eventController.deleteRegisterEvent(id_event, user.Id, n_participants);
                     if (d == true)
                     {
                         n_participants--;
-                        Boolean f = eventController.updateNumMax(n_participants, id_event);
-                        if (f == true)
-                        {
-                            MessageBox.Show("Usuario borrado del evento!");
-                        }
+                        MessageBox.Show("Usuario borrado del evento!");
                     }
                     else
                     {
