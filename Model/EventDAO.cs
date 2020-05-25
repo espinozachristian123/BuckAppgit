@@ -626,25 +626,40 @@ namespace Model
         /// <param name="id_event"></param>
         /// <param name="id_user"></param>
         /// <returns>true if are registered correctly or false in case of error</returns>
-        public Boolean registerEvent(DateTime fecha, int id_event, int id_user)
+        public Boolean registerEvent(DateTime fecha, int id_event, int id_user, int num_participants)
         {
+            MySqlTransaction tr = null;
             Boolean b = false;
             String QUERY_REGISTER_USEREVENTS = "Insert into userevents (date, id_events, id_user) values (@date,  @id_events , @id_user)";
+            String QUERY_UPDATE_NUM_PART = "UPDATE `events` SET `num_participants`= @num_participants WHERE id = @id and num_participants < num_participants_max";
+
             try
             {
                 connection = dbConnect.getConnection();
-
+                
                 if (connection != null)
                 {
                     connection.Open();
+                    tr = connection.BeginTransaction();
+
                     using (MySqlCommand cmd = new MySqlCommand(QUERY_REGISTER_USEREVENTS, connection))
                     {
                         cmd.Parameters.Add(new MySqlParameter("@date", fecha));
                         cmd.Parameters.Add(new MySqlParameter("@id_events", id_event));
                         cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
                         cmd.ExecuteNonQuery();
-                        b = true;
                     }
+
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_UPDATE_NUM_PART, connection))
+                    {
+                        num_participants++;
+                        cmd.Parameters.Add(new MySqlParameter("@num_participants", num_participants));
+                        cmd.Parameters.Add(new MySqlParameter("@id", id_event));
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    tr.Commit();
+                    b = true;
                 }
                 else
                 {
@@ -653,10 +668,12 @@ namespace Model
             }
             catch (MySqlException error)
             {
+                tr.Rollback();
                 b = false;
             }
             catch (Exception e)
             {
+                tr.Rollback();
                 b = false;
             }
             return b;
@@ -669,10 +686,14 @@ namespace Model
         /// <param name="id_event"></param>
         /// <param name="id_user"></param>
         /// <returns>true if the user are deleted of activity or false in case of error</returns>
-        public Boolean deleteRegisterEvent(int id_event , int id_user)
+        public Boolean deleteRegisterEvent(int id_event , int id_user, int num_participants)
         {
+            MySqlTransaction tr = null;
             Boolean b = false;
+
             String QUERY_DELETE_REGISTER_USEREVENTS = "DELETE FROM `userevents` WHERE id_events = @id_event and id_user = @id_user";
+            String QUERY_UPDATE_NUM_PART = "UPDATE `events` SET `num_participants`= @num_participants WHERE id = @id";
+
             try
             {
                 connection = dbConnect.getConnection();
@@ -680,13 +701,25 @@ namespace Model
                 if (connection != null)
                 {
                     connection.Open();
+                    tr = connection.BeginTransaction();
+
                     using (MySqlCommand cmd = new MySqlCommand(QUERY_DELETE_REGISTER_USEREVENTS, connection))
                     {
                         cmd.Parameters.Add(new MySqlParameter("@id_event", id_event));
                         cmd.Parameters.Add(new MySqlParameter("@id_user", id_user));
                         cmd.ExecuteNonQuery();
-                        b = true;
                     }
+
+                    using (MySqlCommand cmd = new MySqlCommand(QUERY_UPDATE_NUM_PART, connection))
+                    {
+                        num_participants--;
+                        cmd.Parameters.Add(new MySqlParameter("@num_participants", num_participants));
+                        cmd.Parameters.Add(new MySqlParameter("@id", id_event));
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    tr.Commit();
+                    b = true;
                 }
                 else
                 {
@@ -695,10 +728,12 @@ namespace Model
             }
             catch (MySqlException error)
             {
+                tr.Rollback();
                 b = false;
             }
             catch (Exception e)
             {
+                tr.Rollback();
                 b = false;
             }
             return b;
@@ -825,7 +860,6 @@ namespace Model
         /// <returns>true if are modified correctly or false in case of error</returns>
         public Boolean modifyEvent(Event eventModify)
         {
-           
             Boolean b = false;
             String QUERY_MODIFY_EVENT = "UPDATE `events` SET `name`= @name,`description`= @description,`city`= @location,`direction`= @direction,`date`= @date,`duration`= @duration,`num_participants_max`= @num_max,`name_category`= @type,`mood`= @mood WHERE id = @id";
             try
@@ -866,49 +900,7 @@ namespace Model
             }
             return b;
         }
-        /// <summary>
-        /// this method update the num of participants depend if the user are registered or his delete of activity
-        /// check if conection are correctly
-        /// and execute query
-        /// </summary>
-        /// <param name="num_participants"></param>
-        /// <param name="id"></param>
-        /// <returns>true if the update are correctly or false in case of error</returns>
-        public Boolean updateNumParticipants(int num_participants,  int id)
-        {
-
-            Boolean b = false;
-            String QUERY_UPDATE_NUM_PART = "UPDATE `events` SET `num_participants`= @num_participants WHERE id = @id and num_participants < num_participants_max";
-            try
-            {
-                connection = dbConnect.getConnection();
-
-                if (connection != null)
-                {
-                    connection.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(QUERY_UPDATE_NUM_PART, connection))
-                    {
-                        cmd.Parameters.Add(new MySqlParameter("@num_participants", num_participants));
-                        cmd.Parameters.Add(new MySqlParameter("@id", id));
-                        cmd.ExecuteNonQuery();
-                        b = true;
-                    }
-                }
-                else
-                {
-                    b = false;
-                }
-            }
-            catch (MySqlException error)
-            {
-                b = false;
-            }
-            catch (Exception e)
-            {
-                b = true;
-            }
-            return b;
-        }
+       
         /// <summary>
         /// delete the event of user doing a "delete" in database
         /// check the conection are succesfully

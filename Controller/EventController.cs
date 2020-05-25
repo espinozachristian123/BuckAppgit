@@ -138,19 +138,9 @@ namespace Controller
         /// <param name="id_event">value of id event</param>
         /// <param name="id_user">id user of login</param>
         /// <returns>true if are registered in event or false in case of error</returns>
-        public Boolean registerEvent(DateTime fecha, int id_event, int id_user)
+        public Boolean registerEvent(DateTime fecha, int id_event, int id_user, int n_participants)
         {
-            return eventDao.registerEvent(fecha, id_event, id_user);
-        }
-        /// <summary>
-        /// update the num participants if depends the user are registered or deregister of activity
-        /// </summary>
-        /// <param name="num_participants">value of event selected in listbox</param>
-        /// <param name="id">id of event selected in listbox</param>
-        /// <returns>true if update or false in case of error</returns>
-        public Boolean updateNumMax(int num_participants, int id)
-        {
-            return eventDao.updateNumParticipants(num_participants, id);
+            return eventDao.registerEvent(fecha, id_event, id_user, n_participants);
         }
         /// <summary>
         /// delete the user when he dont want take a part in event
@@ -158,9 +148,9 @@ namespace Controller
         /// <param name="id_event">value selected in listbox</param>
         /// <param name="id_user">id user of login</param>
         /// <returns>true if correctly or false in case of error</returns>
-        public Boolean deleteRegisterEvent(int id_event, int id_user)
+        public Boolean deleteRegisterEvent(int id_event, int id_user, int n_participants)
         {
-            return eventDao.deleteRegisterEvent(id_event, id_user);
+            return eventDao.deleteRegisterEvent(id_event, id_user, n_participants);
         }
         /// <summary>
         /// add a event 
