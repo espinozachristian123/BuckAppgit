@@ -105,7 +105,6 @@ C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debu
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debug\Renci.SshNet.dll
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debug\Controller.pdb
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debug\Model.pdb
-C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\bin\Debug\MySql.Data.xml
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.csprojAssemblyReference.cache
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.AnswerMood.resources
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\BuckApp\obj\Debug\BuckApp.GraficoMood.resources
