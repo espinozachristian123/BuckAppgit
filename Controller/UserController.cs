@@ -24,7 +24,7 @@ namespace Controller
         /// </summary>
         /// <param name="username"> value fields name </param>
         /// <param name="password">value fields pass </param>
-        /// <returns>user</returns>
+        /// <returns> user login </returns>
         public User validateUser(String username, String password)
         {
             User userValidate = new User(username,password);
@@ -68,30 +68,53 @@ namespace Controller
         }
 
         /// <summary>
-        /// 
+        /// check if username exist or not exist
         /// </summary>
         /// <param name="newName"> new value name </param>
-        /// <returns></returns>
+        /// <returns>boolean true if name exist or false if not exist</returns>
         public bool sameName(string newName)
         {
             return model.UserEquals(newName);
         }
 
+        /// <summary>
+        /// check if email exist or not exist
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns> boolean true if email exist or false if not exist </returns>
         public Boolean sameEmail(String email)
         {
             return model.takeUser(email);
         }
 
+        /// <summary>
+        /// modify username user
+        /// </summary>
+        /// <param name="newName"></param>
+        /// <param name="id_user"></param>
+        /// <returns>boolean true if username modify or false if not modify</returns>
         public bool modifyNames(string newName, int id_user)
         {
             return model.modifyName(newName, id_user);
         }
 
+        /// <summary>
+        /// modify email user
+        /// </summary>
+        /// <param name="newEmail"></param>
+        /// <param name="id"></param>
+        /// <returns>boolean true if email modify or false if not modify</returns>
         public bool modifyEmail(string newEmail, int id)
         {
             return model.modifyEmail(newEmail, id);
         }
 
+        /// <summary>
+        /// modify pass user
+        /// </summary>
+        /// <param name="newPass"></param>
+        /// <param name="id"></param>
+        /// <returns> boolean true if pass modify or false if not modify </returns>
         public bool modifyPass(string newPass, int id)
         {
             return model.modifyPassword(newPass, id);

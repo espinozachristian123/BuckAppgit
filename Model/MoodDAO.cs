@@ -22,7 +22,7 @@ namespace Model
         /// <summary>
         /// Load a list to fill the combobox
         /// </summary>
-        /// <returns></returns>
+        /// <returns> list  value moods</returns>
         public List<String> loadDataComboBox()
         {
             List<String> valueMoods = new List<String>();
@@ -38,7 +38,7 @@ namespace Model
         /// that we pass it by parameter and ordering the date in Descending way
         /// </summary>
         /// <param name="userID"></param>
-        /// <returns></returns>
+        /// <returns> last date register mood </returns>
         public DateTime checkDate(int userID)
         {
             DateTime date = default(DateTime);
@@ -83,7 +83,7 @@ namespace Model
         /// We insert the data from the mood table with the data that we pass by parameter
         /// </summary>
         /// <param name="newMood"></param>
-        /// <returns></returns>
+        /// <returns> if is true add mood or false if not added</returns>
         public Boolean insertMood(Mood newMood)
         {
             Boolean b = false;
@@ -124,7 +124,7 @@ namespace Model
         /// If there is an error with the server connection the exception is controlled
         /// </summary>
         /// <param name="id_user"></param>
-        /// <returns></returns>
+        /// <returns>list mood one person </returns>
         public List<Mood> loadOnePersonMood(int id_user)
         {
             List<Mood> moodsOnePerson = new List<Mood>();

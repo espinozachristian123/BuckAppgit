@@ -27,7 +27,7 @@ namespace Model
         /// If there is an error with the server connection the exception is controlled
         /// </summary>
         /// <param name="user">value user</param>
-        /// <returns></returns>
+        /// <returns> true if user exist or false if not exist</returns>
         public Boolean loginUser(User user)
         {
             Boolean b = false;
@@ -81,7 +81,7 @@ namespace Model
         /// </summary>
         /// <param name="password"></param>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>true if event modify and false if not modify</returns>
         public bool modifyPassword(string password, int id)
         {
             Boolean b = false;
@@ -123,7 +123,7 @@ namespace Model
         /// </summary>
         /// <param name="email">value email</param>
         /// <param name="id">value id</param>
-        /// <returns></returns>
+        /// <returns>true if email modify and false if not modify</returns>
         public bool modifyEmail(string email, int id)
         {
             Boolean b = false;
@@ -165,7 +165,7 @@ namespace Model
         /// </summary>
         /// <param name="newName">new value name</param>
         /// <param name="id_user">value id_user</param>
-        /// <returns></returns>
+        /// <returns>true if name modify and false if not modify</returns>
         public bool modifyName(string newName, int id_user)
         {
             Boolean b = false;
@@ -210,7 +210,7 @@ namespace Model
         /// <param name="newPass"></param>
         /// <param name="newEmail"></param>
         /// <param name="id_user"></param>
-        /// <returns></returns>
+        /// <returns>true if user modify and false if not modify</returns>
         public bool modifyUser(string newName, string newPass, string newEmail, int id_user)
         {
             Boolean b = false;
@@ -254,7 +254,7 @@ namespace Model
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <param name="emailRegister"></param>
-        /// <returns></returns>
+        /// <returns>if boolean is true user into in BD else not added</returns>
         public Boolean register(String username, String password, String emailRegister)
         {
             Boolean b = false;
@@ -296,7 +296,7 @@ namespace Model
         /// If there is an error with the server connection the exception is controlled
         /// </summary>
         /// <param name="email"></param>
-        /// <returns></returns>
+        /// <returns>if boolean is true email exist else not exist</returns>
         public Boolean takeUser(String email)
         {
             Boolean b = false;
@@ -343,7 +343,7 @@ namespace Model
         /// If there is an error with the server connection the exception is controlled
         /// </summary>
         /// <param name="username"></param>
-        /// <returns></returns>
+        /// <returns>if boolean is true name exist else not exist</returns>
         public Boolean UserEquals(String username)
         {
             Boolean b = false;

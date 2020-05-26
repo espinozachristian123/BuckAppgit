@@ -21,7 +21,7 @@ namespace Model
         /// Check if the connection to the server is successful
         /// if not, the exception is controlled
         /// </summary>
-        /// <returns></returns>
+        /// <returns> categories list </returns>
         public List<Categories> loadDataComboBox()
         {
             List<Categories> categories = new List<Categories>();

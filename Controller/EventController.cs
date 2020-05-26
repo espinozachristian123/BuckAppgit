@@ -22,7 +22,7 @@ namespace Controller
         /// check the moood of user and then show the activitis depend of mood of user.
         /// </summary>
         /// <param name="id_user"></param>
-        /// <returns>events</returns>
+        /// <returns> events list Filter</returns>
         public List<Event> loadDataWithFilterMood(int id_user)
         {
             events = eventDao.loadDataWithFilterMood(id_user);
@@ -39,8 +39,8 @@ namespace Controller
         /// <summary>
         /// filter the activitis by location or type of event
         /// </summary>
-        /// <param name="location"></param>
-        /// <param name="type"></param>
+        /// <param name="location"> value textBox </param>
+        /// <param name="type"> value comboBox </param>
         /// <returns>event if are exist or null if are not exist</returns>
         public List<Event> loadDataWithFilter(String location, String type)
         {
@@ -50,9 +50,9 @@ namespace Controller
         /// <summary>
         /// load events with category or location with mood of user
         /// </summary>
-        /// <param name="location"></param>
-        /// <param name="type"></param>
-        /// <param name="id_user"></param>
+        /// <param name="location"> value textBox </param>
+        /// <param name="type"> value comboBox </param>
+        /// <param name="id_user"> id user login</param>
         /// <returns>event if are exist or null if are not exist</returns>
         public List<Event> loadDataWithFilterAndMood(String location, String type, int id_user)
         {
@@ -63,7 +63,7 @@ namespace Controller
         /// <summary>
         /// load the activitis depend of location of event
         /// </summary>
-        /// <param name="location"></param>
+        /// <param name="location"> value textBox </param>
         /// <returns>event if are exist or null if are not exist</returns>
         public List<Event> loadDataWithFilterLocation(String location)
         {
@@ -115,7 +115,7 @@ namespace Controller
         /// <summary>
         /// load activtis thah user are registered
         /// </summary>
-        /// <param name="id_user"></param>
+        /// <param name="id_user"> id user login </param>
         /// <returns>event if are exist or null if are not exist</returns>
         public List<Event> loadActivitiesRegisterOnePerson(int id_user)
         {
@@ -175,16 +175,16 @@ namespace Controller
         /// <summary>
         /// modify the event
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="description"></param>
-        /// <param name="city"></param>
-        /// <param name="direction"></param>
-        /// <param name="date"></param>
-        /// <param name="duration"></param>
-        /// <param name="num_max"></param>
-        /// <param name="type"></param>
-        /// <param name="mood"></param>
-        /// <param name="id"></param>
+        /// <param name="name"> value textBox</param>
+        /// <param name="description"> value textBox </param>
+        /// <param name="city"> value textBox</param>
+        /// <param name="direction"> value textBox</param>
+        /// <param name="date">value textBox </param>
+        /// <param name="duration"> value textBox</param>
+        /// <param name="num_max"> value textBox </param>
+        /// <param name="type"> value comboBox</param>
+        /// <param name="mood">value comboBox</param>
+        /// <param name="id">id event</param>
         /// <returns>true if modify are correctly or false in case of error</returns>
         public Boolean modifyEvent(string name, string description, string city, string direction, string date, string duration, int num_max, string type, int mood, int id)
         {
@@ -194,7 +194,7 @@ namespace Controller
         /// <summary>
         /// delete the event
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id"> id event </param>
         /// <returns>true if delete are succesfully or false in case of error</returns>
         public Boolean deleteEvent(int id)
         {

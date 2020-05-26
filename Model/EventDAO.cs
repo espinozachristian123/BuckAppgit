@@ -19,6 +19,7 @@ namespace Model
         {
             dbConnect = DBConnection.getInstance();
         }
+
         /// <summary>
         /// load all events of database where the date are bigger than today
         ///  if connection is diferent of null
