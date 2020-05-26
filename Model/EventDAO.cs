@@ -149,7 +149,7 @@ namespace Model
         public List<Event> loadDataWithFilterAndMood(string locationEvent, string typeEvent, int userID)
         {
             List<Event> eventsWithFilterAndMood = new List<Event>();
-            String QUERY_SELECT_EVENTS_WITH_FILTER_AND_MOOD = "SELECT * FROM `events` WHERE mood in (SELECT mood FROM `mood` where id_user = @id_user ) and city = @location and name_category = @type and date >= NOW()";
+            String QUERY_SELECT_EVENTS_WITH_FILTER_AND_MOOD = "SELECT * FROM `events` WHERE mood in (SELECT * FROM (SELECT mood FROM `mood` where id_user = @id_user ORDER BY date DESC LIMIT 1) as t ) and city = @location and name_category = @type and date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();
@@ -334,7 +334,7 @@ namespace Model
         public List<Event> loadDataWithFilterLocationAndMood(string locationEvent, int userID)
         {
             List<Event> eventsWithFilterLocationAndMood = new List<Event>();
-            String QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION_AND_MOOD = "SELECT * FROM `events` WHERE mood in (SELECT mood FROM `mood` where id_user = @id_user ) and city = @location and date >= NOW()";
+            String QUERY_SELECT_EVENTS_WITH_FILTER_LOCATION_AND_MOOD = "SELECT * FROM `events` WHERE mood in (SELECT * FROM (SELECT mood FROM `mood` where id_user = @id_user ORDER BY date DESC LIMIT 1) as t ) and city = @location and date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();
@@ -456,7 +456,7 @@ namespace Model
         public List<Event> loadDataWithFilterTypeAndMood(string typeEvent, int userID)
         {
             List<Event> eventsWithFilterTypeAndMood = new List<Event>();
-            String QUERY_SELECT_EVENTS_WITH_FILTER_TYPE_AND_MOOD = "SELECT * FROM `events` WHERE mood in (SELECT mood FROM `mood` where id_user = @id_user ) and name_category = @type and date >= NOW()";
+            String QUERY_SELECT_EVENTS_WITH_FILTER_TYPE_AND_MOOD = "SELECT * FROM `events` WHERE mood in (SELECT * FROM (SELECT mood FROM `mood` where id_user = @id_user ORDER BY date DESC LIMIT 1) as t ) and name_category = @type and date >= NOW()";
             try
             {
                 connection = dbConnect.getConnection();

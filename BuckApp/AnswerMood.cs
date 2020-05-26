@@ -87,5 +87,15 @@ namespace BuckApp
                 }
             }
         }
+
+        /// <summary>
+        /// hide form answer and return in login window
+        /// </summary>
+        private void AnswerMood_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            Login login = new Login();
+            login.ShowDialog();
+        }
     }
 }

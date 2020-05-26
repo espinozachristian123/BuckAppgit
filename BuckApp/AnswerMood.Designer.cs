@@ -177,6 +177,7 @@
             this.Name = "AnswerMood";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AnswerMood";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AnswerMood_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

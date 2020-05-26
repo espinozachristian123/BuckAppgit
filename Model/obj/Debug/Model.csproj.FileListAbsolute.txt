@@ -49,4 +49,3 @@ C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\Model\obj\Debug\
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\Model\obj\Debug\Model.csproj.CopyComplete
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\Model\obj\Debug\Model.dll
 C:\Users\Christian\Source\Repos\espinozachristian123\BuckAppgit\Model\obj\Debug\Model.pdb
-C:\Users\Alex\Source\Repos\espinozachristian123\BuckAppgit\Model\obj\Debug\Model.csprojAssemblyReference.cache
